@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MIDILLA — Content Production System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --bg:       #0A0B0F;
+      --s1:       #12151C;
+      --s2:       #1A1E28;
+      --border:   #232838;
+      --green:    #4ADE80;
+      --green-d:  rgba(74,222,128,0.08);
+      --green-b:  rgba(74,222,128,0.22);
+      --amber:    #FBB040;
+      --amber-d:  rgba(251,176,64,0.08);
+      --amber-b:  rgba(251,176,64,0.22);
+      --red:      #F87171;
+      --blue:     #60A5FA;
+      --blue-d:   rgba(96,165,250,0.08);
+      --blue-b:   rgba(96,165,250,0.22);
+      --white:    #F8FAFC;
+      --t1:       #E2E8F0;
+      --t2:       #8892A4;
+      --t3:       #4A5568;
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--t1);
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      line-height: 1.9;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: crosshair; border: none; background: none; font: inherit; }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+
+    /* ─── NOISE TEXTURE ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      background: rgba(10,11,15,0.92);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      height: 60px;
+    }
+    .nav-wordmark {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--t3);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--t1); }
+    .nav-cta {
+      background: var(--green);
+      color: var(--bg) !important;
+      font-family: 'Syne', sans-serif !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.01em !important;
+      padding: 8px 18px;
+      text-transform: none !important;
+    }
+    .nav-cta:hover { opacity: 0.9; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      padding: 0 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: center;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 1px;
+      height: 100%;
+      background: var(--border);
+    }
+    .hero-left {
+      padding: 120px 64px 80px 0;
+      border-right: 1px solid var(--border);
+    }
+    .hero-right {
+      padding: 120px 0 80px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Eyebrow */
+    .eyebrow {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--green);
+    }
+
+    /* Headline */
+    .hero-headline {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(44px, 5.5vw, 76px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--white);
+      line-height: 0.96;
+      margin-bottom: 32px;
+    }
+    .hero-headline .delivered {
+      color: var(--green);
+      display: block;
+      position: relative;
+    }
+
+    /* Sub-headline */
+    .hero-sub {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      color: var(--t2);
+      line-height: 1.85;
+      max-width: 460px;
+      margin-bottom: 36px;
+    }
+
+    /* CTAs */
+    .hero-ctas { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green);
+      color: var(--bg);
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      padding: 14px 28px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateX(2px); }
+    .btn-secondary-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--t3);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── LIVE TIMER WIDGET ─── */
+    .timer-widget {
+      background: var(--s1);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .timer-widget::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--amber);
+      transition: background 1s ease;
+    }
+    .timer-widget.delivered::before {
+      background: var(--green);
+    }
+    .tw-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .tw-title {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--t3);
+    }
+    .tw-status {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border: 1px solid var(--amber-b);
+      color: var(--amber);
+      background: var(--amber-d);
+      transition: all 0.8s ease;
+    }
+    .tw-status.delivered {
+      border-color: var(--green-b);
+      color: var(--green);
+      background: var(--green-d);
+    }
+    .tw-body { padding: 28px 24px; }
+    .tw-context {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--t3);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .tw-order {
+      font-family: 'Inconsolata', monospace;
+      font-size: 13px;
+      color: var(--t2);
+      margin-bottom: 20px;
+    }
+    .tw-timer-display {
+      font-family: 'Syne', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: 12px;
+      transition: color 1s ease;
+    }
+    .tw-timer-display.delivered { color: var(--green); }
+    .tw-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 20px;
+      display: block;
+      transition: color 1s ease;
+    }
+    .tw-label.delivered { color: var(--green); }
+    .tw-progress {
+      height: 3px;
+      background: var(--border);
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .tw-progress-fill {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      background: var(--amber);
+      transition: width 1s linear, background 1s ease;
+    }
+    .tw-footer {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      background: var(--s2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .tw-footer-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: var(--t3);
+    }
+    .tw-footer-val {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      color: var(--amber);
+      transition: color 1s ease;
+    }
+    .tw-footer-val.delivered { color: var(--green); }
+
+    /* Receipt mini-block */
+    .receipt-mini {
+      background: var(--s2);
+      border: 1px solid var(--border);
+      padding: 0;
+    }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .receipt-row:last-child { border-bottom: none; }
+    .receipt-key {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--t3);
+    }
+    .receipt-val {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--t2);
+    }
+    .receipt-val.green { color: var(--green); }
+    .receipt-val.amber { color: var(--amber); }
+
+    /* ─── OUTPUT TYPE STRIP ─── */
+    .output-strip {
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .output-card {
+      padding: 28px 24px;
+      border-right: 1px solid var(--border);
+      position: relative;
+      transition: background 0.2s;
+    }
+    .output-card:last-child { border-right: none; }
+    .output-card:hover { background: var(--s1); }
+    .output-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: transparent;
+      transition: background 0.2s;
+    }
+    .output-card:hover::before { background: var(--green); }
+    .oc-type {
+      font-family: 'Inconsolata', monospace;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      display: block;
+      margin-bottom: 10px;
+    }
+    .oc-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .oc-spec {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      color: var(--t3);
+      letter-spacing: 0.06em;
+      line-height: 1.7;
+    }
+    .oc-spec span { color: var(--t2); }
+
+    /* ─── SECTION SHARED ─── */
+    section { border-bottom: 1px solid var(--border); }
+    .section-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 96px 56px;
+    }
+    .section-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--green);
+    }
+    .section-heading {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 3vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      color: var(--t2);
+      line-height: 1.85;
+      max-width: 64ch;
+    }
+
+    /* ─── DIFFERENTIATION ─── */
+    .diff-section { background: var(--s1); }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      margin-top: 52px;
+    }
+    .diff-left {
+      padding: 52px 48px;
+      border-right: 1px solid var(--border);
+    }
+    .diff-right {
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+    }
+    .diff-row {
+      padding: 28px 32px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .diff-row:last-child { border-bottom: none; }
+    .diff-row:hover { background: rgba(255,255,255,0.02); }
+    .diff-vs {
+      font-family: 'Inconsolata', monospace;
+      font-size: 8px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--t3);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .diff-claim {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .diff-body {
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      color: var(--t2);
+      line-height: 1.7;
+    }
+    .moat-statement {
+      margin-top: 40px;
+      padding: 32px 36px;
+      background: var(--s2);
+      border-left: 3px solid var(--green);
+    }
+    .moat-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 8px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .moat-text {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 16px;
+      color: var(--white);
+      line-height: 1.75;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .hiw-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 52px;
+    }
+    .hiw-step {
+      background: var(--bg);
+      padding: 36px 32px;
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 20px;
+      transition: background 0.2s;
+    }
+    .hiw-step:hover { background: var(--s1); }
+    .hiw-num {
+      font-family: 'Inconsolata', monospace;
+      font-size: 11px;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      padding-top: 3px;
+    }
+    .hiw-content {}
+    .hiw-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .hiw-body {
+      font-family: 'Lora', serif;
+      font-size: 13.5px;
+      color: var(--t2);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .hiw-micro {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: var(--t3);
+      display: block;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    .hiw-quality {
+      margin-top: 1px;
+      background: var(--s2);
+      border: 1px solid var(--border);
+      border-top: none;
+      padding: 22px 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .hiw-quality-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+    .hiw-quality-text {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--t2);
+    }
+
+    /* ─── PRICING ─── */
+    .pricing-section { background: var(--s1); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 52px;
+    }
+    .pricing-card {
+      background: var(--bg);
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .pricing-card.featured {
+      background: var(--s1);
+    }
+    .pricing-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--amber);
+    }
+    .pc-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--green);
+      margin-bottom: 4px;
+    }
+    .pc-price.amber { color: var(--amber); }
+    .pc-price.blue { color: var(--blue); }
+    .pc-tier-meta {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--t3);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .pc-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .pc-desc {
+      font-family: 'Lora', serif;
+      font-size: 13.5px;
+      color: var(--t2);
+      line-height: 1.75;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .pc-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 28px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+    .pc-features li {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--t2);
+      padding-left: 14px;
+      position: relative;
+      letter-spacing: 0.04em;
+    }
+    .pc-features li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-size: 9px;
+    }
+    .pc-cta {
+      display: block;
+      text-align: center;
+      padding: 13px 20px;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      background: var(--green);
+      color: var(--bg);
+      transition: opacity 0.2s;
+    }
+    .pc-cta:hover { opacity: 0.9; }
+    .pc-cta.amber { background: var(--amber); }
+    .pc-cta.ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--t2);
+    }
+    .pc-cta.ghost:hover { border-color: var(--t2); color: var(--t1); opacity: 1; }
+    .pc-cta-note {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      color: var(--t3);
+      text-align: center;
+      margin-top: 10px;
+      display: block;
+    }
+
+    /* Credit table */
+    .credit-table {
+      margin-top: 32px;
+      border: 1px solid var(--border);
+    }
+    .ct-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--s2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .ct-tag {
+      font-family: 'Inconsolata', monospace;
+      font-size: 8px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: var(--green-d);
+      border: 1px solid var(--green-b);
+      padding: 3px 10px;
+    }
+    .ct-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .ct-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .ct-row:last-child { border-bottom: none; }
+    .ct-key {
+      padding: 12px 16px;
+      background: var(--s1);
+      border-right: 1px solid var(--border);
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: var(--t3);
+      display: flex;
+      align-items: center;
+    }
+    .ct-val {
+      padding: 12px 16px;
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--t2);
+      line-height: 1.7;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .ct-val span { color: var(--green); }
+
+    /* ─── FAQ ─── */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 52px;
+    }
+    .faq-item {
+      background: var(--bg);
+      padding: 0;
+      transition: background 0.2s;
+    }
+    .faq-item:hover { background: var(--s1); }
+    .faq-q {
+      padding: 22px 24px 0;
+      font-family: 'Syne', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .faq-a {
+      padding: 12px 24px 22px;
+      font-family: 'Lora', serif;
+      font-size: 13px;
+      color: var(--t2);
+      line-height: 1.8;
+    }
+
+    /* ─── DELIVERY MOMENT ─── */
+    .delivery-moment {
+      background: var(--bg);
+    }
+    .dm-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 96px 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .dm-left {}
+    .dm-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .dm-stage {
+      background: var(--bg);
+      padding: 24px 22px;
+    }
+    .dm-stage-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .dm-stage-label.amber { color: var(--amber); }
+    .dm-stage-label.green { color: var(--green); }
+    .dm-stage-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .dm-stage-value.amber { color: var(--amber); }
+    .dm-stage-value.green { color: var(--green); }
+    .dm-stage-sub {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--t3);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--s1);
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 48px 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer-wordmark {
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .footer-descriptor {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--t2);
+      line-height: 1.7;
+    }
+    .footer-col-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 8px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--t3);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-links a {
+      font-family: 'Inconsolata', monospace;
+      font-size: 11px;
+      color: var(--t2);
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--green); }
+    .footer-bottom {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 20px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-legal {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      color: var(--t3);
+      letter-spacing: 0.08em;
+    }
+    .footer-system {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      color: var(--t3);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── HORIZONTAL SCROLLING MARQUEE ─── */
+    .marquee-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      background: var(--s2);
+      padding: 12px 0;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 28s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-item {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--t3);
+      padding: 0 32px;
+      flex-shrink: 0;
+    }
+    .marquee-item .dot {
+      color: var(--green);
+      margin-right: 32px;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ─── DELIVERED BADGE ANIMATION ─── */
+    @keyframes pulse-green {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .pulse { animation: pulse-green 2.5s infinite; }
+
+    /* ─── RESPONSIVE (basic) ─── */
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; padding: 80px 28px 48px; }
+      .hero-left { padding: 0 0 40px; border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-right { padding: 40px 0 0; }
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .section-inner { padding: 64px 28px; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .diff-left { border-right: none; border-bottom: 1px solid var(--border); }
+      .hiw-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .dm-inner { grid-template-columns: 1fr; gap: 48px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+      .output-strip { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav>
+  <div class="nav-wordmark">MIDILLA</div>
+  <ul class="nav-links">
+    <li><a href="#outputs">Output Types</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#pricing" class="nav-cta">Start Today →</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section style="border-bottom:1px solid var(--border); padding-top: 60px;">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="eyebrow reveal">Content Production System</div>
+      <h1 class="hero-headline reveal reveal-d1">
+        Expert-grade<br>content.
+        <span class="delivered">Delivered.</span>
+      </h1>
+      <p class="hero-sub reveal reveal-d2">
+        Submit the brief. The production system handles the rest — research, structure, voice, and quality gate. Publication-ready content arrives at the exact promised time.
+      </p>
+      <div class="hero-ctas reveal reveal-d3">
+        <a href="#outputs" class="btn-primary">View Output Types →</a>
+        <span class="btn-secondary-label">No setup. First order today.</span>
+      </div>
+    </div>
+
+    <div class="hero-right reveal reveal-d2">
+      <!-- Live timer widget -->
+      <div class="timer-widget" id="timerWidget">
+        <div class="tw-header">
+          <span class="tw-title">Production Timer</span>
+          <span class="tw-status" id="twStatus">● In Production</span>
+        </div>
+        <div class="tw-body">
+          <span class="tw-context">B2B White Paper · 5,000 words</span>
+          <div class="tw-order">Order M-2026-0001 · B2B White Paper Bible · v2.1</div>
+          <div class="tw-timer-display" id="timerDisplay">08:00:00</div>
+          <span class="tw-label" id="timerLabel">DELIVERING</span>
+          <div class="tw-progress">
+            <div class="tw-progress-fill" id="progressFill" style="width:0%"></div>
+          </div>
+          <div class="receipt-mini">
+            <div class="receipt-row">
+              <span class="receipt-key">Bible</span>
+              <span class="receipt-val">B2B White Paper · 26 sections</span>
+            </div>
+            <div class="receipt-row">
+              <span class="receipt-key">Credits</span>
+              <span class="receipt-val">18 credits</span>
+            </div>
+            <div class="receipt-row">
+              <span class="receipt-key">Delivery</span>
+              <span class="receipt-val amber" id="deliveryTime">14:30 WAT</span>
+            </div>
+          </div>
+        </div>
+        <div class="tw-footer">
+          <span class="tw-footer-label">Status</span>
+          <span class="tw-footer-val" id="twFooterVal">System running · Nothing required from you</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot">●</span>Expert-grade content</span>
+    <span class="marquee-item"><span class="dot">●</span>B2B White Papers</span>
+    <span class="marquee-item"><span class="dot">●</span>Legal Articles</span>
+    <span class="marquee-item"><span class="dot">●</span>Email Sequences</span>
+    <span class="marquee-item"><span class="dot">●</span>SEO Content</span>
+    <span class="marquee-item"><span class="dot">●</span>Delivered.</span>
+    <span class="marquee-item"><span class="dot">●</span>No prompting required</span>
+    <span class="marquee-item"><span class="dot">●</span>No management required</span>
+    <span class="marquee-item"><span class="dot">●</span>No institutional overhead</span>
+    <span class="marquee-item"><span class="dot">●</span>Quality-gated before delivery</span>
+    <span class="marquee-item"><span class="dot">●</span>Expert-grade content</span>
+    <span class="marquee-item"><span class="dot">●</span>B2B White Papers</span>
+    <span class="marquee-item"><span class="dot">●</span>Legal Articles</span>
+    <span class="marquee-item"><span class="dot">●</span>Email Sequences</span>
+    <span class="marquee-item"><span class="dot">●</span>SEO Content</span>
+    <span class="marquee-item"><span class="dot">●</span>Delivered.</span>
+    <span class="marquee-item"><span class="dot">●</span>No prompting required</span>
+    <span class="marquee-item"><span class="dot">●</span>No management required</span>
+    <span class="marquee-item"><span class="dot">●</span>No institutional overhead</span>
+    <span class="marquee-item"><span class="dot">●</span>Quality-gated before delivery</span>
+  </div>
+</div>
+
+<!-- ─── OUTPUT TYPES STRIP ─── -->
+<div class="output-strip" id="outputs">
+  <div class="output-card reveal">
+    <span class="oc-type">Output Type 01</span>
+    <div class="oc-name">B2B White Paper</div>
+    <div class="oc-spec">
+      3,000–8,000 words<br>
+      Delivers in <span>8 hours</span><br>
+      From <span>12 credits</span>
+    </div>
+  </div>
+  <div class="output-card reveal reveal-d1">
+    <span class="oc-type">Output Type 02</span>
+    <div class="oc-name">Legal Article</div>
+    <div class="oc-spec">
+      2,000–6,000 words<br>
+      Delivers in <span>6 hours</span><br>
+      From <span>10 credits</span>
+    </div>
+  </div>
+  <div class="output-card reveal reveal-d2">
+    <span class="oc-type">Output Type 03</span>
+    <div class="oc-name">Email Sequence</div>
+    <div class="oc-spec">
+      5–20 emails<br>
+      Delivers in <span>4 hours</span><br>
+      From <span>8 credits</span>
+    </div>
+  </div>
+  <div class="output-card reveal reveal-d3">
+    <span class="oc-type">Output Type 04</span>
+    <div class="oc-name">SEO Content</div>
+    <div class="oc-spec">
+      1,500–5,000 words<br>
+      Delivers in <span>3 hours</span><br>
+      From <span>6 credits</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── DIFFERENTIATION ─── -->
+<section class="diff-section">
+  <div class="section-inner">
+    <div class="section-label reveal">Structural Position</div>
+    <h2 class="section-heading reveal reveal-d1">The system was built<br>before your brief arrived.</h2>
+    <p class="section-sub reveal reveal-d2">Every output type on this platform is produced by a documented production system — a Bible — built, tested, and quality-gated before the first client brief was submitted. The quality of your output is not determined by how well you write the brief. It is determined by the architecture applied to it.</p>
+
+    <div class="diff-grid">
+      <div class="diff-left reveal">
+        <div class="moat-label">The Structural Moat</div>
+        <p style="font-family:'Lora',serif; font-size:15px; color:var(--t1); line-height:1.85; margin-bottom:20px;">The Bibles represent documented production methodology that compounds with every system added. A competitor who decides to build equivalent systems requires equivalent investment.</p>
+        <p style="font-family:'Lora',serif; font-size:15px; color:var(--t2); line-height:1.85;">The moat deepens with each system.</p>
+        <div class="moat-statement" style="margin-top:32px;">
+          <span class="moat-label">The Position</span>
+          <div class="moat-text">Not a better prompt interface. Not a managed freelancer. Not a scaled agency. A production engine built before any client project begins.</div>
+        </div>
+      </div>
+      <div class="diff-right reveal reveal-d1">
+        <div class="diff-row">
+          <span class="diff-vs">vs. AI Writing Tools</span>
+          <div class="diff-claim">No prompting required.</div>
+          <div class="diff-body">AI tools give you access to an engine. You provide the production methodology. MIDILLA provides the methodology — built before your brief arrived.</div>
+        </div>
+        <div class="diff-row">
+          <span class="diff-vs">vs. Freelancers</span>
+          <div class="diff-claim">No management required.</div>
+          <div class="diff-body">Freelancer quality depends on the brief, the individual, and their availability that week. MIDILLA's output quality is determined by the production system — consistent across every order.</div>
+        </div>
+        <div class="diff-row">
+          <span class="diff-vs">vs. Content Agencies</span>
+          <div class="diff-claim">No institutional overhead.</div>
+          <div class="diff-body">Agency quality is real. The overhead is real too: account managers, briefing cycles, revision rounds, and pricing built for retainers. MIDILLA has none of that overhead.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section id="how-it-works">
+  <div class="section-inner">
+    <div class="section-label reveal">The Production Sequence</div>
+    <h2 class="section-heading reveal reveal-d1">Four steps. One promise.</h2>
+    <p class="section-sub reveal reveal-d2">Two steps belong to you. Two steps belong to the system. After you submit the brief, nothing is required from you until "Delivered." arrives.</p>
+
+    <div class="hiw-grid">
+      <div class="hiw-step reveal">
+        <div class="hiw-num">01</div>
+        <div class="hiw-content">
+          <div class="hiw-title">Select your output type and configuration.</div>
+          <div class="hiw-body">Choose from B2B white paper, legal article, email sequence, or SEO content. Set the word count or email quantity. The credit cost updates in real time — the total you see at selection is the total charged at confirmation.</div>
+          <span class="hiw-micro">Output type selector · word count control · live credit counter</span>
+        </div>
+      </div>
+      <div class="hiw-step reveal reveal-d1">
+        <div class="hiw-num">02</div>
+        <div class="hiw-content">
+          <div class="hiw-title">Submit your production brief.</div>
+          <div class="hiw-body">The brief form asks specific questions, not open fields. Topic and angle. Primary audience. The argument to advance. The system is built to work with the brief you can realistically write — not to require a brief you'd need a consultant to produce.</div>
+          <span class="hiw-micro">Structured form · specific prompts per output type · character counters</span>
+        </div>
+      </div>
+      <div class="hiw-step reveal reveal-d2">
+        <div class="hiw-num">03</div>
+        <div class="hiw-content">
+          <div class="hiw-title">The system produces your document.</div>
+          <div class="hiw-body">The production timer activates at order confirmation. The delivery time — a specific clock time, not a duration — is stated on your confirmation screen. The system runs. Nothing is required from you while it runs.</div>
+          <span class="hiw-micro">Amber timer active · exact clock delivery time · E-01 and E-02 sent automatically</span>
+        </div>
+      </div>
+      <div class="hiw-step reveal reveal-d3">
+        <div class="hiw-num">04</div>
+        <div class="hiw-content">
+          <div class="hiw-title">Delivered. On time. Exactly as confirmed.</div>
+          <div class="hiw-body">At the confirmed delivery time, your document arrives by email. The timer turns green. The email subject is one word. The attachment is named by order number and output type. The production receipt is in the email body.</div>
+          <span class="hiw-micro">Timer: amber → green · E-03 subject "Delivered." · production receipt included</span>
+        </div>
+      </div>
+    </div>
+    <div class="hiw-quality reveal">
+      <div class="hiw-quality-dot pulse"></div>
+      <div class="hiw-quality-text">Every output passes a documented quality gate before it is attached to your delivery email. The gate is not optional. Neither is the standard.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DELIVERY MOMENT ─── -->
+<section class="delivery-moment" style="background:var(--s1);">
+  <div class="dm-inner">
+    <div class="dm-left reveal">
+      <div class="section-label">The Brand's Defining Moment</div>
+      <h2 class="section-heading" style="margin-bottom:20px;">The promise kept.<br>In one word.</h2>
+      <p style="font-family:'Lora',serif; font-size:15px; color:var(--t2); line-height:1.85; margin-bottom:28px;">The delivery moment is designed to be unmistakeable. The platform timer transitions from amber to green. At the exact same moment, one email arrives in your inbox. Its subject line is a single word and a period.</p>
+      <p style="font-family:'Lora',serif; font-size:15px; color:var(--t2); line-height:1.85;">Not a confirmation. Not a notification. The promise itself — delivered.</p>
+    </div>
+    <div class="dm-right reveal reveal-d1">
+      <div class="dm-stage">
+        <span class="dm-stage-label amber">Production State</span>
+        <div class="dm-stage-value amber">In Production</div>
+        <div class="dm-stage-sub">Timer: active · #FBB040 · E-02 acknowledged</div>
+      </div>
+      <div style="background:var(--s2); padding:12px 22px; display:flex; align-items:center; justify-content:center;">
+        <span style="font-family:'Inconsolata',monospace; font-size:16px; color:var(--t3);">↓</span>
+      </div>
+      <div class="dm-stage" style="background:var(--s1);">
+        <span class="dm-stage-label green">Delivery State</span>
+        <div class="dm-stage-value green" style="font-size:36px;">Delivered.</div>
+        <div class="dm-stage-sub">Timer: complete · #4ADE80 · E-03 subject: "Delivered."</div>
+      </div>
+      <div style="background:var(--bg); border-top:1px solid var(--border); padding:14px 22px;">
+        <div style="background:var(--s2); border:1px solid var(--border); padding:14px 18px; display:flex; align-items:center; gap:12px;">
+          <div style="width:8px;height:8px;background:var(--green);flex-shrink:0;"></div>
+          <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--white);letter-spacing:-0.01em;">Delivered.</div>
+          <div style="font-family:'Lora',serif;font-size:12px;font-style:italic;color:var(--t3);margin-left:auto;">One word. One period.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ─── -->
+<section class="pricing-section" id="pricing">
+  <div class="section-inner">
+    <div class="section-label reveal">Access · Pricing</div>
+    <h2 class="section-heading reveal reveal-d1">One system. Three scales of access.</h2>
+    <p class="section-sub reveal reveal-d2">Credits are the unit of production. Every output type has a documented credit cost. The tier you choose determines the credits available to you each month. The system's quality does not change between tiers.</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pc-price">$49</div>
+        <span class="pc-tier-meta">Starter · 60 credits / month</span>
+        <div class="pc-name">Starter</div>
+        <div class="pc-desc">Entry to the production system. 60 credits cover consistent single-document production or a mix of shorter-form outputs across the month.</div>
+        <ul class="pc-features">
+          <li>All four output types available</li>
+          <li>60 credits per month</li>
+          <li>Credits expire monthly</li>
+          <li>E-01 through E-04 delivery sequence</li>
+          <li>Production receipt with every delivery</li>
+        </ul>
+        <a href="#" class="pc-cta">Start with Starter →</a>
+        <span class="pc-cta-note">No setup required.</span>
+      </div>
+      <div class="pricing-card featured reveal reveal-d1">
+        <div class="pc-price amber">$149</div>
+        <span class="pc-tier-meta">Professional · 250 credits / month</span>
+        <div class="pc-name">Professional</div>
+        <div class="pc-desc">Volume capacity for active operators. 250 credits support sustained multi-document production — white papers, legal articles, and email sequences running in parallel across the month.</div>
+        <ul class="pc-features">
+          <li>All four output types available</li>
+          <li>250 credits per month</li>
+          <li>Credit top-ups available between cycles</li>
+          <li>E-01 through E-04 delivery sequence</li>
+          <li>Production receipt with every delivery</li>
+          <li>Order history and audit trail</li>
+        </ul>
+        <a href="#" class="pc-cta amber">Start Professional →</a>
+        <span class="pc-cta-note">No setup required.</span>
+      </div>
+      <div class="pricing-card reveal reveal-d2">
+        <div class="pc-price blue">Custom</div>
+        <span class="pc-tier-meta">Architect · Negotiated</span>
+        <div class="pc-name">Architect</div>
+        <div class="pc-desc">For production at infrastructure scale. Custom credit allocation, custom delivery windows, and direct access to the production architecture for organisations running content as a core operational function.</div>
+        <ul class="pc-features">
+          <li>All output types including custom formats</li>
+          <li>Custom credit allocation</li>
+          <li>Custom delivery windows</li>
+          <li>Direct architecture access</li>
+          <li>Production SLA documentation</li>
+        </ul>
+        <a href="#" class="pc-cta ghost">Contact for Architect →</a>
+        <span class="pc-cta-note">Minimum production volume applies.</span>
+      </div>
+    </div>
+
+    <!-- Credit reference table -->
+    <div class="credit-table reveal">
+      <div class="ct-header">
+        <span class="ct-tag">Credit Reference</span>
+        <span class="ct-title">Output Type × Word Count × Credit Cost</span>
+      </div>
+      <div class="ct-row">
+        <div class="ct-key">B2B White Paper</div>
+        <div class="ct-val">
+          <span>3,000 words → 12 credits</span>
+          <span>5,000 words → 18 credits</span>
+          <span>8,000 words → 28 credits</span>
+        </div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-key">Legal Article</div>
+        <div class="ct-val">
+          <span>2,000 words → 10 credits</span>
+          <span>4,000 words → 18 credits</span>
+          <span>6,000 words → 24 credits</span>
+        </div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-key">Email Sequence</div>
+        <div class="ct-val">
+          <span>5 emails → 8 credits</span>
+          <span>10 emails → 14 credits</span>
+          <span>20 emails → 24 credits</span>
+        </div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-key">SEO Content</div>
+        <div class="ct-val">
+          <span>1,500 words → 6 credits</span>
+          <span>3,000 words → 10 credits</span>
+          <span>5,000 words → 16 credits</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-family:'Lora',serif;font-style:italic;text-align:center;color:var(--t2);font-size:14px;margin-top:32px;" class="reveal">The system's architecture is the only argument on this page. The specification speaks for itself.</p>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label reveal">Common Questions</div>
+    <h2 class="section-heading reveal reveal-d1">Direct answers.<br>No filler.</h2>
+
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <div class="faq-q">What is a credit and how many do I need?</div>
+        <div class="faq-a">A credit is the unit of production on this platform. A 3,000-word white paper costs 12 credits. A 5-email sequence costs 8 credits. The Starter tier (60 credits/month) supports consistent single-document production. The Professional tier (250 credits/month) supports sustained multi-output production.</div>
+      </div>
+      <div class="faq-item reveal reveal-d1">
+        <div class="faq-q">How is MIDILLA different from an AI writing tool?</div>
+        <div class="faq-a">AI writing tools give you access to an engine. You provide the production methodology. MIDILLA provides the methodology — built and documented before your brief arrived. The quality of your output is not determined by how well you write the brief. It is determined by the architecture of the production system applied to it.</div>
+      </div>
+      <div class="faq-item reveal reveal-d2">
+        <div class="faq-q">What if the output doesn't meet my standard?</div>
+        <div class="faq-a">Every output passes a documented quality gate before delivery. The gate evaluates structural completeness, voice consistency, argument coherence, and source quality. If a delivered output contains a documented structural error, it is corrected under the same quality standard as the original production. This is not a satisfaction guarantee. It is a production standard with a documented revision protocol.</div>
+      </div>
+      <div class="faq-item reveal reveal-d3">
+        <div class="faq-q">How is the delivery time calculated?</div>
+        <div class="faq-a">The production time for every output type has been tested and documented. The delivery time is stated on your confirmation screen as an exact clock time ("Delivers at 14:30 WAT"), not a duration. The E-03 delivery email arrives at the confirmed time. Not approximately. Exactly.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Is there a setup process before my first order?</div>
+        <div class="faq-a">No. Account creation, tier selection, and first order can be completed in a single session. The system does not require onboarding, a consultation, or a discovery call before any output is produced.</div>
+      </div>
+      <div class="faq-item reveal reveal-d1">
+        <div class="faq-q">Who is this platform for?</div>
+        <div class="faq-a">Professional service operators — consultants, lawyers, financial advisors, agency owners — who need publication-ready written content at expert level and do not have the production infrastructure to create it consistently. This is not a general-purpose writing tool.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-wordmark">MIDILLA</div>
+      <div class="footer-descriptor">The content production system for professional service operators who need expert-grade written outputs without managing the production infrastructure.</div>
+    </div>
+    <div>
+      <span class="footer-col-label">Platform</span>
+      <ul class="footer-links">
+        <li><a href="#outputs">Output Types</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="footer-col-label">System</span>
+      <ul class="footer-links">
+        <li><a href="#">Brand Identity Bible · v1.0</a></li>
+        <li><a href="#">43 Sections · 12 Parts</a></li>
+        <li><a href="#">Quality Gate System</a></li>
+        <li><a href="#">Production Standards</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-legal">MIDILLA · Samuel Ibrahim · Content Systems Architect · March 2026</span>
+    <span class="footer-system">Produced by MIDILLA Production System · Bible v1.0</span>
+  </div>
+</footer>
+
+<!-- ─── SCRIPTS ─── -->
+<script>
+  /* SCROLL REVEAL */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* LIVE DELIVERY TIMER DEMO */
+  const TOTAL_SECONDS = 28800; // 8 hours in seconds, for demo we accelerate
+  const DEMO_DURATION = 24000; // 24 seconds for full demo cycle
+  let startTime = Date.now();
+  let delivered = false;
+
+  function pad(n) { return String(n).padStart(2,'0'); }
+
+  function updateTimer() {
+    const elapsed = (Date.now() - startTime) / 1000;
+    const progress = Math.min(elapsed / (DEMO_DURATION / 1000), 1);
+    const remaining = Math.max(TOTAL_SECONDS * (1 - progress), 0);
+
+    const h = Math.floor(remaining / 3600);
+    const m = Math.floor((remaining % 3600) / 60);
+    const s = Math.floor(remaining % 60);
+
+    const display = document.getElementById('timerDisplay');
+    const label = document.getElementById('timerLabel');
+    const fill = document.getElementById('progressFill');
+    const status = document.getElementById('twStatus');
+    const widget = document.getElementById('timerWidget');
+    const footerVal = document.getElementById('twFooterVal');
+    const deliveryTime = document.getElementById('deliveryTime');
+
+    if (progress >= 1 && !delivered) {
+      delivered = true;
+      display.textContent = '00:00:00';
+      display.classList.add('delivered');
+      label.textContent = 'DELIVERED.';
+      label.classList.add('delivered');
+      fill.style.width = '100%';
+      fill.style.background = 'var(--green)';
+      status.textContent = '● Delivered.';
+      status.classList.add('delivered');
+      widget.classList.add('delivered');
+      footerVal.textContent = 'Check your email. Your document has arrived.';
+      footerVal.classList.add('delivered');
+      deliveryTime.style.color = 'var(--green)';
+
+      // Reset after 5 seconds
+      setTimeout(() => {
+        delivered = false;
+        startTime = Date.now();
+        display.classList.remove('delivered');
+        label.classList.remove('delivered');
+        status.classList.remove('delivered');
+        widget.classList.remove('delivered');
+        footerVal.classList.remove('delivered');
+        deliveryTime.style.color = 'var(--amber)';
+        status.textContent = '● In Production';
+        label.textContent = 'DELIVERING';
+        footerVal.textContent = 'System running · Nothing required from you';
+      }, 5000);
+    }
+
+    if (!delivered) {
+      display.textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
+      fill.style.width = `${progress * 100}%`;
+    }
+  }
+
+  setInterval(updateTimer, 100);
+  updateTimer();
+
+  /* NAV ACTIVE STATE ON SCROLL */
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 60) {
+      nav.style.borderBottomColor = 'var(--border)';
+    }
+  });
+</script>
+
+</body>
+</html>
