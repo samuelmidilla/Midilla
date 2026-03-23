@@ -3,15 +3,17 @@ import { supabaseAdmin } from '@/lib/supabase';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   const secret = request.headers.get('x-midilla-internal');
   if (secret !== process.env.INTERNAL_API_SECRET) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
 
+  const { id } = await context.params;
+
   const { data, error } = await supabaseAdmin
-    .rpc('confirm_order', { p_order_id: params.id });
+    .rpc('confirm_order', { p_order_id: id });
 
   if (error) {
     return NextResponse.json(
