@@ -6,7 +6,7 @@ import type { Database } from '@/types';
 
 export async function GET(
   _request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   const cookieStore = await cookies();
   const supabase = createServerClient<Database>(
@@ -18,10 +18,12 @@ export async function GET(
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) return NextResponse.json({ error: 'Unauthenticated' }, { status: 401 });
 
+  const { id } = await context.params;
+
   const { data: order, error } = await supabaseAdmin
     .from('order_detail')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .eq('user_id', session.user.id)
     .single();
 
