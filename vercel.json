@@ -1,12 +1,8 @@
 {
   "crons": [
     {
-      "path": "/api/internal/cron/check-overdue",
-      "schedule": "*/5 * * * *"
-    },
-    {
       "path": "/api/internal/cron/send-e04",
-      "schedule": "0 * * * *"
+      "schedule": "0 0 * * *"
     }
   ]
 }
