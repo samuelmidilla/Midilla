@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 
 type CallbackState =
@@ -8,7 +8,7 @@ type CallbackState =
   | { status: 'success'; purpose: string; tier_slug: string | null; credits_added: number | null }
   | { status: 'failed'; reason: string };
 
-export default function PaymentCallbackPage() {
+function PaymentCallbackContent() {
   const searchParams = useSearchParams();
   const router       = useRouter();
   const reference    = searchParams.get('reference');
@@ -110,13 +110,35 @@ export default function PaymentCallbackPage() {
   );
 }
 
+export default function PaymentCallbackPage() {
+  return (
+    <Suspense fallback={
+      <div style={{
+        minHeight: '100vh', background: '#0A0B0F',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}>
+        <div style={{
+          background: '#12151C', border: '1px solid #232838',
+          borderTop: '3px solid #FBB040',
+          padding: '48px 52px', maxWidth: '480px', width: '100%',
+        }}>
+          <div style={{ fontFamily: "'Inconsolata', monospace", fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#FBB040', marginBottom: '14px' }}>
+            Verifying Payment
+          </div>
+          <div style={{ fontFamily: "'Syne', sans-serif", fontSize: '24px', fontWeight: 800, color: '#F8FAFC' }}>
+            One moment.
+          </div>
+        </div>
+      </div>
+    }>
+      <PaymentCallbackContent />
+    </Suspense>
+  );
+}
+
 function Label({ color, children }: { color: string; children: React.ReactNode }) {
   return (
-    <div style={{
-      fontFamily: "'Inconsolata', monospace", fontSize: '9px',
-      letterSpacing: '0.22em', textTransform: 'uppercase' as const,
-      color, marginBottom: '14px',
-    }}>
+    <div style={{ fontFamily: "'Inconsolata', monospace", fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase' as const, color, marginBottom: '14px' }}>
       {children}
     </div>
   );
@@ -124,11 +146,7 @@ function Label({ color, children }: { color: string; children: React.ReactNode }
 
 function Heading({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{
-      fontFamily: "'Syne', sans-serif", fontSize: '24px',
-      fontWeight: 800, letterSpacing: '-0.02em',
-      color: '#F8FAFC', marginBottom: '14px',
-    }}>
+    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: '24px', fontWeight: 800, letterSpacing: '-0.02em', color: '#F8FAFC', marginBottom: '14px' }}>
       {children}
     </div>
   );
@@ -136,10 +154,7 @@ function Heading({ children }: { children: React.ReactNode }) {
 
 function Body({ children }: { children: React.ReactNode }) {
   return (
-    <p style={{
-      fontFamily: "'Lora', serif", fontSize: '14px',
-      color: '#8892A4', lineHeight: 1.85, marginBottom: '12px',
-    }}>
+    <p style={{ fontFamily: "'Lora', serif", fontSize: '14px', color: '#8892A4', lineHeight: 1.85, marginBottom: '12px' }}>
       {children}
     </p>
   );
@@ -155,20 +170,11 @@ function Receipt({ children }: { children: React.ReactNode }) {
 
 function ReceiptRow({ label, value, green }: { label: string; value: string; green?: boolean }) {
   return (
-    <div style={{
-      display: 'flex', justifyContent: 'space-between',
-      padding: '10px 14px', borderBottom: '1px solid #232838',
-    }}>
-      <span style={{
-        fontFamily: "'Inconsolata', monospace", fontSize: '9px',
-        letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#4A5568',
-      }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 14px', borderBottom: '1px solid #232838' }}>
+      <span style={{ fontFamily: "'Inconsolata', monospace", fontSize: '9px', letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#4A5568' }}>
         {label}
       </span>
-      <span style={{
-        fontFamily: "'Inconsolata', monospace", fontSize: '10px',
-        color: green ? '#4ADE80' : '#8892A4',
-      }}>
+      <span style={{ fontFamily: "'Inconsolata', monospace", fontSize: '10px', color: green ? '#4ADE80' : '#8892A4' }}>
         {value}
       </span>
     </div>
