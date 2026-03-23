@@ -118,7 +118,7 @@ export async function sendE03(order: OrderDetail, attachmentBuffer: Buffer): Pro
   await resend.emails.send({
     from: FROM, to: order.user_email, subject, html,
     headers: { 'X-Preheader': preheader },
-    attachments: [{ filename: order.delivery_filename!, content: attachmentBuffer, contentType: mimeType }],
+    attachments: [{ filename: order.delivery_filename!, content: attachmentBuffer, content_type: mimeType }],
   });
 }
 
