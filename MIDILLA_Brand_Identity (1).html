@@ -1,0 +1,2571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MIDILLA — Brand Identity Document</title>
+  <meta name="description" content="The complete record of every identity decision made for MIDILLA — positioning, personality, voice, visual system, and touchpoint specifications." />
+  <meta property="og:title" content="MIDILLA — Brand Identity Document" />
+  <meta property="og:description" content="The complete record of every identity decision made for MIDILLA — positioning, personality, voice, visual system, and touchpoint specifications." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MIDILLA" />
+  <meta name="theme-color" content="#0A0B0F" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0A0B0F;
+      --surface: #12151C;
+      --surface2: #1A1E28;
+      --border: #232838;
+      --accent: #4ADE80;
+      --accent-dim: rgba(74,222,128,0.07);
+      --accent-border: rgba(74,222,128,0.22);
+      --amber: #FBB040;
+      --amber-dim: rgba(251,176,64,0.07);
+      --amber-border: rgba(251,176,64,0.22);
+      --red: #F87171;
+      --red-dim: rgba(248,113,113,0.07);
+      --red-border: rgba(248,113,113,0.22);
+      --blue: #60A5FA;
+      --blue-dim: rgba(96,165,250,0.07);
+      --blue-border: rgba(96,165,250,0.22);
+      --text-muted: #4A5568;
+      --text-dim: #8892A4;
+      --text: #E2E8F0;
+      --white: #F8FAFC;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    /* ─── COVER PAGE ─── */
+    .cover {
+      min-height: 100vh;
+      background: var(--bg);
+      border-top: 3px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 56px 72px 48px;
+      position: relative;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: 3px; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent 60%);
+    }
+    .cover-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .cover-wordmark {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    .cover-meta-top {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: right;
+      line-height: 1.8;
+    }
+    .cover-center {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 0;
+    }
+    .cover-doc-type {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cover-doc-type::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .cover-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(56px, 8vw, 96px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 0.95;
+      margin-bottom: 36px;
+    }
+    .cover-subtitle {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: var(--text-dim);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+    .cover-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .cover-founder {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .cover-founder-title {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ─── PRODUCTION RECEIPT ─── */
+    .production-receipt {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: stretch;
+    }
+    .pr-field {
+      flex: 1;
+      padding: 14px 20px;
+      border-right: 1px solid var(--border);
+    }
+    .pr-field:last-child { border-right: none; }
+    .pr-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 8px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .pr-value {
+      font-family: 'Inconsolata', monospace;
+      font-size: 11px;
+      color: var(--accent);
+    }
+    .pr-value.neutral { color: var(--text-dim); }
+
+    /* ─── PAGE LAYOUT ─── */
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 72px;
+    }
+
+    /* ─── SECTION DIVIDER ─── */
+    .section-divider {
+      border-top: 3px solid var(--accent);
+      padding: 52px 72px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+    .sd-num {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .sd-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 1.05;
+    }
+
+    /* ─── BODY CONTENT ─── */
+    .doc-body {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 72px 80px;
+    }
+    .doc-section { margin-bottom: 72px; }
+
+    .section-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .section-heading {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(19px, 2.2vw, 26px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+    p {
+      color: var(--text-dim);
+      margin-bottom: 18px;
+      line-height: 1.9;
+      max-width: 72ch;
+    }
+    p strong { color: var(--text); font-weight: 500; }
+    p em { color: var(--text); font-style: italic; }
+
+    /* ─── STATEMENT BOX ─── */
+    .statement {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      padding: 28px 32px;
+      margin: 28px 0;
+    }
+    .statement-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .statement-text {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.75;
+    }
+
+    /* ─── SPEC TABLE ─── */
+    .spec-table {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      margin: 28px 0;
+    }
+    .st-header {
+      padding: 16px 22px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .st-tag {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      padding: 3px 10px;
+    }
+    .st-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .st-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .st-row:last-child { border-bottom: none; }
+    .st-key {
+      padding: 14px 18px;
+      background: var(--surface2);
+      border-right: 1px solid var(--border);
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 16px;
+    }
+    .st-val {
+      padding: 14px 18px;
+      font-size: 13.5px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .mono {
+      font-family: 'Inconsolata', monospace;
+      font-size: 11.5px;
+      color: var(--text);
+    }
+    .accent-text { color: var(--accent); font-family: 'Inconsolata', monospace; font-size: 11px; }
+    .amber-text { color: var(--amber); font-family: 'Inconsolata', monospace; font-size: 11px; }
+
+    /* ─── COLOR SWATCHES ─── */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 28px 0;
+    }
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+    }
+    .swatch-color {
+      height: 64px;
+    }
+    .swatch-info {
+      padding: 12px 14px;
+      border-top: 1px solid var(--border);
+    }
+    .swatch-hex {
+      font-family: 'Inconsolata', monospace;
+      font-size: 11px;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+    .swatch-role {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ─── VOICE ATTRIBUTES ─── */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 28px 0;
+    }
+    .voice-attr {
+      background: var(--surface);
+      padding: 28px;
+    }
+    .va-num {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .va-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .va-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .va-example {
+      margin-top: 16px;
+    }
+    .va-ex-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .va-ex-label.on { color: var(--accent); }
+    .va-ex-label.off { color: var(--red); }
+    .va-ex-text {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 13px;
+      line-height: 1.65;
+      padding: 10px 14px;
+      border-left: 2px solid;
+    }
+    .va-ex-text.on {
+      color: var(--text);
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .va-ex-text.off {
+      color: var(--text-muted);
+      border-color: var(--red);
+      background: var(--red-dim);
+    }
+
+    /* ─── TYPE SPECIMENS ─── */
+    .type-specimen {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      margin: 20px 0;
+    }
+    .ts-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .ts-name {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .ts-spec {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+    .ts-body {
+      padding: 24px 28px;
+    }
+
+    /* ─── PERSONALITY ─── */
+    .archetype-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 28px 0;
+    }
+    .arch-card {
+      background: var(--surface);
+      padding: 28px;
+    }
+    .arch-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 10px;
+    }
+    .arch-label.primary { color: var(--accent); }
+    .arch-label.modifier { color: var(--blue); }
+    .arch-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+    .arch-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.75;
+    }
+
+    .trait-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .trait-row:first-child { border-top: 1px solid var(--border); }
+    .trait-name-cell {
+      padding: 16px 18px;
+      background: var(--surface2);
+      border-right: 1px solid var(--border);
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+    }
+    .trait-body-cell {
+      padding: 16px 18px;
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* ─── VISUAL LANGUAGE ─── */
+    .visual-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 32px;
+      margin: 28px 0;
+    }
+    .vd-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .vd-components {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .vd-comp {
+      border: 1px solid var(--border);
+      padding: 20px;
+    }
+    .vd-comp-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 8px;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* ─── LOGO SPEC ─── */
+    .logo-display {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 64px;
+      text-align: center;
+      margin: 28px 0;
+      position: relative;
+    }
+    .logo-display::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+    .logo-wordmark-display {
+      font-family: 'Syne', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    .logo-clear-space {
+      position: absolute;
+      inset: 24px;
+      border: 1px dashed var(--border);
+      pointer-events: none;
+    }
+    .logo-clear-label {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      font-family: 'Inconsolata', monospace;
+      font-size: 8px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ─── DELIVERY STATE DEMO ─── */
+    .state-demo {
+      display: grid;
+      grid-template-columns: 1fr 48px 1fr;
+      gap: 0;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 28px 0;
+      align-items: stretch;
+    }
+    .state-card {
+      background: var(--surface);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .state-arrow {
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inconsolata', monospace;
+      color: var(--text-muted);
+      font-size: 18px;
+    }
+    .state-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .state-label.amber { color: var(--amber); }
+    .state-label.accent { color: var(--accent); }
+    .state-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .state-value.amber { color: var(--amber); }
+    .state-value.accent { color: var(--accent); }
+    .state-sub {
+      font-family: 'Inconsolata', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ─── TOUCHPOINT SPECIMENS ─── */
+    .tp-specimen {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      margin: 24px 0;
+    }
+    .tp-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .tp-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .tp-role {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .tp-body {
+      padding: 24px;
+    }
+
+    /* ─── JOURNEY MAP ─── */
+    .journey {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 28px 0;
+    }
+    .journey-stage {
+      background: var(--surface);
+      padding: 24px 20px;
+    }
+    .js-num {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .js-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .js-surface {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      letter-spacing: 0.06em;
+    }
+    .js-desc {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+
+    /* ─── GOVERNANCE ─── */
+    .gov-tier {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      margin: 16px 0;
+      display: grid;
+      grid-template-columns: 3px 1fr;
+    }
+    .gov-tier-stripe { }
+    .gov-tier.fixed .gov-tier-stripe { background: var(--red); }
+    .gov-tier.extend .gov-tier-stripe { background: var(--amber); }
+    .gov-tier.standard .gov-tier-stripe { background: var(--accent); }
+    .gov-tier-body { padding: 20px 24px; }
+    .gov-tier-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .fixed .gov-tier-label { color: var(--red); }
+    .extend .gov-tier-label { color: var(--amber); }
+    .standard .gov-tier-label { color: var(--accent); }
+    .gov-tier-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .gov-tier-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* ─── PAGE BREAK ─── */
+    .page-break {
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ─── PROHIBITION LIST ─── */
+    .prohib-list {
+      background: var(--surface);
+      border: 1px solid var(--red-border);
+      padding: 24px 28px;
+      margin: 24px 0;
+    }
+    .prohib-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .prohib-list ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .prohib-list ul li {
+      font-size: 13px;
+      color: var(--text-dim);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.65;
+    }
+    .prohib-list ul li::before {
+      content: '×';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-family: 'Inconsolata', monospace;
+      font-weight: 600;
+    }
+
+    /* ─── MASTER FOOTER ─── */
+    .doc-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 24px 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .df-left {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+    .df-right {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── LAYOUT HELPERS ─── */
+    .subsection { margin-bottom: 44px; }
+    .subsection-heading {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 24px 0;
+    }
+
+    /* ─── SPACING SYSTEM — 8px base scale ─── */
+    :root {
+      --sp-1:  4px;
+      --sp-2:  8px;
+      --sp-3:  12px;
+      --sp-4:  16px;
+      --sp-5:  24px;
+      --sp-6:  32px;
+      --sp-7:  48px;
+      --sp-8:  64px;
+      --sp-9:  80px;
+      --sp-10: 96px;
+      --sp-11: 128px;
+    }
+
+    /* ─── ELEVATION SYSTEM ─── */
+    /* Depth in MIDILLA is expressed through surface color steps,
+       not box-shadow. The elevation tokens below define border
+       treatment for interactive elements where surface layering
+       alone is insufficient. */
+    :root {
+      --elev-0: 1px solid var(--border);           /* Flat — default component border */
+      --elev-1: 1px solid rgba(74,222,128,0.15);   /* Hover state — accent-tinted border */
+      --elev-2: 1px solid rgba(74,222,128,0.30);   /* Active/focus — stronger accent border */
+    }
+
+    /* ─── RESPONSIVE SYSTEM ─── */
+    html { scroll-behavior: smooth; }
+
+    @media (max-width: 768px) {
+      .cover { padding: 36px 32px 32px; }
+      .section-divider { padding: 36px 32px 0; gap: 14px; }
+      .doc-body { padding: 0 32px 56px; }
+      .doc-footer { padding: 20px 32px; flex-direction: column; gap: 8px; align-items: flex-start; }
+      .diff-grid { grid-template-columns: 1fr 1fr; }
+      .journey { grid-template-columns: 1fr 1fr; }
+      .vd-components { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .cover { padding: 24px 24px 24px; }
+      .cover-title { font-size: 48px; }
+      .cover-top { flex-direction: column; gap: 16px; }
+      .cover-meta-top { text-align: left; }
+      .cover-bottom { flex-direction: column; gap: 16px; align-items: flex-start; }
+
+      .section-divider { padding: 28px 24px 0; flex-direction: column; gap: 8px; }
+      .sd-title { font-size: 26px; }
+      .doc-body { padding: 0 24px 48px; }
+      .doc-footer { padding: 18px 24px; }
+
+      /* Production receipt — scroll horizontally rather than wrap */
+      .production-receipt { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; }
+      .pr-field { min-width: 120px; }
+
+      /* All 2-column grids → single column */
+      .voice-grid { grid-template-columns: 1fr; }
+      .archetype-pair { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+
+      /* Multi-column grids → single column */
+      .diff-grid { grid-template-columns: 1fr; }
+      .journey { grid-template-columns: 1fr; }
+      .vd-components { grid-template-columns: 1fr; }
+
+      /* Color swatches → 2-column */
+      .swatch-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* Spec table key column — reduce fixed width */
+      .st-row { grid-template-columns: 120px 1fr; }
+      .st-key { font-size: 9px; }
+
+      /* State demo — stack vertically */
+      .state-demo { grid-template-columns: 1fr; }
+      .state-arrow { padding: 12px; transform: rotate(90deg); }
+
+      /* Logo display — reduce padding */
+      .logo-display { padding: 40px 24px; }
+
+      /* Trait rows */
+      .trait-row { grid-template-columns: 1fr; }
+      .trait-name-cell { border-right: none; border-bottom: 1px solid var(--border); }
+
+      /* Section and subsection headings */
+      .section-heading { font-size: 18px; }
+      .subsection-heading { font-size: 14px; }
+
+      /* Governance tiers */
+      .gov-tier { grid-template-columns: 3px 1fr; }
+
+      /* Journey stage borders for stacked layout */
+      .journey-stage { border-right: none !important; border-bottom: 1px solid var(--border); }
+      .journey-stage:last-child { border-bottom: none; }
+    }
+
+    @media (max-width: 400px) {
+      .swatch-grid { grid-template-columns: repeat(2, 1fr); }
+      .st-row { grid-template-columns: 100px 1fr; }
+    }
+
+    /* ─── PRINT STYLES ─── */
+    @media print {
+      body {
+        background: #ffffff;
+        color: #1a1a1a;
+      }
+      .cover {
+        background: #ffffff;
+        border-top-color: #000000;
+        min-height: auto;
+        padding: 40px;
+      }
+      .cover-title { color: #000000; font-size: 52px; }
+      .cover-wordmark { color: #000000; }
+      .cover-doc-type { color: #000000; }
+      .cover-doc-type::before { background: #000000; }
+      .cover-subtitle { color: #444444; }
+      .cover-founder { color: #000000; }
+      .cover-founder-title, .cover-meta-top { color: #666666; }
+      .cover-bottom { border-top-color: #cccccc; }
+
+      .production-receipt {
+        background: #f5f5f5;
+        border-top-color: #cccccc;
+        border-bottom-color: #cccccc;
+      }
+      .pr-label { color: #888888; }
+      .pr-value { color: #000000; }
+      .pr-value.neutral { color: #444444; }
+      .pr-field { border-right-color: #cccccc; }
+
+      .section-divider {
+        border-top-color: #000000;
+        padding: 32px 40px 0;
+      }
+      .sd-num { color: #000000; }
+      .sd-title { color: #000000; }
+      .doc-body { padding: 0 40px 48px; }
+
+      .section-label { color: #000000; }
+      .section-heading { color: #000000; }
+      p { color: #333333; }
+      p strong { color: #000000; }
+
+      .statement { background: #f5f5f5; border-left-color: #000000; }
+      .statement-label { color: #000000; }
+      .statement-text { color: #000000; }
+
+      .spec-table { border-color: #cccccc; }
+      .st-header { border-bottom-color: #cccccc; background: #f5f5f5; }
+      .st-tag { background: #eeeeee; border-color: #cccccc; color: #000000; }
+      .st-title { color: #000000; }
+      .st-row { border-bottom-color: #cccccc; grid-template-columns: 160px 1fr; }
+      .st-key { background: #f0f0f0; border-right-color: #cccccc; color: #555555; }
+      .st-val { color: #333333; }
+      .mono { color: #000000; }
+
+      .swatch-color { border: 1px solid #cccccc; }
+      .swatch { background: #ffffff; }
+      .swatch-info { border-top-color: #cccccc; }
+      .swatch-hex { color: #000000; }
+      .swatch-role { color: #666666; }
+
+      .voice-grid, .archetype-pair, .diff-grid, .journey { background: #cccccc; }
+      .voice-attr, .arch-card, .diff-cell, .journey-stage { background: #ffffff; }
+      .va-num { color: #000000; }
+      .va-name { color: #000000; }
+      .va-desc { color: #333333; }
+      .va-ex-label.on { color: #006600; }
+      .va-ex-label.off { color: #990000; }
+      .va-ex-text.on { border-color: #006600; background: #f0fff0; color: #000000; }
+      .va-ex-text.off { border-color: #990000; background: #fff0f0; color: #555555; }
+
+      .arch-label.primary { color: #006600; }
+      .arch-label.modifier { color: #000066; }
+      .arch-name { color: #000000; }
+      .arch-desc { color: #333333; }
+
+      .trait-row { background: #ffffff; }
+      .trait-name-cell { background: #f0f0f0; border-right-color: #cccccc; color: #000000; }
+      .trait-body-cell { color: #333333; }
+
+      .prohib-list { border-color: #990000; }
+      .prohib-label { color: #990000; }
+      .prohib-list ul li { color: #333333; }
+      .prohib-list ul li::before { color: #990000; }
+
+      .logo-display { background: #f5f5f5; border-color: #cccccc; }
+      .logo-display::before { background: #000000; }
+      .logo-wordmark-display { color: #000000; }
+      .logo-clear-space { border-color: #cccccc; }
+      .logo-clear-label { color: #888888; }
+
+      .visual-demo { background: #f5f5f5; border-color: #cccccc; }
+      .vd-comp { border-color: #cccccc; }
+      .vd-comp-label { color: #666666; }
+
+      .state-demo { background: #cccccc; }
+      .state-card { background: #ffffff; }
+      .state-arrow { background: #f0f0f0; color: #000000; }
+
+      .gov-tier.fixed { border-left-color: #990000; }
+      .gov-tier.extend { border-left-color: #996600; }
+      .gov-tier.standard { border-left-color: #006600; }
+      .gov-tier-body { background: #f5f5f5; }
+      .fixed .gov-tier-label { color: #990000; }
+      .extend .gov-tier-label { color: #996600; }
+      .standard .gov-tier-label { color: #006600; }
+      .gov-tier-title { color: #000000; }
+      .gov-tier-desc { color: #333333; }
+
+      .tp-specimen { border-color: #cccccc; }
+      .tp-header { border-bottom-color: #cccccc; }
+      .tp-name { color: #000000; }
+      .tp-role { color: #666666; }
+
+      .journey-stage { background: #ffffff; }
+      .js-num { color: #000000; }
+      .js-name { color: #000000; }
+      .js-surface { color: #666666; }
+      .js-desc { color: #333333; }
+
+      .type-specimen { border-color: #cccccc; }
+      .ts-header { border-bottom-color: #cccccc; }
+      .ts-name { color: #000000; }
+      .ts-spec { color: #666666; }
+
+      .info-card { border-color: #cccccc; background: #f5f5f5; }
+      .ic-label { color: #666666; }
+      .ic-value { color: #000000; }
+      .ic-sub { color: #444444; }
+
+      .doc-footer { background: #f5f5f5; border-top-color: #cccccc; }
+      .df-left { color: #666666; }
+      .df-right { color: #000000; }
+
+      .page-break { page-break-before: always; }
+      .accent-text { color: #006600; }
+      .amber-text { color: #996600; }
+
+      .subsection-heading { color: #000000; border-bottom-color: #cccccc; }
+    }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 24px;
+    }
+    .ic-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .ic-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .ic-sub {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 24px 0;
+    }
+    .diff-cell {
+      background: var(--surface);
+      padding: 22px 20px;
+    }
+    .diff-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .diff-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .diff-body {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+    .diff-removes {
+      font-family: 'Inconsolata', monospace;
+      font-size: 10px;
+      color: var(--accent);
+      margin-top: 10px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- COVER PAGE -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-wordmark">MIDILLA</div>
+    <div class="cover-meta-top">
+      Brand Identity Document<br>
+      Version 1.0 · March 2026<br>
+      Bible: v1.0 · 43 Sections
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-doc-type">Brand Identity Document</div>
+    <div class="cover-title">MIDILLA</div>
+    <div class="cover-subtitle">The complete record of every identity decision made for this brand — the positioning, the personality, the voice, the visual system, and the touchpoint specifications — with rationale and production specification for every decision.</div>
+  </div>
+
+  <div class="cover-bottom">
+    <div>
+      <div class="cover-founder">Samuel Ibrahim</div>
+      <div class="cover-founder-title">Content Systems Architect · Founder</div>
+    </div>
+    <div style="font-family: 'Inconsolata', monospace; font-size: 10px; color: var(--text-muted); text-align: right;">
+      Produced by MIDILLA Production System<br>
+      MIDILLA Brand Identity Bible v1.0
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTION RECEIPT -->
+<div class="production-receipt">
+  <div class="pr-field">
+    <span class="pr-label">Document</span>
+    <span class="pr-value">MIDILLA_Brand_Identity</span>
+  </div>
+  <div class="pr-field">
+    <span class="pr-label">Type</span>
+    <span class="pr-value neutral">Founding Document</span>
+  </div>
+  <div class="pr-field">
+    <span class="pr-label">Bible Version</span>
+    <span class="pr-value neutral">v1.0 · 43 Sections</span>
+  </div>
+  <div class="pr-field">
+    <span class="pr-label">Production Date</span>
+    <span class="pr-value neutral">March 2026</span>
+  </div>
+  <div class="pr-field">
+    <span class="pr-label">Architect</span>
+    <span class="pr-value neutral">Samuel Ibrahim</span>
+  </div>
+  <div class="pr-field">
+    <span class="pr-label">Status</span>
+    <span class="pr-value">● Complete</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 01 — POSITIONING -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="section-divider">
+  <span class="sd-num">01 / 10</span>
+  <span class="sd-title">Positioning</span>
+</div>
+
+<div class="doc-body">
+  <div class="doc-section">
+
+    <div class="statement">
+      <span class="statement-label">The Position</span>
+      <div class="statement-text">MIDILLA is the content production system for professional service operators who need expert-grade written outputs without managing the production infrastructure. The user receives the output of an architected system — not a better prompt interface, not a managed freelancer, not a scaled agency. A production engine built before any client project begins.</div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">The Audience</div>
+      <p>Professional service operators — consultants, lawyers, financial advisors, agency owners — who require publication-ready written content at expert level consistently. These are people who have the expertise to recognise quality and the professional context that demands it. They do not have the time or the production infrastructure to create it themselves. Content production is not their work. It is the infrastructure their work runs on.</p>
+      <p>The audience thinks in systems. They have built businesses, developed methodologies, architected professional practices. When they encounter a platform whose production quality visibly originates from documented architecture, they recognise a kindred way of working. They are not buying a content service. They are aligning with a production standard.</p>
+
+      <div class="two-col">
+        <div class="info-card">
+          <span class="ic-label">Primary Problem</span>
+          <div class="ic-value">The Production Infrastructure Gap</div>
+          <div class="ic-sub">Expert knowledge without an expert-level production system produces outputs that underrepresent the expertise behind them.</div>
+        </div>
+        <div class="info-card">
+          <span class="ic-label">What MIDILLA Removes</span>
+          <div class="ic-value">The prompting requirement</div>
+          <div class="ic-sub">The user does not interact with an AI engine. They receive the output of an engine that was architected before their brief arrived.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Competitive Differentiation</div>
+      <p>Three categories exist in the market. MIDILLA occupies none of them — it reframes the category entirely.</p>
+
+      <div class="diff-grid">
+        <div class="diff-cell">
+          <span class="diff-label">AI Writing Tools</span>
+          <div class="diff-title">Prompt Interface Model</div>
+          <div class="diff-body">Output quality is determined by the user's ability to write a good prompt. The tool provides access to a capable engine. The user provides the production methodology.</div>
+          <span class="diff-removes">MIDILLA removes: the prompting requirement</span>
+        </div>
+        <div class="diff-cell">
+          <span class="diff-label">Freelance Marketplaces</span>
+          <div class="diff-title">Talent Access Model</div>
+          <div class="diff-body">Output quality is determined by the combination of the brief clarity and the specific freelancer's interpretation. Every engagement is a new negotiation.</div>
+          <span class="diff-removes">MIDILLA removes: the management requirement</span>
+        </div>
+        <div class="diff-cell">
+          <span class="diff-label">Content Agencies</span>
+          <div class="diff-title">Institutional Production Model</div>
+          <div class="diff-body">Output quality is real but arrives with institutional overhead — account management, briefing cycles, revision rounds, pricing built for recurring relationships.</div>
+          <span class="diff-removes">MIDILLA removes: the institutional overhead</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">The Structural Moat</div>
+      <p>Every content type on MIDILLA is produced by a documented system — a Bible — built, tested, and quality-gated before the first client brief was submitted. The quality of the output is not determined by how well the client writes the brief. It is determined by the architecture of the system applied to the brief. The Bibles represent documented production methodology that compounds with every system added. A competitor who decides to build equivalent systems requires equivalent investment. The moat deepens with each system.</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 02 — PERSONALITY -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="section-divider">
+  <span class="sd-num">02 / 10</span>
+  <span class="sd-title">Personality</span>
+</div>
+
+<div class="doc-body">
+  <div class="doc-section">
+
+    <p>MIDILLA's personality is the human dimension of its positioning. Where the positioning defines the territory the brand occupies, the personality defines how it behaves within that territory — how it speaks, how it moves, how it responds, and how the audience experiences the relationship. The personality is not a tone-of-voice document. It is a complete psychological character specification — consistent across every surface, every output, and every condition.</p>
+
+    <div class="subsection">
+      <div class="subsection-heading">Archetype Architecture</div>
+
+      <div class="archetype-pair">
+        <div class="arch-card">
+          <span class="arch-label primary">Primary Archetype</span>
+          <div class="arch-name">The Magician</div>
+          <div class="arch-desc">The Magician transforms. It takes something complex — a brief, a problem, a body of expertise that has never been written — and produces something precise, finished, and ready to use. The transformation is not performed. It is delivered. The amber timer becomes a green confirmation. The brief becomes a document. The gap between capability and output closes. MIDILLA is the entity that makes that closing happen, invisibly, at the exact promised moment.</div>
+        </div>
+        <div class="arch-card">
+          <span class="arch-label modifier">Modifier Archetype</span>
+          <div class="arch-name">The Ruler</div>
+          <div class="arch-desc">The Ruler brings order, precision, and documented authority to the Magician's transformation. Without the Ruler, the Magician risks reading as mystification — impressive output with no visible system behind it. With the Ruler, the transformation is backed by architecture. The system is visible. The standard is documented. The governance is real. The Ruler is why MIDILLA can make the promises it makes, and be held to them.</div>
+        </div>
+      </div>
+
+      <p>The productive tension between these two archetypes is deliberate. The Magician creates the transformation experience — the delivery moment, the promise kept, the output that exceeds what the client could produce themselves. The Ruler creates the trust infrastructure that makes that experience repeatable — the documented system, the quality gate, the governance architecture. Neither is sufficient without the other.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Five Core Traits</div>
+
+      <div class="trait-row">
+        <div class="trait-name-cell">Methodical</div>
+        <div class="trait-body-cell">Every decision has a documented reason. No element of the visual system, the voice, or the production methodology exists without a traceable strategic foundation. The brand does not improvise — it executes from a documented architecture. In verbal expression: deliberate sentence construction, precision over speed, no shortcuts that sacrifice accuracy. In visual expression: the grid is visible, the spacing is documented, every component derives from a system.</div>
+      </div>
+      <div class="trait-row">
+        <div class="trait-name-cell">Authoritative</div>
+        <div class="trait-body-cell">The authority comes from the architecture, not from assertion. Claims are made because the system supports them. The brand does not hedge. It does not qualify. It states what is true and stands behind it. In verbal expression: declarative sentences, specific numbers, named decisions. In visual expression: the wordmark occupies space without apology, the dark field communicates seriousness before a word is read.</div>
+      </div>
+      <div class="trait-row">
+        <div class="trait-name-cell">Precise</div>
+        <div class="trait-body-cell">Specificity is the primary quality lever. Vague claims are the brand's anti-pattern. Every specification is exact — hex values, not "dark green"; 250ms ease-out, not "smooth animation"; Syne 800 -0.02em, not "bold heading font". In verbal expression: numbers, categories, documented decisions. Abstract claims are imprecision in disguise and are not made.</div>
+      </div>
+      <div class="trait-row">
+        <div class="trait-name-cell">Restrained</div>
+        <div class="trait-body-cell">Economy is active discipline. The brand does not elaborate where a single precise word will do. It does not add visual elements that do not carry meaning. Restraint is not minimalism for aesthetic reasons — it is the expression of a brand that respects the audience's intelligence and their time. Every word in every output is earning its position. Every visual element is earning its space.</div>
+      </div>
+      <div class="trait-row" style="border-bottom: none;">
+        <div class="trait-name-cell">Systematic</div>
+        <div class="trait-body-cell">The system is always visible. MIDILLA does not hide its architecture — the Bible, the production methodology, the quality gate — because the architecture is the proof. Showing the system is not transparency as a value in itself. It is the mechanism through which the brand demonstrates what it claims. Visible systems of quality are structurally more credible than claims of quality. The system is shown because it can bear being shown.</div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">The Personality in Action</div>
+      <p>These are not abstract traits — they are observable in every output the brand produces.</p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 20px 0;">
+        <div style="background: var(--surface); padding: 22px 20px;">
+          <span style="font-family: 'Inconsolata', monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 10px;">LinkedIn post opening</span>
+          <div style="font-family: 'Lora', serif; font-style: italic; font-size: 13px; color: var(--text); line-height: 1.7;">"I spent seven hours searching 70+ names across 12 language families. The name I chose took twelve seconds to say yes to."</div>
+        </div>
+        <div style="background: var(--surface); padding: 22px 20px; border-left: 1px solid var(--border);">
+          <span style="font-family: 'Inconsolata', monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 10px;">Platform headline</span>
+          <div style="font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800; letter-spacing: -0.01em; color: var(--white); line-height: 1.2;">The content production engine. You submit the brief. The system delivers the document.</div>
+        </div>
+        <div style="background: var(--surface); padding: 22px 20px; border-left: 1px solid var(--border);">
+          <span style="font-family: 'Inconsolata', monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 10px;">Delivery email subject</span>
+          <div style="font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--accent); letter-spacing: -0.01em;">Delivered.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 03 — VOICE -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="section-divider">
+  <span class="sd-num">03 / 10</span>
+  <span class="sd-title">Voice</span>
+</div>
+
+<div class="doc-body">
+  <div class="doc-section">
+
+    <p>MIDILLA's voice is the verbal expression of its personality — precise, declarative, restrained, and authoritative. It is not a set of tone guidelines. It is a specific verbal character that is as identifiable as a person's voice. The four attributes below are active simultaneously in every piece of copy, every email, every LinkedIn post, and every document the brand produces. No output passes through the system without all four attributes present.</p>
+
+    <div class="voice-grid">
+      <div class="voice-attr">
+        <span class="va-num">VA-01</span>
+        <div class="va-name">Expert Precision</div>
+        <div class="va-desc">Precision is expressed through specificity. Numbers. Named decisions. Documented reasoning chains. A claim that cannot be expressed specifically is not made. Specificity is not pedantry — it is evidence that the claim is real rather than performed. Abstract language is not vagueness managed carefully. It is evidence that nothing concrete lies behind it.</div>
+        <div class="va-example">
+          <span class="va-ex-label on">Voice On</span>
+          <div class="va-ex-text on">"I searched 70+ names across 12 language families over seven hours."</div>
+        </div>
+        <div class="va-example">
+          <span class="va-ex-label off">Voice Off</span>
+          <div class="va-ex-text off">"I spent a lot of time on the naming process to make sure I got it right."</div>
+        </div>
+      </div>
+
+      <div class="voice-attr">
+        <span class="va-num">VA-02</span>
+        <div class="va-name">Deliberate Pace</div>
+        <div class="va-desc">Deliberate pace is paragraph rhythm. One idea per paragraph. Each paragraph advances the argument one step. No paragraph exists that does not advance what preceded it. The reader moves through the content at the speed the writing intends. The copy does not rush to its conclusion. It earns it. Short paragraphs create pace. Single-sentence paragraphs — used with restraint — create emphasis.</div>
+        <div class="va-example">
+          <span class="va-ex-label on">Voice On</span>
+          <div class="va-ex-text on">"The system was built before any client brief arrived. That is not a process description. It is a quality standard."</div>
+        </div>
+        <div class="va-example">
+          <span class="va-ex-label off">Voice Off</span>
+          <div class="va-ex-text off">"We built everything upfront so that when you submit your brief, we're already prepared to deliver results quickly and efficiently."</div>
+        </div>
+      </div>
+
+      <div class="voice-attr">
+        <span class="va-num">VA-03</span>
+        <div class="va-name">Declarative Stance</div>
+        <div class="va-desc">Every sentence is a statement the brand is prepared to defend. No hedging language. No qualifiers that escape accountability for a claim. Where uncertainty is genuine, it is stated as a fact about the uncertainty — "We don't yet know if X will work" is declarative. "X might not work, but we'll see" is hedging. Declarative stance is not arrogance. It is the discipline of making only the claims the system supports, and making them without apology.</div>
+        <div class="va-example">
+          <span class="va-ex-label on">Voice On</span>
+          <div class="va-ex-text on">"The quality gate does not have exceptions. Every output is evaluated before delivery."</div>
+        </div>
+        <div class="va-example">
+          <span class="va-ex-label off">Voice Off</span>
+          <div class="va-ex-text off">"We try to maintain high quality standards and generally aim to deliver strong outputs."</div>
+        </div>
+      </div>
+
+      <div class="voice-attr">
+        <span class="va-num">VA-04</span>
+        <div class="va-name">Verbal Economy</div>
+        <div class="va-desc">Economy is active discipline. Every word in every sentence earns its position. A sentence that can be cut without losing meaning is cut. A paragraph that summarises what the previous paragraph already established is cut. The output ends when the thought is complete — not when a word count is met, and not when the writer has run out of elaborations. Economy is not brevity for its own sake. It is the refusal to occupy the audience's attention with words that do not earn that occupation.</div>
+        <div class="va-example">
+          <span class="va-ex-label on">Voice On</span>
+          <div class="va-ex-text on">"You submit the brief. The system delivers the document."</div>
+        </div>
+        <div class="va-example">
+          <span class="va-ex-label off">Voice Off</span>
+          <div class="va-ex-text off">"All you need to do is provide us with your brief and our comprehensive system will then work to produce and deliver your requested document."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection" style="margin-top: 44px;">
+      <div class="subsection-heading">Prohibited Patterns — Hard Stops</div>
+      <p>The following patterns are formally prohibited. They are the voice's shadow — the distorted, unmanaged version of what the brand sounds like when the four attributes above are abandoned. Any output containing these patterns fails the voice gate and is revised before delivery.</p>
+
+      <div class="prohib-list">
+        <span class="prohib-label">Voice Anti-Patterns — Never Appear in Any Output</span>
+        <ul>
+          <li><strong>Hedging language</strong> — "I think," "in my opinion," "it seems," "perhaps," "might," "could be." Stated uncertainty is declarative and permitted. Hedging is not.</li>
+          <li><strong>Engagement prompts</strong> — "What do you think?" "Let me know in the comments." "Have you experienced this?" The brand makes statements. It does not solicit validation.</li>
+          <li><strong>Volume claims without specificity</strong> — "comprehensive," "extensive," "in-depth," "thorough." These words describe effort, not output. Name the specific content or omit the claim.</li>
+          <li><strong>Generic expertise signals</strong> — "industry-leading," "best-in-class," "world-class," "cutting-edge." These are category claims made by every brand in every category. The brand demonstrates quality through specificity, not category language.</li>
+          <li><strong>Rhetorical questions in platform copy</strong> — Questions are used in content to develop an argument. They are never used in platform copy to avoid making a direct claim. "Are you tired of inconsistent content?" is a question used to hedge a claim. Make the claim directly.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Opening and Closing Line Standards</div>
+      <div class="spec-table">
+        <div class="st-header">
+          <span class="st-tag">Line Standards</span>
+          <span class="st-title">Applied across all long-form content</span>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Opening line rule</div>
+          <div class="st-val">The opening line is a specific observation — not a hook, not a question, not a promise of what is to come. The observation is concrete. It names something specific that happened, was decided, or was noticed. The reader encounters substance immediately or the opening fails.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Closing line rule</div>
+          <div class="st-val">The closing line is a declarative statement of implication — the logical conclusion of what was established. It is not a summary of what was said. It is the thing the reader takes away. It stands alone. It does not invite a response. It earns the reader's consideration by being precise enough to be argued with.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 04 — COLOR SYSTEM -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="section-divider">
+  <span class="sd-num">04 / 10</span>
+  <span class="sd-title">Color System</span>
+</div>
+
+<div class="doc-body">
+  <div class="doc-section">
+
+    <p>The color system is built on a deliberate premise: the primary surface is darkness, not light. Near-black as a base communicates depth, seriousness, and precision. The accent — a single high-chroma green — breaks through only where it carries meaning: the delivery confirmation, the active state, the brand's positive signal. Nothing in the system is decorative. Every color value has a documented role and is used only in that role.</p>
+
+    <div class="subsection">
+      <div class="subsection-heading">Primary Surfaces</div>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0A0B0F;"></div>
+          <div class="swatch-info">
+            <div class="swatch-hex">#0A0B0F</div>
+            <div class="swatch-role">Background — primary</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #12151C;"></div>
+          <div class="swatch-info">
+            <div class="swatch-hex">#12151C</div>
+            <div class="swatch-role">Surface — elevated</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #1A1E28;"></div>
+          <div class="swatch-info">
+            <div class="swatch-hex">#1A1E28</div>
+            <div class="swatch-role">Surface-2 — secondary</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #232838;"></div>
+          <div class="swatch-info">
+            <div class="swatch-hex">#232838</div>
+            <div class="swatch-role">Border — structural</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Text Values</div>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F8FAFC;"></div>
+          <div class="swatch-info">
+            <div class="swatch-hex">#F8FAFC</div>
+            <div class="swatch-role">White — primary headings</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #E2E8F0;"></div>
+          <div class="swatch-info">
+            <div class="swatch-hex">#E2E8F0</div>
+            <div class="swatch-role">Text — body content</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8892A4;"></div>
+          <div class="swatch-info">
+            <div class="swatch-hex">#8892A4</div>
+            <div class="swatch-role">Text-dim — secondary</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #4A5568;"></div>
+          <div class="swatch-info">
+            <div class="swatch-hex">#4A5568</div>
+            <div class="swatch-role">Text-muted — tertiary</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Accent & State Colors</div>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #4ADE80;"></div>
+          <div class="swatch-info">
+            <div class="swatch-hex">#4ADE80</div>
+            <div class="swatch-role">Accent — delivered / active</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FBB040;"></div>
+          <div class="swatch-info">
+            <div class="swatch-hex">#FBB040</div>
+            <div class="swatch-role">Amber — pending / in production</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F87171;"></div>
+          <div class="swatch-info">
+            <div class="swatch-hex">#F87171</div>
+            <div class="swatch-role">Red — error / prohibited</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #60A5FA;"></div>
+          <div class="swatch-info">
+            <div class="swatch-hex">#60A5FA</div>
+            <div class="swatch-role">Blue — reference / informational</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">The Amber-to-Green State Change</div>
+      <p>The delivery moment — when an order transitions from in-production to delivered — is the brand's defining visual event. The platform timer displays amber while production is active. At the exact delivery moment, it transitions to green. Simultaneously, the E-03 delivery email arrives with the subject line "Delivered." — one word, one period, green in the inbox. The state change is not a UI feature. It is the brand's promise kept in visual form.</p>
+
+      <div class="state-demo">
+        <div class="state-card">
+          <span class="state-label amber">Production State</span>
+          <div class="state-value amber">In Production</div>
+          <div class="state-sub">Timer: active · #FBB040 · E-02 acknowledged</div>
+        </div>
+        <div class="state-arrow">→</div>
+        <div class="state-card">
+          <span class="state-label accent">Delivery State</span>
+          <div class="state-value accent">Delivered.</div>
+          <div class="state-sub">Timer: complete · #4ADE80 · E-03 subject: "Delivered."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Color Usage Rules</div>
+      <div class="spec-table">
+        <div class="st-row">
+          <div class="st-key">Accent frequency</div>
+          <div class="st-val">Used at documented frequency. Not liberally, not absent. The accent carries meaning precisely because it is not everywhere. Overuse of the accent dilutes its function as the brand's primary signal of positive state.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Amber usage</div>
+          <div class="st-val">Reserved for pending and in-production states. Not used decoratively. The amber state communicates that a promise is in progress. Using it outside this context corrupts the semantic precision of the delivery state change.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Red usage</div>
+          <div class="st-val">Reserved for errors, failures, and prohibited items. Not used for emphasis, not used decoratively. Semantic integrity of the error state is maintained by strict usage discipline.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Surface layering</div>
+          <div class="st-val">Depth is created through the four near-black surface levels. Components are elevated by moving from --bg to --surface to --surface2. Borders at --border provide structural delineation without introducing a new color into the system.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">No light mode</div>
+          <div class="st-val">There is no light version of this palette. The dark field is not a theme — it is the brand's visual identity. A light mode would fundamentally alter the brand's signal architecture and is not a permitted variation.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 05 — TYPOGRAPHY -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="section-divider">
+  <span class="sd-num">05 / 10</span>
+  <span class="sd-title">Typography</span>
+</div>
+
+<div class="doc-body">
+  <div class="doc-section">
+
+    <p>The typography system is a three-voice architecture. Each typeface carries a specific role — structural, authority, precision — and operates only within that role. A typeface used outside its designated role violates the system architecture. Every typographic decision traces to a strategic rationale. The type system is not aesthetic decoration applied after the strategy. It is the strategy expressed in typographic form.</p>
+
+    <div class="subsection">
+      <div class="subsection-heading">Syne — The Structural Voice</div>
+      <div class="type-specimen">
+        <div class="ts-header">
+          <span class="ts-name">Syne · Structural</span>
+          <span class="ts-spec">Weight 800 · UPPERCASE · -0.02em · Wordmark, headings, section headers</span>
+        </div>
+        <div class="ts-body">
+          <div style="font-family: 'Syne', sans-serif; font-size: 52px; font-weight: 800; letter-spacing: -0.02em; color: var(--white); text-transform: uppercase; line-height: 1; margin-bottom: 20px;">MIDILLA</div>
+          <div style="font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; letter-spacing: -0.02em; color: var(--white); line-height: 1.1; margin-bottom: 16px;">The Production Engine.</div>
+          <div style="font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 12px;">Section Heading at Syne 700</div>
+          <div style="font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--text); letter-spacing: 0.01em;">Component title at Syne 700 13px</div>
+        </div>
+      </div>
+      <p>Syne carries the brand's structural voice — the visual equivalent of the brand's authority and architectural precision. Syne 800 is reserved for the wordmark and primary display uses. Syne 700 governs all section headings and component titles. The geometric character of Syne at heavy weights communicates the same attributes as the brand's angular visual vocabulary: precision, structure, no concessions to accommodation.</p>
+
+      <div class="spec-table" style="margin-top: 20px;">
+        <div class="st-row">
+          <div class="st-key">Wordmark</div>
+          <div class="st-val"><span class="mono">Syne 800 · UPPERCASE · letter-spacing: -0.02em · #F8FAFC</span></div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Display / H1</div>
+          <div class="st-val"><span class="mono">Syne 800 · 48–96px · letter-spacing: -0.02em</span></div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Section header / H2</div>
+          <div class="st-val"><span class="mono">Syne 700 · 26–40px · letter-spacing: -0.01em</span></div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Component title / H3</div>
+          <div class="st-val"><span class="mono">Syne 700 · 13–17px</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Lora — The Authority Voice</div>
+      <div class="type-specimen">
+        <div class="ts-header">
+          <span class="ts-name">Lora · Authority</span>
+          <span class="ts-spec">Weight 400 / 400i · 15px body · 1.9 line-height · All body content, documents, rationale</span>
+        </div>
+        <div class="ts-body">
+          <div style="font-family: 'Lora', serif; font-size: 16px; color: var(--text); line-height: 1.9; margin-bottom: 12px;">The production system was built before any client brief arrived. That is not a process description. It is a quality standard — the architecture of the output was documented, tested, and gated before the first brief was submitted.</div>
+          <div style="font-family: 'Lora', serif; font-size: 15px; font-style: italic; color: var(--text-dim); line-height: 1.85;">The italic weight carries rationale, editorial voice, and quoted material — the reflective register of the authority voice.</div>
+        </div>
+      </div>
+      <p>Lora carries the brand's authority voice — the serif register that communicates considered thinking, editorial quality, and document-grade substance. All body text is Lora. All document content is Lora. The italic weight carries the rationale voice — the explanatory, considered register used when the brand explains its decisions rather than states them. Lora's serif character communicates that what is being read was written to be read carefully.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Inconsolata — The Precision Voice</div>
+      <div class="type-specimen">
+        <div class="ts-header">
+          <span class="ts-name">Inconsolata · Precision</span>
+          <span class="ts-spec">Weight 400/500/600 · All data, labels, specifications, monospace content</span>
+        </div>
+        <div class="ts-body">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div>
+              <div style="font-family: 'Inconsolata', monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px;">SECTION LABEL · 9PX · 0.22EM</div>
+              <div style="font-family: 'Inconsolata', monospace; font-size: 11px; color: var(--text-dim); margin-bottom: 8px;">#4ADE80 · accent · delivered state</div>
+              <div style="font-family: 'Inconsolata', monospace; font-size: 12px; color: var(--text); margin-bottom: 8px;">M-2026-0001 · order reference</div>
+              <div style="font-family: 'Inconsolata', monospace; font-size: 10px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase;">METADATA · LABELS · CODES</div>
+            </div>
+            <div>
+              <div style="font-family: 'Inconsolata', monospace; font-size: 10px; color: var(--text-dim); line-height: 1.7;">Production: March 2026<br>Bible: v1.0 · 43 sections<br>Architect: Samuel Ibrahim<br>Status: ● Complete</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>Inconsolata carries the brand's precision voice — all data, all specification values, all labels, all codes, all monospace content. The monospace character communicates machine-level precision: this is not estimated, not approximate, not rounded. Every Inconsolata value is an exact specification. The type choice enforces the semantic distinction between content (Lora) and specification (Inconsolata).</p>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Typographic Rules</div>
+      <div class="prohib-list">
+        <span class="prohib-label">Prohibited — Typography Hard Stops</span>
+        <ul>
+          <li>System fonts (Arial, Helvetica, system-ui) — these carry no identity signal and undermine the brand's typographic authority.</li>
+          <li>More than three typefaces in any single execution — the three-voice system is complete. Additions are violations, not extensions.</li>
+          <li>Syne at weights below 600 — Syne's identity function depends on the structural weight. Light Syne reads as a different font entirely.</li>
+          <li>Lora for UI labels, data, or specification values — these roles belong to Inconsolata.</li>
+          <li>Inconsolata at sizes below 8px — precision requires legibility; below this threshold, precision reads as noise.</li>
+          <li>Rounded corner radius on any text container — the type system lives within an angular visual vocabulary. Rounded containers contradict the brand's visual architecture.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 06 — LOGO SYSTEM -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="section-divider">
+  <span class="sd-num">06 / 10</span>
+  <span class="sd-title">Logo System</span>
+</div>
+
+<div class="doc-body">
+  <div class="doc-section">
+
+    <p>MIDILLA's logo system at v1.0 is the wordmark. No symbol mark exists. No icon. No emblem. The wordmark is the complete logo system. This is not a placeholder pending a symbol mark — it is a deliberate decision rooted in the brand's positioning. The brand's authority comes from its documented architecture, not from a graphic symbol. The name alone, rendered with typographic precision, communicates the brand's identity. A symbol mark would introduce a second interpretive layer that the positioning does not require.</p>
+
+    <div class="logo-display">
+      <div class="logo-clear-space"></div>
+      <div class="logo-wordmark-display">MIDILLA</div>
+      <div class="logo-clear-label">0.5× cap height clear space</div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Wordmark Specification</div>
+      <div class="spec-table">
+        <div class="st-row">
+          <div class="st-key">Typeface</div>
+          <div class="st-val"><span class="mono">Syne 800</span> — no other weight, no other typeface. The wordmark is locked.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Case</div>
+          <div class="st-val">UPPERCASE. The wordmark does not appear in mixed case or lowercase under any condition.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Letter-spacing</div>
+          <div class="st-val"><span class="mono">-0.02em</span> — negative tracking tightens the wordmark into a unit. The specific value is locked. Looser or tighter tracking changes the wordmark's identity.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Primary color</div>
+          <div class="st-val"><span class="mono">#F8FAFC</span> on dark backgrounds. This is the primary usage context. The wordmark lives on dark surfaces.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Clear space</div>
+          <div class="st-val">Minimum 0.5× the wordmark's cap height on all four sides. Nothing — no text, no graphic element, no border — violates this space.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Minimum size — digital</div>
+          <div class="st-val"><span class="mono">80px</span> rendered width. Below this threshold, legibility and identity precision cannot be maintained.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Minimum size — print</div>
+          <div class="st-val"><span class="mono">20mm</span> rendered width.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Approved Usage Contexts</div>
+      <div class="two-col">
+        <div class="info-card">
+          <span class="ic-label">Primary context</span>
+          <div class="ic-value">#F8FAFC on #0A0B0F</div>
+          <div class="ic-sub">The wordmark on the background color. Used in document headers, platform header, primary brand applications.</div>
+        </div>
+        <div class="info-card">
+          <span class="ic-label">Elevated context</span>
+          <div class="ic-value">#F8FAFC on #12151C or #1A1E28</div>
+          <div class="ic-sub">The wordmark on surface colors. Used in cards, panels, and elevated components where the background is a surface value.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Prohibited Uses</div>
+      <div class="prohib-list">
+        <span class="prohib-label">Logo Hard Stops</span>
+        <ul>
+          <li>Stretching or compressing the wordmark proportionally or non-proportionally in any direction.</li>
+          <li>Applying effects — drop shadows, outlines, glows, gradients, textures — to the wordmark.</li>
+          <li>Placing the wordmark on a light or white background. The wordmark is a dark-field identity system.</li>
+          <li>Placing the wordmark on a color background (accent green, amber, red, blue). The wordmark appears on surface values only.</li>
+          <li>Combining the wordmark with a symbol, icon, or graphic element to create a composite logo. The wordmark is the complete system at v1.0.</li>
+          <li>Using the wordmark at a weight other than 800, at a case other than uppercase, or at tracking other than -0.02em.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">MASCHITECT — The Founder Designation</div>
+      <p>MASCHITECT (masked architect) is Samuel Ibrahim's personal professional identity — coined as an insider community term. It is not the platform name. It is not used in MIDILLA's public-facing identity. Its typographic specification mirrors the wordmark: Syne 800, uppercase, -0.02em letter-spacing, reserved for contexts where the founder identity is the subject rather than the platform identity.</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 07 — VISUAL LANGUAGE -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="section-divider">
+  <span class="sd-num">07 / 10</span>
+  <span class="sd-title">Visual Language</span>
+</div>
+
+<div class="doc-body">
+  <div class="doc-section">
+
+    <p>MIDILLA's visual language is the translation of its strategic identity into visual form. Every visual decision — corner radius, surface depth, border behavior, spacing rhythm, motion timing — expresses a specific attribute of the brand's positioning and personality. Nothing is aesthetic preference. Everything is strategic expression. The visual language is angular, dark, precise, and architecturally exact.</p>
+
+    <div class="subsection">
+      <div class="subsection-heading">The Angular Vocabulary</div>
+      <p>The foundational visual rule is zero corner radius. No element in the MIDILLA visual system has rounded corners — not buttons, not cards, not input fields, not image containers, not modals. The angular vocabulary communicates precision, structure, and the absence of accommodation. Rounded corners signal approachability and informality. MIDILLA's visual vocabulary signals the opposite: architectural precision and professional authority.</p>
+      <p>Sharp intersections. Right angles. Borders that meet at exactly 90 degrees. The visual grammar of a system that was designed, not assembled. Every component in the system carries the same zero-radius specification because consistency is not aesthetic preference — it is the visual equivalent of the brand's precision standard.</p>
+
+      <div class="visual-demo">
+        <span class="vd-label">Visual vocabulary in component form</span>
+        <div class="vd-components">
+          <div class="vd-comp">
+            <span class="vd-comp-label">UI Component</span>
+            <div style="background: var(--surface2); border: 1px solid var(--border); padding: 16px; margin-bottom: 8px;">
+              <div style="font-family: 'Inconsolata', monospace; font-size: 8px; color: var(--text-muted); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px;">Order Status</div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 6px; height: 6px; background: var(--amber); flex-shrink: 0;"></div>
+                <div style="font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--amber);">In Production</div>
+              </div>
+              <div style="font-family: 'Inconsolata', monospace; font-size: 10px; color: var(--text-muted); margin-top: 6px;">M-2026-0047 · 4h 22m remaining</div>
+            </div>
+            <div style="font-family: 'Inconsolata', monospace; font-size: 8px; color: var(--text-muted); letter-spacing: 0.1em;">Zero radius · surface-2 · amber state</div>
+          </div>
+          <div class="vd-comp">
+            <span class="vd-comp-label">Data Row</span>
+            <div style="border: 1px solid var(--border); overflow: hidden;">
+              <div style="display: grid; grid-template-columns: 120px 1fr; border-bottom: 1px solid var(--border);">
+                <div style="padding: 10px 12px; background: var(--surface2); border-right: 1px solid var(--border); font-family: 'Inconsolata', monospace; font-size: 9px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase;">Type</div>
+                <div style="padding: 10px 12px; font-family: 'Lora', serif; font-size: 12px; color: var(--text-dim);">B2B White Paper</div>
+              </div>
+              <div style="display: grid; grid-template-columns: 120px 1fr;">
+                <div style="padding: 10px 12px; background: var(--surface2); border-right: 1px solid var(--border); font-family: 'Inconsolata', monospace; font-size: 9px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase;">Credits</div>
+                <div style="padding: 10px 12px; font-family: 'Inconsolata', monospace; font-size: 12px; color: var(--accent);">24 credits</div>
+              </div>
+            </div>
+            <div style="font-family: 'Inconsolata', monospace; font-size: 8px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.1em;">Grid-based · right angles · precision layout</div>
+          </div>
+          <div class="vd-comp">
+            <span class="vd-comp-label">Document Header</span>
+            <div style="background: var(--surface); border: 1px solid var(--border); border-top: 2px solid var(--accent);">
+              <div style="padding: 14px 16px; border-bottom: 1px solid var(--border);">
+                <div style="font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: -0.02em; color: var(--white); text-transform: uppercase;">MIDILLA</div>
+              </div>
+              <div style="padding: 14px 16px; border-bottom: 1px solid var(--border);">
+                <div style="font-family: 'Inconsolata', monospace; font-size: 8px; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px;">White Paper</div>
+                <div style="font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--white);">Document Title Here</div>
+              </div>
+              <div style="padding: 8px 16px; display: flex; gap: 16px;">
+                <div style="font-family: 'Inconsolata', monospace; font-size: 8px; color: var(--text-muted);">M-2026-0047</div>
+                <div style="font-family: 'Inconsolata', monospace; font-size: 8px; color: var(--text-muted);">March 2026</div>
+              </div>
+            </div>
+            <div style="font-family: 'Inconsolata', monospace; font-size: 8px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.1em;">2px accent top border · DF-01 spec</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Surface Architecture</div>
+      <p>Depth is created through four near-black surface levels rather than through a single background with shadow effects. The background (#0A0B0F) is the base. Components sit on surface (#12151C). Nested elements use surface-2 (#1A1E28). Borders at #232838 provide structural delineation. The accent breaks through this layered darkness at high contrast — visible, precise, meaningful — only when it is carrying its defined semantic function.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Motion Standard</div>
+      <div class="spec-table">
+        <div class="st-row">
+          <div class="st-key">Entrance animations</div>
+          <div class="st-val"><span class="mono">250ms ease-out</span> — deliberate pace, not instant. The animation duration reflects the brand's measured character. Fast snaps read as jittery. Slow fades read as uncertain. 250ms is precisely calibrated.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Delivery state change</div>
+          <div class="st-val"><span class="mono">Amber → Green · precision ease</span> — the defining brand moment in motion. The transition from #FBB040 to #4ADE80 is not instant. It is a measured, visible change that communicates a state that has been reached, not a random event.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">No decorative animation</div>
+          <div class="st-val">Motion carries meaning or motion is absent. Looping animations, hover shimmer effects, purely decorative transitions — none of these appear in the MIDILLA system. Every animation responds to a state change or communicates a process update.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Motion System — Timing Specification</div>
+      <p>Motion in MIDILLA is state-responsive, not decorative. Every animation is triggered by a state change — entering, exiting, transitioning. Animations that run continuously without a triggering event are prohibited. The timing scale and easing library below govern all motion in the system. The defining brand moment — the amber-to-green delivery state change — is fully specified here.</p>
+
+      <div class="spec-table">
+        <div class="st-header">
+          <span class="st-tag">Motion — Timing Scale</span>
+          <span class="st-title">Seven durations · State-responsive only</span>
+        </div>
+        <div class="st-row">
+          <div class="st-key">80ms</div>
+          <div class="st-val">Micro-feedback — hover state changes, focus rings, checkbox toggles. Below conscious perception threshold; communicates system responsiveness.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">150ms</div>
+          <div class="st-val">Quick transitions — exit animations, tooltip appearance, badge state changes. Snappy but not jarring.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">250ms</div>
+          <div class="st-val">Standard transitions — component entrances, panel reveals, modal overlays. The default duration for most UI state changes.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">350ms</div>
+          <div class="st-val"><strong>Delivery state transition</strong> — the amber-to-green change. Used only for this moment. The deliberate pace of 350ms communicates that something specific and significant has occurred.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">450ms</div>
+          <div class="st-val">Emphasis transitions — section reveals on scroll, large component entrances. Used where the visual weight of the element warrants a longer settling time.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">600ms</div>
+          <div class="st-val">Page-level transitions — route changes, full-page state shifts. Reserved for transitions where the user's context is changing, not just a component's state.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">2500ms</div>
+          <div class="st-val">Pulse animations — the amber timer pulse while an order is in production. Slow enough to be ambient rather than demanding; fast enough to signal an active state.</div>
+        </div>
+      </div>
+
+      <div class="spec-table" style="margin-top: 20px;">
+        <div class="st-header">
+          <span class="st-tag">Motion — Easing Library</span>
+          <span class="st-title">Four curves · Each semantically assigned</span>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Enter</div>
+          <div class="st-val"><span class="mono">cubic-bezier(0, 0, 0.2, 1)</span> — Deceleration curve. Elements enter fast and settle. Used for all UI elements entering the viewport or becoming visible.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Exit</div>
+          <div class="st-val"><span class="mono">cubic-bezier(0.4, 0, 1, 1)</span> — Acceleration curve. Elements exit slowly and leave fast. Used for all elements leaving the viewport or becoming hidden.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Standard</div>
+          <div class="st-val"><span class="mono">cubic-bezier(0.4, 0, 0.2, 1)</span> — Shared axis curve. Used for elements that are moving from one position to another within the same context — tabs, sliders, reordering.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Precision</div>
+          <div class="st-val"><span class="mono">cubic-bezier(0, 0, 0, 1)</span> — Reserved exclusively for the delivery state transition. The extreme deceleration communicates arrival: this is the moment the process was building toward. No other animation uses this curve.</div>
+        </div>
+      </div>
+
+      <div class="spec-table" style="margin-top: 20px;">
+        <div class="st-header">
+          <span class="st-tag">Motion — Defining Brand Moment</span>
+          <span class="st-title">Amber → Green delivery state transition · Full specification</span>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Trigger</div>
+          <div class="st-val">Order status reaches delivered state in the database. Platform timer and E-03 email are triggered simultaneously from the same server event. The simultaneity is architectural, not a design coincidence.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Phase 1 — Exit</div>
+          <div class="st-val"><span class="mono">150ms · exit easing</span> — Timer value fades from <span class="amber-text">#FBB040</span> to transparent. The amber state does not hard-cut; it exits deliberately before the green enters.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Phase 2 — Hold</div>
+          <div class="st-val"><span class="mono">200ms · no animation</span> — A beat of stillness. The gap between amber leaving and green arriving. This is not a mistake or a loading state — it is the pause before the answer.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Phase 3 — Enter</div>
+          <div class="st-val"><span class="mono">350ms · precision ease cubic-bezier(0,0,0,1)</span> — "Delivered." in <span class="accent-text">#4ADE80</span> enters with extreme deceleration. The value settles into place. No bounce, no overshoot. Arrival, not impact.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Micro-interaction</div>
+          <div class="st-val">A single subtle scale pulse — <span class="mono">scale(1.04) → scale(1.0)</span> at <span class="mono">80ms · standard ease</span> — occurs on the green text immediately after Phase 3 completes. This is the only moment the scale property is used in the MIDILLA system. It communicates finality without theatrics.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Total duration</div>
+          <div class="st-val"><span class="mono">150ms + 200ms + 350ms + 80ms = 780ms</span> from trigger to completion. Just under one second — long enough to register as a designed moment, short enough to feel like a precise, mechanical click into place.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Reduced motion</div>
+          <div class="st-val">When <span class="mono">prefers-reduced-motion: reduce</span> is active, all phases collapse to an instant color swap. The semantic meaning — amber becomes green — is preserved. The motion is removed. The information is not.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Spacing System</div>
+      <p>The spatial system is built on an 8px base unit. Every margin, padding, gap, and component dimension in the MIDILLA system is a multiple of 8. This constraint is not aesthetic — it is the mechanism that produces spatial consistency across surfaces and components that were built independently. When every spacing decision derives from the same base, the system feels coherent without requiring constant cross-reference.</p>
+
+      <div class="spec-table">
+        <div class="st-header">
+          <span class="st-tag">Spacing Scale</span>
+          <span class="st-title">8px base · 11 steps · CSS custom properties</span>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--sp-1 · 4px</span></div>
+          <div class="st-val">Micro — icon-to-label gap, badge internal padding, tight list item spacing.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--sp-2 · 8px</span></div>
+          <div class="st-val">Base unit — default gap between inline elements, minimum padding for compact components.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--sp-3 · 12px</span></div>
+          <div class="st-val">Compact — tight internal component padding, metadata row height.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--sp-4 · 16px</span></div>
+          <div class="st-val">Standard component padding — table cells, card internal padding, form field height.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--sp-5 · 24px</span></div>
+          <div class="st-val">Comfortable component padding — panel internal padding, section-within-card spacing.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--sp-6 · 32px</span></div>
+          <div class="st-val">Block spacing — spacing between related content groups within a section.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--sp-7 · 48px</span></div>
+          <div class="st-val">Section element spacing — gap between sub-sections, major component separation.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--sp-8 · 64px</span></div>
+          <div class="st-val">Section padding — horizontal padding for document body columns, card-to-card gap.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--sp-9 · 80px</span></div>
+          <div class="st-val">Major section spacing — vertical gap between document sections, page-level breathing room.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--sp-10 · 96px</span></div>
+          <div class="st-val">Hero spacing — cover page element separation, large display component padding.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--sp-11 · 128px</span></div>
+          <div class="st-val">Maximum structural spacing — section dividers at full desktop width, major page-level vertical rhythm.</div>
+        </div>
+      </div>
+
+      <p>Spacing values outside this scale are not used. When a spacing decision falls between two scale steps, the larger step is selected — never an interpolated value. The discipline of the scale compounds: a system where every spacing decision is on-grid is a system that can be rebuilt, extended, and governed by reference rather than by eye.</p>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Elevation System</div>
+      <p>Depth in MIDILLA is expressed through the four surface color steps, not through box-shadow. The near-black background, the surface, the elevated surface, and the border form a depth architecture that does not require shadow to communicate vertical position. This is a deliberate constraint — shadow would soften the visual language's angular character and introduce a light-source implication inconsistent with the system's dark-native premise.</p>
+
+      <div class="spec-table">
+        <div class="st-header">
+          <span class="st-tag">Elevation Tokens</span>
+          <span class="st-title">Three levels · Border-based · No box-shadow</span>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--elev-0</span></div>
+          <div class="st-val"><span class="mono">1px solid var(--border)</span> — Default component border. All cards, tables, panels, and containers at rest.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--elev-1</span></div>
+          <div class="st-val"><span class="mono">1px solid rgba(74,222,128,0.15)</span> — Hover state. Interactive components (buttons, cards with click targets, form inputs on focus-within) shift to this border when the user is interacting with them. The accent-tinted border signals interactivity without introducing a shadow.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key"><span class="mono">--elev-2</span></div>
+          <div class="st-val"><span class="mono">1px solid rgba(74,222,128,0.30)</span> — Active/focus state. Form inputs on :focus, selected cards, active navigation items. The stronger accent border communicates a committed state — the user has selected or is inside this element.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">No box-shadow</div>
+          <div class="st-val">The <span class="mono">box-shadow</span> property is not used in the MIDILLA system for elevation purposes. If a component requires it for a specific functional reason (e.g. a dropdown that must visually separate from content behind it), the shadow value must be documented and approved through the extension protocol. The default answer is: use a surface color step deeper than the surrounding context.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Component Vocabulary</div>
+      <p>The visual language defines the principles. The component vocabulary applies those principles to the specific UI elements the platform requires. Every component is derived from the same strategic rationale — angular, zero-radius, dark, precise — and specified at the interaction state level. No component decision is left to developer interpretation.</p>
+
+      <div class="spec-table">
+        <div class="st-header">
+          <span class="st-tag">Buttons</span>
+          <span class="st-title">Three variants · Four states each</span>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Primary CTA</div>
+          <div class="st-val">Background: <span class="mono">#4ADE80</span> · Text: <span class="mono">#0A0B0F</span> · Font: Syne 700 · Size: 13px · Padding: 12px 24px · Radius: 0 · Border: none. Used for the singular primary action on any given screen. One primary button per context maximum. Hover: <span class="mono">opacity: 0.88</span> at 80ms enter ease. Active: <span class="mono">scale(0.97)</span> at 80ms standard ease. Disabled: <span class="mono">opacity: 0.35</span>, pointer-events: none.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Secondary</div>
+          <div class="st-val">Background: transparent · Border: <span class="mono">var(--elev-0)</span> · Text: <span class="mono">#E2E8F0</span> · Font: Syne 700 · Size: 13px · Padding: 11px 24px · Radius: 0. Hover: border shifts to <span class="mono">var(--elev-1)</span>, text shifts to <span class="mono">#F8FAFC</span> at 80ms. Active: <span class="mono">scale(0.97)</span>. Used for secondary actions that sit alongside a primary CTA.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Ghost</div>
+          <div class="st-val">Background: transparent · Border: none · Text: <span class="mono">#8892A4</span> · Font: Inconsolata 500 · Size: 11px · Letter-spacing: 0.1em · Uppercase. Hover: text shifts to <span class="mono">#E2E8F0</span> at 80ms. Used for tertiary actions, navigation links, and inline actions within components where a bordered button would add visual weight the context cannot support.</div>
+        </div>
+      </div>
+
+      <div class="spec-table" style="margin-top: 20px;">
+        <div class="st-header">
+          <span class="st-tag">Form Inputs</span>
+          <span class="st-title">Two variants · Four states</span>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Text input</div>
+          <div class="st-val">Background: <span class="mono">var(--surface2)</span> · Border: <span class="mono">var(--elev-0)</span> · Text: <span class="mono">#E2E8F0</span> · Placeholder: <span class="mono">#4A5568</span> · Font: Lora 400 · Size: 14px · Padding: 12px 16px · Radius: 0. Focus: border shifts to <span class="mono">var(--elev-2)</span> at 80ms. Error: border shifts to <span class="mono">1px solid rgba(248,113,113,0.5)</span>. Disabled: opacity 0.4.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Textarea</div>
+          <div class="st-val">Same specification as text input. Min-height: 120px. Resize: vertical only — horizontal resize is prohibited as it disrupts the grid. The textarea's vertical handle is the only permitted resize affordance in the system.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Field label</div>
+          <div class="st-val">Inconsolata 500 · 9px · letter-spacing: 0.18em · uppercase · <span class="mono">#8892A4</span> · 8px below label to input. Required fields: asterisk in <span class="mono">#F87171</span> after the label text. No colon after labels.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Error message</div>
+          <div class="st-val">Inconsolata 400 · 10px · <span class="mono">#F87171</span> · 6px above the field (not below — the field's error border already occupies the visual bottom). Error messages are statements, not questions. "Order reference is required." not "Did you forget to enter your order reference?"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Icon Direction</div>
+      <p>The MIDILLA visual system uses line icons only. No filled icons, no duotone, no multi-weight variation within a single interface. The line weight and cap/join rules below are fixed. Every icon in the system conforms to them or it is not a MIDILLA icon.</p>
+
+      <div class="spec-table">
+        <div class="st-header">
+          <span class="st-tag">Icon Specification</span>
+          <span class="st-title">Line only · Square caps · Right-angle joins</span>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Style</div>
+          <div class="st-val">Line icons only. No fills, no gradients, no multi-color. A single stroke path.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Stroke weight</div>
+          <div class="st-val"><span class="mono">1.5px</span> at the 24px grid. Do not scale the stroke weight with the icon — scale the icon, keep the stroke at 1.5px.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Cap style</div>
+          <div class="st-val"><span class="mono">stroke-linecap: square</span> — not round, not butt. Square caps extend the stroke slightly beyond its endpoint, consistent with the angular vocabulary.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Join style</div>
+          <div class="st-val"><span class="mono">stroke-linejoin: miter</span> — sharp joins at corners. No rounded joins. The icon corners are as angular as every other element in the system.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Grid sizes</div>
+          <div class="st-val"><span class="mono">16px · 20px · 24px</span> — three sizes only. 16px for compact UI contexts (table rows, labels). 20px for standard UI contexts (buttons, form fields). 24px for display contexts (feature lists, empty states).</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Color rule</div>
+          <div class="st-val">Icons inherit the text color of their context. They are never independently colored except when communicating a specific semantic state — a status icon in accent green, an error icon in red. Decorative color on icons is prohibited.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">No rounded elements</div>
+          <div class="st-val">The zero-corner-radius rule extends to icons. Icon paths that include circles (warning circles, info bubbles) are redesigned as squares. If a circular form is functionally essential to the icon's recognizability (e.g. a clock face), it is permitted — but it is the exception, not the pattern.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Photography & Image Art Direction</div>
+      <p>MIDILLA's primary visual identity is typographic. The platform's dark field, angular component system, and three-voice typography carry the brand identity load without requiring imagery. Photography and illustration are not a core element of the v1.0 visual system. When imagery is used — in editorial content, LinkedIn articles, or future marketing surfaces — the following direction governs its selection and treatment.</p>
+
+      <div class="spec-table">
+        <div class="st-header">
+          <span class="st-tag">Image Direction</span>
+          <span class="st-title">Treatment over selection · Dark field preferred</span>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Preferred imagery</div>
+          <div class="st-val">Abstract, technical, architectural, or structural subjects. Documents, systems, infrastructure, precision instruments. Images that communicate methodology, craft, and designed process. The subject communicates what MIDILLA communicates — that behind every output is an architecture.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Dark field treatment</div>
+          <div class="st-val">Images are treated to sit within the dark surface system. This means: desaturation or near-monochrome treatment, dark overlay at 40–60% opacity using <span class="mono">#0A0B0F</span>, high contrast. The image reads as part of the dark system, not as a window into a separate visual world.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Prohibited</div>
+          <div class="st-val">Lifestyle photography (people looking thoughtful at laptops, teams in bright offices). Stock imagery with visible brand watermarks of any kind. Bright, high-saturation images used without dark treatment. Images where the visual language — rounded, soft, pastel — contradicts the brand's angular precision vocabulary.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">v1.0 default</div>
+          <div class="st-val">When in doubt: no image. The typographic system is complete. An image that does not meet this specification weakens the brand more than the absence of an image does. The zero-imagery default is always the safe choice in the v1.0 system.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">The Brand's Productive Tension</div>
+      <p>MIDILLA holds a deliberate paradox: street authority meets institutional precision. The name comes from the word DEALER — the one you call, the one who handles what you cannot. The execution is architectural, documented, formally governed. Neither quality resolves into the other. The tension between them is what produces the brand's distinctive energy. A brand that was only street authority would be unstructured. A brand that was only institutional precision would be cold. MIDILLA is both, simultaneously, without resolution.</p>
+      <p>This tension is not incidental. It is structural. The angular visual vocabulary holds it. The dark palette holds it. The Syne/Lora/Inconsolata typographic triad holds it. The voice — precise as a specification, declarative as an authority — holds it. Every execution of the brand identity maintains this tension. When one quality overwhelms the other, the brand loses the specific energy that distinguishes it.</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 08 — TOUCHPOINT APPLICATIONS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="section-divider">
+  <span class="sd-num">08 / 10</span>
+  <span class="sd-title">Touchpoint Applications</span>
+</div>
+
+<div class="doc-body">
+  <div class="doc-section">
+
+    <p>MIDILLA makes contact with its audience at four surfaces. Each surface has a specific role in the client's journey and a specific expression of the brand's identity adapted to that surface's constraints and context. The voice system — all four attributes — is active on all four surfaces. The visual system applies where visual rendering is possible. On surfaces where the visual system does not travel (LinkedIn plain text), the voice system carries the entire brand identity load alone.</p>
+
+    <div class="subsection">
+      <div class="subsection-heading">The Cross-Touchpoint Journey</div>
+      <div class="journey">
+        <div class="journey-stage">
+          <span class="js-num">Stage 01</span>
+          <div class="js-name">Discovery</div>
+          <div class="js-surface">LinkedIn · DAY Format</div>
+          <div class="js-desc">The audience encounters the brand's intellectual character before they encounter the platform. The DAY post demonstrates the same quality of thinking that produces the documents. First contact is substance, not a pitch.</div>
+        </div>
+        <div class="journey-stage">
+          <span class="js-num">Stage 02</span>
+          <div class="js-name">Conversion</div>
+          <div class="js-surface">Platform · midilla.com</div>
+          <div class="js-desc">The dark field, the architectural precision, the credit system, the delivery timer — all communicate that this is a production system, not a prompt interface. The visitor makes a commitment based on what they see, not what they are promised.</div>
+        </div>
+        <div class="journey-stage">
+          <span class="js-num">Stage 03</span>
+          <div class="js-name">Anticipation</div>
+          <div class="js-surface">Email · E-01, E-02</div>
+          <div class="js-desc">The order confirmation (E-01) and in-production update (E-02) build the delivery anticipation through precise operational communication. The amber state is active. The promise has been made. The clock is running.</div>
+        </div>
+        <div class="journey-stage">
+          <span class="js-num">Stage 04</span>
+          <div class="js-name">Fulfillment</div>
+          <div class="js-surface">E-03 Email · Document</div>
+          <div class="js-desc">The delivery email and attached document are the promise kept. The subject line "Delivered." — one word, one period — arrives simultaneously with the platform timer's green state. The document itself is the evidence that the system delivers what it claims.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Platform — midilla.com</div>
+      <div class="tp-specimen">
+        <div class="tp-header">
+          <div class="tp-name">Platform Homepage</div>
+          <div class="tp-role">Discovery → Conversion</div>
+        </div>
+        <div class="tp-body">
+          <div style="background: #0A0B0F; border: 1px solid var(--border); padding: 32px 28px;">
+            <div style="font-family: 'Inconsolata', monospace; font-size: 9px; letter-spacing: 0.22em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px;">Content Production System</div>
+            <div style="font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; letter-spacing: -0.02em; color: var(--white); line-height: 1.05; margin-bottom: 16px;">Expert-grade content.<br>Delivered.</div>
+            <div style="font-family: 'Lora', serif; font-size: 15px; color: var(--text-dim); line-height: 1.85; margin-bottom: 28px; max-width: 480px;">Submit the brief. The production system handles the rest — research, structure, voice, and quality gate. Publication-ready content arrives at the exact promised time.</div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <div style="background: var(--accent); color: #0A0B0F; font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; padding: 12px 24px; cursor: pointer; letter-spacing: -0.01em;">View Output Types →</div>
+              <div style="font-family: 'Inconsolata', monospace; font-size: 10px; color: var(--text-muted);">No setup. First order today.</div>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 1px;">
+            <div style="background: var(--surface); padding: 20px 16px;">
+              <div style="font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--accent); margin-bottom: 4px;">$49</div>
+              <div style="font-family: 'Inconsolata', monospace; font-size: 9px; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px;">Starter · 60 credits</div>
+              <div style="font-family: 'Lora', serif; font-size: 12px; color: var(--text-dim);">Entry to the production system.</div>
+            </div>
+            <div style="background: var(--surface); padding: 20px 16px; border-left: 1px solid var(--border);">
+              <div style="font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--amber); margin-bottom: 4px;">$149</div>
+              <div style="font-family: 'Inconsolata', monospace; font-size: 9px; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px;">Professional · 250 credits</div>
+              <div style="font-family: 'Lora', serif; font-size: 12px; color: var(--text-dim);">Volume capacity for active operators.</div>
+            </div>
+            <div style="background: var(--surface); padding: 20px 16px; border-left: 1px solid var(--border);">
+              <div style="font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 4px;">Custom</div>
+              <div style="font-family: 'Inconsolata', monospace; font-size: 9px; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px;">Architect · Unlimited</div>
+              <div style="font-family: 'Lora', serif; font-size: 12px; color: var(--text-dim);">For production at infrastructure scale.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Email — The Delivery Sequence</div>
+      <div class="spec-table">
+        <div class="st-header">
+          <span class="st-tag">Email System</span>
+          <span class="st-title">Four-email sequence · E-01 through E-04</span>
+        </div>
+        <div class="st-row">
+          <div class="st-key">E-01 · Confirmation</div>
+          <div class="st-val">Order received. Reference number assigned. Delivery window stated precisely. Subject: <span class="mono">Order Confirmed — M-[YEAR]-[NNNN]</span></div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">E-02 · In Production</div>
+          <div class="st-val">Production active. Delivery time confirmed. No filler content, no reassurance language. Subject: <span class="mono">M-[YEAR]-[NNNN] — In Production</span></div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">E-03 · Delivery</div>
+          <div class="st-val">The defining email. Subject line: <span class="accent-text">Delivered.</span> — exactly. One word. One period. No order number in the subject. The attachment arrives as <span class="mono">MIDILLA_[ORDER-NUM]_[OUTPUT-TYPE].[ext]</span></div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">E-04 · Follow-through</div>
+          <div class="st-val">Post-delivery engagement: usage check-in, next order prompt if appropriate. Strictly operational — no feedback requests, no satisfaction surveys, no engagement prompts.</div>
+        </div>
+      </div>
+
+      <div style="background: var(--surface); border: 1px solid var(--border); padding: 24px; margin-top: 20px;">
+        <div style="font-family: 'Inconsolata', monospace; font-size: 9px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px;">E-03 Subject Line · Rendered</div>
+        <div style="display: flex; align-items: center; gap: 16px; background: #0A0B0F; padding: 14px 18px; border: 1px solid var(--border);">
+          <div style="width: 8px; height: 8px; background: var(--accent); flex-shrink: 0;"></div>
+          <div style="font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--white); letter-spacing: -0.01em;">Delivered.</div>
+          <div style="font-family: 'Lora', serif; font-size: 13px; font-style: italic; color: var(--text-dim); margin-left: auto;">The promise. One word. One period.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">LinkedIn — The DAY Format</div>
+
+      <div class="tp-specimen">
+        <div class="tp-header">
+          <div class="tp-name">LinkedIn Post — DAY Format Specimen</div>
+          <div class="tp-role">Discovery · Decision category</div>
+        </div>
+        <div class="tp-body">
+          <div style="background: #0A0B0F; border: 1px solid var(--border); padding: 24px 22px; font-family: 'Lora', serif; color: var(--text-dim); font-size: 14px; line-height: 1.85;">
+            <p style="margin-bottom: 12px; color: var(--white); font-weight: 500;">I built the brand system before I built the platform.</p>
+            <p style="margin-bottom: 12px;">Most founders treat brand as a feature — something you add once the product works. I treated it as a foundation — something you document before the first user ever arrives.</p>
+            <p style="margin-bottom: 12px;">The Brand Identity Bible is 43 sections. Every color value traced to its strategic rationale. Every voice attribute tested against four contextual scenarios before it was locked. Every visual decision documented with the reasoning behind it.</p>
+            <p style="margin-bottom: 12px;">Not because brand documentation is a best practice. Because a production system that claims expert-grade quality must demonstrate that standard in its own architecture before it claims it in its outputs.</p>
+            <p style="color: var(--text); font-style: italic;">The system is the credential. The document is the proof.</p>
+          </div>
+          <div style="background: var(--surface2); padding: 10px 16px; font-family: 'Inconsolata', monospace; font-size: 9px; color: var(--text-muted); letter-spacing: 0.1em; border-top: 1px solid var(--border);">DAY · Decision category · 247 words · Opening: observation · Closing: declarative implication · Zero engagement prompts</div>
+        </div>
+      </div>
+
+      <div class="spec-table" style="margin-top: 20px;">
+        <div class="st-row">
+          <div class="st-key">Format name</div>
+          <div class="st-val">DAY — the single-post format used for all MIDILLA LinkedIn content.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Word count</div>
+          <div class="st-val"><span class="mono">200–350 words</span> — below this range, the post lacks argumentative depth. Above it, the post overexplains.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Four categories</div>
+          <div class="st-val"><strong>Decision</strong> (what was decided and why) · <strong>System</strong> (how a production element works) · <strong>Milestone</strong> (what was built and what it represents) · <strong>Principle</strong> (an operating standard with a specific application)</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Opening line</div>
+          <div class="st-val">A specific observation. Not a hook. Not a question. Not a preview of what is to come. The observation is concrete — something specific that happened, was decided, or was noticed. Substance on the first line or the post fails its opening.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Closing line</div>
+          <div class="st-val">Declarative implication — the logical conclusion of what was established. Not a summary. Not an invitation. The sentence a reader takes away and thinks about after the post ends.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Zero engagement prompts</div>
+          <div class="st-val">No questions at the end. No "What do you think?" No "Drop a comment." No "Repost if this resonated." The post ends when the thought is complete. The audience's intelligence is respected by not prompting it.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-heading">Delivered Document</div>
+      <p>The delivered document is the brand's most powerful surface because it travels. A white paper produced by MIDILLA is shared with colleagues, attached to pitches, and referenced by people who have never encountered the platform. Those people arrive at MIDILLA — eventually, through a referral or a search — with a prior experience of its output quality, even if they never knew its name while reading the document.</p>
+      <p>Every delivered document carries the production receipt bar: order number, production date, word count. The receipt is not a decorative element — it is the visible evidence of the production system's existence. The document header follows the DF-01 specification. The document's quality standard is publication readiness — not "could be improved by an editor" but "ready to publish without one."</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 09 — GOVERNANCE SUMMARY -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="section-divider">
+  <span class="sd-num">09 / 10</span>
+  <span class="sd-title">Governance</span>
+</div>
+
+<div class="doc-body">
+  <div class="doc-section">
+
+    <p>The MIDILLA brand identity is governed by documented decision architecture, not by intuition or contextual judgment. The governance framework exists to ensure that the brand's identity remains coherent as the platform grows — that the decisions made in the foundational document continue to govern every execution, and that any change to the identity is made deliberately rather than allowed to drift in through informal decisions.</p>
+
+    <div class="gov-tier fixed">
+      <div class="gov-tier-stripe"></div>
+      <div class="gov-tier-body">
+        <span class="gov-tier-label">Fixed — Identity Core</span>
+        <div class="gov-tier-title">What is never changed without the documented process</div>
+        <div class="gov-tier-desc">The positioning statement. The four voice attributes. The primary palette (all 12 values). The typographic trio (Syne, Lora, Inconsolata) and their role assignments. The wordmark specification (Syne 800, uppercase, -0.02em). The zero corner radius rule. The primary archetype (The Magician) and modifier (The Ruler). Any change to these elements is a strategic repositioning, not an identity update — and requires the full Brand Evolution Protocol before a single execution changes.</div>
+      </div>
+    </div>
+
+    <div class="gov-tier extend">
+      <div class="gov-tier-stripe"></div>
+      <div class="gov-tier-body">
+        <span class="gov-tier-label">Extendable — Through Protocol</span>
+        <div class="gov-tier-title">What can be added without changing what exists</div>
+        <div class="gov-tier-desc">New touchpoints (a new content surface can be specified at the DF-01 level without changing existing specifications). New output types (a new content category can be added to the production catalogue with its own Bible). New component patterns (UI components can be added that express the existing visual vocabulary without introducing new visual principles). Extension requires a Translation Protocol trace: the new decision must trace through the existing strategic architecture to a documented rationale. If no trace exists, the decision is a violation — not an extension.</div>
+      </div>
+    </div>
+
+    <div class="gov-tier standard">
+      <div class="gov-tier-stripe"></div>
+      <div class="gov-tier-body">
+        <span class="gov-tier-label">Quality Standard — Applies to Every Output</span>
+        <div class="gov-tier-title">The standard that governs every execution</div>
+        <div class="gov-tier-desc">Every output produced by the MIDILLA system passes through four gate levels before delivery: the Brief Gate (every specified requirement is present), the Token Gate (every color, typeface, and spacing value is at documented specification), the Composition Gate (hierarchy, voice consistency, and structural coherence are maintained), and the Brand Gate (the output is unmistakably MIDILLA — the positioning is coherent, the voice attributes are present, and no anti-patterns appear). An output that fails any gate is revised before delivery. There are no exceptions.</div>
+      </div>
+    </div>
+
+    <div class="subsection" style="margin-top: 44px;">
+      <div class="subsection-heading">The Single Most Important Governance Rule</div>
+      <div class="statement">
+        <span class="statement-label">Governing Principle</span>
+        <div class="statement-text">When in doubt, the Bible governs — and the Bible is consulted before the decision is made informally. An identity decision made without reference to the documented architecture is not a small deviation. It is the opening of a gap that compounds with every subsequent informal decision made in its wake. Brand drift does not begin with a significant change. It begins with a small convenience. The governance framework exists precisely to prevent the small convenience from becoming the new standard.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 10 — OPERATING STANDARD -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+<div class="section-divider">
+  <span class="sd-num">10 / 10</span>
+  <span class="sd-title">The Standard</span>
+</div>
+
+<div class="doc-body">
+  <div class="doc-section">
+
+    <p>This document is the record of every identity decision made for MIDILLA. It does not describe aspirations. It documents decisions — decisions that were made deliberately, traced to their strategic foundations, and locked into a production system that applies them in every execution. The standard this document represents is not aspirational. It is operational.</p>
+
+    <div class="statement">
+      <span class="statement-label">The Operating Promise</span>
+      <div class="statement-text">Every output produced by MIDILLA is evidence of this document's integrity. The positioning statement governs every word of platform copy. The voice attributes are present in every LinkedIn post, every email, every delivered document. The color system is applied at exact specification in every visual execution. The quality gate passes every output before it reaches the audience.</div>
+    </div>
+
+    <p>The brand does not drift because the system was not built to drift. Every decision traces to a strategic rationale. Every visual choice expresses a deliberate intention. The quality standard is documented and enforced — not because enforcement is a value in itself, but because a production system that claims expert-grade quality must demonstrate that standard in its own architecture before it claims it in its outputs.</p>
+
+    <div class="subsection">
+      <div class="subsection-heading">Identity — Complete Decision Record</div>
+      <div class="spec-table">
+        <div class="st-row">
+          <div class="st-key">Positioning</div>
+          <div class="st-val">The content production system for professional service operators who need expert-grade written outputs without managing the production infrastructure.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Primary audience</div>
+          <div class="st-val">Professional service operators — consultants, lawyers, financial advisors, agency owners — who need publication-ready written content at expert level without the production infrastructure to create it consistently.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Primary archetype</div>
+          <div class="st-val">The Magician. Modifier: The Ruler. The transformation experience governed by documented authority.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Voice</div>
+          <div class="st-val">Expert precision · Deliberate pace · Declarative stance · Verbal economy. Four attributes. All active simultaneously. No exceptions.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Background</div>
+          <div class="st-val"><span class="mono">#0A0B0F</span></div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Accent</div>
+          <div class="st-val"><span class="mono">#4ADE80</span> — delivered state, active elements, positive signal</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Wordmark</div>
+          <div class="st-val"><span class="mono">MIDILLA · Syne 800 · UPPERCASE · -0.02em · #F8FAFC</span></div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Defining brand moment</div>
+          <div class="st-val">Platform timer: amber → green. E-03 subject: "Delivered." Simultaneous. The promise kept.</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Platform tiers</div>
+          <div class="st-val">Starter: $49 / 60 credits · Professional: $149 / 250 credits · Architect: custom</div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Order format</div>
+          <div class="st-val"><span class="mono">M-[YEAR]-[NNNN]</span></div>
+        </div>
+        <div class="st-row">
+          <div class="st-key">Governance version</div>
+          <div class="st-val">v1.0 · March 2026 · Bible: 43 sections · 12 parts</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 64px; padding: 48px; background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--accent);">
+      <div style="font-family: 'Inconsolata', monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px;">Closing Statement</div>
+      <div style="font-family: 'Lora', serif; font-size: 17px; color: var(--white); line-height: 1.8; font-style: italic; margin-bottom: 20px;">"This is not a collection of guidelines. It is not a set of suggestions. It is the record of a brand that was built with the precision it claims in its positioning, governed with the rigour it promises in its deliverables, and documented to the standard it applies to every output it produces."</div>
+      <div style="font-family: 'Lora', serif; font-size: 15px; color: var(--text-dim); line-height: 1.8;">Every execution of this brand identity is an act of brand-keeping. The document does not describe MIDILLA. The document is MIDILLA — every decision in it, applied.</div>
+      <div style="font-family: 'Inconsolata', monospace; font-size: 10px; color: var(--text-muted); margin-top: 28px; letter-spacing: 0.08em;">MIDILLA Brand Identity · v1.0 · Samuel Ibrahim · March 2026 · Produced by MIDILLA Production System · Bible v1.0 · 43 Sections</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- DOCUMENT FOOTER -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="doc-footer">
+  <div class="df-left">MIDILLA Brand Identity · v1.0 · Samuel Ibrahim · March 2026 · MIDILLA_Brand_Identity</div>
+  <div class="df-right">Produced by MIDILLA Production System · Bible v1.0 · 43 Sections Complete</div>
+</div>
+
+</body>
+</html>
