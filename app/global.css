@@ -1,0 +1,83 @@
+
+:root {
+  /* Surfaces */
+  --bg:        #0A0B0F;
+  --surface:   #12151C;
+  --surface2:  #1A1E28;
+  --border:    #232838;
+
+  /* Accent — delivered state, active elements, positive signal */
+  --accent:        #4ADE80;
+  --accent-dim:    rgba(74, 222, 128, 0.08);
+  --accent-border: rgba(74, 222, 128, 0.25);
+
+  /* Amber — in-production, warnings */
+  --amber:        #FBB040;
+  --amber-dim:    rgba(251, 176, 64, 0.08);
+  --amber-border: rgba(251, 176, 64, 0.25);
+
+  /* Red — failed, errors */
+  --red:        #F87171;
+  --red-dim:    rgba(248, 113, 113, 0.08);
+  --red-border: rgba(248, 113, 113, 0.22);
+
+  /* Blue — confirmed state, informational */
+  --blue:        #60A5FA;
+  --blue-dim:    rgba(96, 165, 250, 0.08);
+  --blue-border: rgba(96, 165, 250, 0.25);
+
+  /* Text */
+  --white:      #F8FAFC;
+  --text:       #E2E8F0;
+  --text-dim:   #8892A4;
+  --text-muted: #4A5568;
+
+  /* Typography — set by next/font in layout.tsx */
+  --font-syne: 'Syne', sans-serif;
+  --font-lora: 'Lora', serif;
+  --font-mono: 'Inconsolata', monospace;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important; /* Zero radius — fixed identity rule */
+}
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-lora), serif;
+  font-size: 15px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ── Base elements ── */
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
