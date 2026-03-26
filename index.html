@@ -14,57 +14,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* ================================================================
-       MIDILLA — WEBSITE v1.0
-       Token-faithful · Brand Identity v1.0 · 43 Sections
-       Zero corner radius rule enforced throughout
-    ================================================================ */
-
-    /* --- DESIGN TOKENS --- */
     :root {
-      /* Color System — exact specification */
       --bg:             #0A0B0F;
       --surface:        #12151C;
       --surface2:       #1A1E28;
       --border:         #232838;
       --accent:         #4ADE80;
-      --accent-dim:     rgba(74, 222, 128, 0.07);
-      --accent-border:  rgba(74, 222, 128, 0.22);
+      --accent-dim:     rgba(74,222,128,0.07);
+      --accent-border:  rgba(74,222,128,0.22);
       --amber:          #FBB040;
-      --amber-dim:      rgba(251, 176, 64, 0.08);
-      --amber-border:   rgba(251, 176, 64, 0.22);
-      --red:            #F87171;
-      --blue:           #60A5FA;
       --text-muted:     #4A5568;
       --text-dim:       #8892A4;
       --text:           #E2E8F0;
       --white:          #F8FAFC;
-
-      /* Elevation — surface steps, never box-shadow */
-      --elev-0: 1px solid var(--border);
-      --elev-1: 1px solid rgba(74, 222, 128, 0.15);
-      --elev-2: 1px solid rgba(74, 222, 128, 0.30);
-
-      /* Spacing — 8px base scale */
-      --sp-1:   4px;
-      --sp-2:   8px;
-      --sp-3:   12px;
-      --sp-4:   16px;
-      --sp-5:   24px;
-      --sp-6:   32px;
-      --sp-7:   48px;
-      --sp-8:   64px;
-      --sp-9:   80px;
-      --sp-10:  96px;
+      --sp-10: 96px;
     }
 
-    /* --- RESET --- */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
@@ -76,807 +42,465 @@
       overflow-x: hidden;
     }
 
-    /* --- NAVIGATION --- */
+    /* NAV */
     .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 200;
-      background: rgba(10, 11, 15, 0.94);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(10,11,15,0.94);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px;
     }
-
-    /* Wordmark — Syne 800 · UPPERCASE · -0.02em · #F8FAFC */
     .nav-wordmark {
-      font-family: 'Syne', sans-serif;
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
+      font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800;
+      letter-spacing: -0.02em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
     }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-link {
-      font-family: 'Inconsolata', monospace;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.18s;
+      font-family: 'Inconsolata', monospace; font-size: 11px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none; transition: color 0.18s;
     }
-
     .nav-link:hover { color: var(--text); }
-
     .nav-cta {
-      font-family: 'Syne', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--bg);
-      background: var(--accent);
-      padding: 9px 20px;
-      text-decoration: none;
-      display: inline-block;
-      transition: opacity 0.18s;
-      /* Zero corner radius — enforced */
+      font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--bg); background: var(--accent);
+      padding: 9px 20px; text-decoration: none; transition: opacity 0.18s;
     }
-
     .nav-cta:hover { opacity: 0.86; }
 
-    /* --- LAYOUT --- */
-    .container {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 0 48px;
-    }
+    /* LAYOUT */
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 48px; }
+    section { padding: var(--sp-10) 0; }
+    .section-divider-rule { border-top: 1px solid var(--border); }
 
-    section {
-      padding: var(--sp-10) 0;
-    }
-
-    /* --- SHARED TYPOGRAPHY --- */
+    /* SHARED TYPE */
     .section-label {
-      font-family: 'Inconsolata', monospace;
-      font-size: 9px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 28px;
+      font-family: 'Inconsolata', monospace; font-size: 9px;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
     }
-
     .section-label::before {
-      content: '';
-      display: block;
-      width: 28px;
-      height: 1px;
-      background: var(--accent);
-      flex-shrink: 0;
+      content: ''; display: block; width: 28px; height: 1px;
+      background: var(--accent); flex-shrink: 0;
     }
-
     .section-heading {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(28px, 4vw, 46px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      line-height: 1.02;
-      margin-bottom: 24px;
+      font-family: 'Syne', sans-serif; font-size: clamp(28px,4vw,46px);
+      font-weight: 800; letter-spacing: -0.02em; color: var(--white);
+      line-height: 1.02; margin-bottom: 24px;
     }
-
     .section-body {
-      font-family: 'Lora', serif;
-      font-size: 16px;
-      color: var(--text-dim);
-      line-height: 1.9;
-      max-width: 64ch;
-      margin-bottom: 20px;
+      font-family: 'Lora', serif; font-size: 16px; color: var(--text-dim);
+      line-height: 1.9; max-width: 64ch; margin-bottom: 20px;
     }
-
-    .section-body strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* Statement block */
+    .section-body strong { color: var(--text); font-weight: 500; }
     .statement-block {
-      background: var(--surface);
-      border-left: 3px solid var(--accent);
-      padding: 28px 32px;
-      margin: 36px 0;
+      background: var(--surface); border-left: 3px solid var(--accent);
+      padding: 28px 32px; margin: 36px 0;
     }
-
     .statement-tag {
-      font-family: 'Inconsolata', monospace;
-      font-size: 9px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 12px;
+      font-family: 'Inconsolata', monospace; font-size: 9px;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent);
+      display: block; margin-bottom: 12px;
     }
-
     .statement-text {
-      font-family: 'Lora', serif;
-      font-style: italic;
-      font-size: 17px;
-      color: var(--white);
-      line-height: 1.75;
+      font-family: 'Lora', serif; font-style: italic;
+      font-size: 17px; color: var(--white); line-height: 1.75;
     }
 
-    /* --- HERO --- */
+    /* HERO */
     .hero {
-      padding-top: calc(var(--sp-10) + 56px);
-      padding-bottom: var(--sp-10);
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
+      padding-top: calc(var(--sp-10) + 56px); padding-bottom: var(--sp-10);
+      border-bottom: 1px solid var(--border); position: relative; overflow: hidden;
     }
-
     .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--accent);
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--accent);
     }
-
     .hero-eyebrow {
-      font-family: 'Inconsolata', monospace;
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 32px;
+      font-family: 'Inconsolata', monospace; font-size: 10px;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 12px; margin-bottom: 32px;
     }
-
     .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 28px;
-      height: 1px;
-      background: var(--accent);
+      content: ''; display: block; width: 28px; height: 1px; background: var(--accent);
     }
-
     .hero-headline {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(48px, 9vw, 104px);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 0.94;
-      color: var(--white);
-      margin-bottom: 36px;
-      max-width: 800px;
+      font-family: 'Syne', sans-serif; font-size: clamp(48px,9vw,104px);
+      font-weight: 800; letter-spacing: -0.025em; line-height: 0.94;
+      color: var(--white); margin-bottom: 36px; max-width: 800px;
     }
-
-    .hero-headline .accent-line {
-      color: var(--accent);
-      display: block;
-    }
-
+    .hero-headline .accent-line { color: var(--accent); display: block; }
     .hero-sub {
-      font-family: 'Lora', serif;
-      font-size: 17px;
-      font-style: italic;
-      color: var(--text-dim);
-      line-height: 1.8;
-      max-width: 52ch;
-      margin-bottom: 48px;
+      font-family: 'Lora', serif; font-size: 17px; font-style: italic;
+      color: var(--text-dim); line-height: 1.8; max-width: 52ch; margin-bottom: 48px;
     }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
-
+    .hero-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
     .btn-primary {
-      font-family: 'Syne', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--bg);
-      background: var(--accent);
-      padding: 15px 32px;
-      text-decoration: none;
-      display: inline-block;
-      transition: opacity 0.18s;
+      font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--bg); background: var(--accent);
+      padding: 15px 32px; text-decoration: none; transition: opacity 0.18s;
     }
-
     .btn-primary:hover { opacity: 0.86; }
-
     .btn-ghost {
-      font-family: 'Inconsolata', monospace;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.18s;
+      font-family: 'Inconsolata', monospace; font-size: 12px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none; transition: color 0.18s;
     }
-
     .btn-ghost:hover { color: var(--text); }
-
-    /* Hero stat bar */
     .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 72px;
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); margin-top: 72px;
     }
-
-    .stat-cell {
-      background: var(--surface);
-      padding: 22px 24px;
-    }
-
+    .stat-cell { background: var(--surface); padding: 22px 24px; }
     .stat-value {
-      font-family: 'Syne', sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      display: block;
-      line-height: 1;
-      margin-bottom: 6px;
+      font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--white);
+      display: block; line-height: 1; margin-bottom: 6px;
     }
-
     .stat-value.accent { color: var(--accent); }
-
     .stat-label {
-      font-family: 'Inconsolata', monospace;
-      font-size: 9px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: block;
+      font-family: 'Inconsolata', monospace; font-size: 9px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-muted); display: block;
     }
 
-    /* --- PROBLEM SECTION --- */
-    .section-divider-rule {
-      border-top: 1px solid var(--border);
-    }
-
-    /* --- HOW IT WORKS --- */
+    /* HOW IT WORKS */
     .how-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 52px;
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); margin-top: 52px;
     }
-
-    .how-step {
-      background: var(--surface);
-      padding: 40px 34px;
-    }
-
+    .how-step { background: var(--surface); padding: 40px 34px; }
     .how-num {
-      font-family: 'Inconsolata', monospace;
-      font-size: 9px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 20px;
+      font-family: 'Inconsolata', monospace; font-size: 9px;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent);
+      display: block; margin-bottom: 20px;
     }
-
     .how-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 19px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--white);
-      margin-bottom: 14px;
-      line-height: 1.1;
+      font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700;
+      letter-spacing: -0.01em; color: var(--white); margin-bottom: 14px; line-height: 1.1;
     }
+    .how-body { font-family: 'Lora', serif; font-size: 14px; color: var(--text-dim); line-height: 1.85; }
 
-    .how-body {
-      font-family: 'Lora', serif;
-      font-size: 14px;
-      color: var(--text-dim);
-      line-height: 1.85;
-    }
-
-    /* --- DELIVERY MOMENT --- */
+    /* DELIVERY */
     .delivery-section {
       background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
     }
-
     .delivery-states {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 52px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); margin-top: 52px;
     }
-
-    .state-card {
-      background: var(--bg);
-      padding: 52px 44px;
-    }
-
+    .state-card { background: var(--bg); padding: 52px 44px; }
     .state-badge {
-      font-family: 'Inconsolata', monospace;
-      font-size: 9px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 20px;
+      font-family: 'Inconsolata', monospace; font-size: 9px;
+      letter-spacing: 0.22em; text-transform: uppercase; display: block; margin-bottom: 20px;
     }
-
     .state-badge.amber { color: var(--amber); }
     .state-badge.accent { color: var(--accent); }
-
     .state-timer {
-      font-family: 'Syne', sans-serif;
-      font-size: 56px;
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1;
-      margin-bottom: 14px;
+      font-family: 'Syne', sans-serif; font-size: 56px; font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1; margin-bottom: 14px;
     }
-
     .state-timer.amber { color: var(--amber); }
     .state-timer.accent { color: var(--accent); }
-
     .state-order {
-      font-family: 'Inconsolata', monospace;
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-      display: block;
+      font-family: 'Inconsolata', monospace; font-size: 11px;
+      color: var(--text-muted); margin-bottom: 6px; display: block;
     }
+    .state-status { font-family: 'Inconsolata', monospace; font-size: 11px; display: block; }
+    .state-status.amber { color: rgba(251,176,64,0.6); }
+    .state-status.accent { color: rgba(74,222,128,0.6); }
 
-    .state-status {
-      font-family: 'Inconsolata', monospace;
-      font-size: 11px;
-      display: block;
-    }
-
-    .state-status.amber { color: rgba(251, 176, 64, 0.6); }
-    .state-status.accent { color: rgba(74, 222, 128, 0.6); }
-
-    /* --- OUTPUT CATALOGUE --- */
+    /* OUTPUTS */
     .outputs-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 52px;
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); margin-top: 52px;
     }
-
-    .output-card {
-      background: var(--surface);
-      padding: 32px 30px;
-    }
-
+    .output-card { background: var(--surface); padding: 32px 30px; }
     .output-code {
-      font-family: 'Inconsolata', monospace;
-      font-size: 9px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-dim);
+      font-family: 'Inconsolata', monospace; font-size: 9px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-dim);
       border: 1px solid var(--accent-border);
-      padding: 3px 10px;
-      display: inline-block;
-      margin-bottom: 16px;
+      padding: 3px 10px; display: inline-block; margin-bottom: 16px;
     }
-
     .output-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
+      font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--white); margin-bottom: 12px; letter-spacing: -0.01em;
     }
-
-    .output-desc {
-      font-family: 'Lora', serif;
-      font-size: 14px;
-      color: var(--text-dim);
-      line-height: 1.8;
-    }
-
-    /* --- THE MOAT --- */
+    .output-desc { font-family: 'Lora', serif; font-size: 14px; color: var(--text-dim); line-height: 1.8; }
     .moat-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-top: 3px solid var(--accent);
-      padding: 44px;
-      margin-top: 52px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-top: 3px solid var(--accent); padding: 44px; margin-top: 48px;
     }
-
     .moat-label {
-      font-family: 'Inconsolata', monospace;
-      font-size: 9px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 16px;
+      font-family: 'Inconsolata', monospace; font-size: 9px;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent);
+      display: block; margin-bottom: 16px;
     }
-
     .moat-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      color: var(--white);
-      margin-bottom: 16px;
-      line-height: 1.15;
+      font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
+      letter-spacing: -0.01em; color: var(--white); margin-bottom: 16px; line-height: 1.15;
     }
+    .moat-body { font-family: 'Lora', serif; font-size: 15px; color: var(--text-dim); line-height: 1.9; max-width: 68ch; }
 
-    .moat-body {
-      font-family: 'Lora', serif;
-      font-size: 15px;
-      color: var(--text-dim);
-      line-height: 1.9;
-      max-width: 68ch;
-    }
-
-    /* --- PRICING --- */
+    /* PRICING */
     .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 52px;
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); margin-top: 52px;
     }
-
-    .pricing-card {
-      background: var(--surface);
-      padding: 40px 32px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .pricing-card.featured {
-      background: var(--surface2);
-      border-top: 3px solid var(--accent);
-    }
-
+    .pricing-card { background: var(--surface); padding: 40px 32px; display: flex; flex-direction: column; }
+    .pricing-card.featured { background: var(--surface2); border-top: 3px solid var(--accent); }
     .tier-label {
-      font-family: 'Inconsolata', monospace;
-      font-size: 9px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: block;
-      margin-bottom: 14px;
+      font-family: 'Inconsolata', monospace; font-size: 9px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-muted); display: block; margin-bottom: 14px;
     }
-
     .pricing-card.featured .tier-label { color: var(--accent); }
-
     .tier-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      color: var(--white);
-      margin-bottom: 24px;
+      font-family: 'Syne', sans-serif; font-size: 21px; font-weight: 800;
+      letter-spacing: -0.01em; color: var(--white); margin-bottom: 24px;
     }
-
     .tier-price {
-      font-family: 'Syne', sans-serif;
-      font-size: 44px;
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 6px;
+      font-family: 'Syne', sans-serif; font-size: 44px; font-weight: 800;
+      letter-spacing: -0.025em; color: var(--white); line-height: 1; margin-bottom: 6px;
     }
-
-    .tier-price .currency {
-      font-size: 22px;
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-
+    .tier-price .currency { font-size: 22px; color: var(--text-muted); font-weight: 400; }
     .tier-price-custom {
-      font-family: 'Syne', sans-serif;
-      font-size: 30px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 6px;
+      font-family: 'Syne', sans-serif; font-size: 30px; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--white); line-height: 1; margin-bottom: 6px;
     }
-
     .tier-credits {
-      font-family: 'Inconsolata', monospace;
-      font-size: 11px;
-      color: var(--text-muted);
-      display: block;
-      margin-bottom: 28px;
+      font-family: 'Inconsolata', monospace; font-size: 11px;
+      color: var(--text-muted); display: block; margin-bottom: 28px;
     }
-
-    .tier-rule {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 0 0 24px;
-    }
-
-    .tier-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-      flex: 1;
-      margin-bottom: 32px;
-    }
-
+    .tier-rule { border: none; border-top: 1px solid var(--border); margin: 0 0 24px; }
+    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 11px; flex: 1; margin-bottom: 32px; }
     .tier-features li {
-      font-family: 'Lora', serif;
-      font-size: 13.5px;
-      color: var(--text-dim);
-      padding-left: 20px;
-      position: relative;
-      line-height: 1.65;
+      font-family: 'Lora', serif; font-size: 13.5px; color: var(--text-dim);
+      padding-left: 20px; position: relative; line-height: 1.65;
     }
-
     .tier-features li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-family: 'Inconsolata', monospace;
-      font-size: 11px;
-      top: 2px;
+      content: '→'; position: absolute; left: 0; color: var(--accent);
+      font-family: 'Inconsolata', monospace; font-size: 11px; top: 2px;
     }
-
     .tier-custom-note {
-      font-family: 'Lora', serif;
-      font-style: italic;
-      font-size: 14px;
-      color: var(--text-dim);
-      line-height: 1.75;
-      margin-bottom: 28px;
+      font-family: 'Lora', serif; font-style: italic; font-size: 14px;
+      color: var(--text-dim); line-height: 1.75; margin-bottom: 28px; flex: 1;
     }
-
     .tier-cta {
-      display: block;
-      font-family: 'Syne', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-align: center;
-      text-decoration: none;
-      padding: 14px 20px;
-      border: 1px solid var(--border);
-      color: var(--text-dim);
-      transition: border-color 0.18s, color 0.18s;
-      margin-top: auto;
+      display: block; font-family: 'Syne', sans-serif; font-size: 11px;
+      font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      text-align: center; text-decoration: none; padding: 14px 20px;
+      border: 1px solid var(--border); color: var(--text-dim);
+      transition: border-color 0.18s, color 0.18s; margin-top: auto;
     }
-
-    .tier-cta:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .pricing-card.featured .tier-cta {
-      background: var(--accent);
-      color: var(--bg);
-      border-color: var(--accent);
-    }
-
+    .tier-cta:hover { border-color: var(--accent); color: var(--accent); }
+    .pricing-card.featured .tier-cta { background: var(--accent); color: var(--bg); border-color: var(--accent); }
     .pricing-card.featured .tier-cta:hover { opacity: 0.86; color: var(--bg); }
-
-    /* --- GOVERNANCE NOTE --- */
     .governance-bar {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 28px 36px;
-      margin-top: 48px;
-      display: flex;
-      align-items: flex-start;
-      gap: 24px;
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 28px 36px; margin-top: 48px;
+      display: flex; align-items: flex-start; gap: 24px;
     }
-
     .gov-tag {
-      font-family: 'Inconsolata', monospace;
-      font-size: 9px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      white-space: nowrap;
-      margin-top: 2px;
+      font-family: 'Inconsolata', monospace; font-size: 9px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted); white-space: nowrap; margin-top: 2px;
     }
+    .gov-text { font-family: 'Lora', serif; font-size: 14px; font-style: italic; color: var(--text-dim); line-height: 1.75; }
 
-    .gov-text {
-      font-family: 'Lora', serif;
-      font-size: 14px;
-      font-style: italic;
-      color: var(--text-dim);
-      line-height: 1.75;
-    }
-
-    /* --- FOOTER --- */
-    .footer {
+    /* BRIEF INTAKE FORM */
+    .intake-section {
       background: var(--surface);
       border-top: 3px solid var(--accent);
-      padding: 64px 0 36px;
-    }
-
-    .footer-main {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 40px;
-      padding-bottom: 44px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 36px;
+    }
+    .intake-header { margin-bottom: 52px; }
+    .intake-form { background: var(--bg); border: 1px solid var(--border); }
+
+    .intake-receipt {
+      display: flex; align-items: stretch;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+    }
+    .receipt-field { flex: 1; min-width: 120px; padding: 14px 20px; border-right: 1px solid var(--border); }
+    .receipt-field:last-child { border-right: none; }
+    .receipt-label {
+      font-family: 'Inconsolata', monospace; font-size: 8px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-muted); display: block; margin-bottom: 4px;
+    }
+    .receipt-value { font-family: 'Inconsolata', monospace; font-size: 11px; color: var(--accent); }
+    .receipt-value.neutral { color: var(--text-dim); }
+
+    .intake-form-body { padding: 44px; }
+
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--border); margin-bottom: 1px;
+    }
+    .form-row.full { grid-template-columns: 1fr; }
+
+    .form-field { background: var(--bg); display: flex; flex-direction: column; }
+    .form-field:focus-within { outline: 1px solid rgba(74,222,128,0.30); outline-offset: -1px; }
+
+    .field-label {
+      font-family: 'Inconsolata', monospace; font-size: 9px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-muted); padding: 16px 20px 0; display: block;
+    }
+    .field-input, .field-select, .field-textarea {
+      font-family: 'Lora', serif; font-size: 15px; color: var(--text);
+      background: transparent; border: none; outline: none;
+      padding: 10px 20px 16px; width: 100%;
+      -webkit-appearance: none; appearance: none;
+    }
+    .field-input::placeholder, .field-textarea::placeholder { color: var(--text-muted); }
+    .field-select { cursor: pointer; }
+    .field-select option { background: var(--surface2); color: var(--text); }
+    .field-select.placeholder-active { color: var(--text-muted); }
+    .field-textarea { resize: vertical; min-height: 140px; line-height: 1.75; }
+
+    .form-footer-row {
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 24px 44px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .form-note {
+      font-family: 'Inconsolata', monospace; font-size: 10px;
+      color: var(--text-muted); letter-spacing: 0.06em; line-height: 1.7;
+    }
+    .form-submit {
+      font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--bg); background: var(--accent); border: none;
+      padding: 15px 36px; cursor: pointer; transition: opacity 0.18s;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .form-submit:hover { opacity: 0.86; }
+    .form-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      background: var(--bg); border: 1px solid var(--accent-border);
+      border-top: 3px solid var(--accent);
+      padding: 64px 44px; text-align: center;
+    }
+    .success-label {
+      font-family: 'Inconsolata', monospace; font-size: 9px;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent);
+      display: block; margin-bottom: 20px;
+    }
+    .success-headline {
+      font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800;
+      letter-spacing: -0.025em; color: var(--accent); margin-bottom: 16px; line-height: 1;
+    }
+    .success-body {
+      font-family: 'Lora', serif; font-style: italic; font-size: 16px;
+      color: var(--text-dim); line-height: 1.8; max-width: 48ch; margin: 0 auto;
+    }
+    .success-order {
+      font-family: 'Inconsolata', monospace; font-size: 10px;
+      color: var(--text-muted); margin-top: 24px; display: block;
     }
 
-    .footer-brand {}
-
-    /* Wordmark — Syne 800 · UPPERCASE · -0.02em · #F8FAFC */
+    /* FOOTER */
+    .footer { background: var(--surface); border-top: 3px solid var(--accent); padding: 64px 0 36px; }
+    .footer-main {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 40px; padding-bottom: 44px;
+      border-bottom: 1px solid var(--border); margin-bottom: 36px;
+    }
     .footer-wordmark {
-      font-family: 'Syne', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      color: var(--white);
-      display: block;
-      margin-bottom: 12px;
+      font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
+      letter-spacing: -0.02em; text-transform: uppercase;
+      color: var(--white); display: block; margin-bottom: 12px;
     }
-
     .footer-positioning {
-      font-family: 'Lora', serif;
-      font-style: italic;
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.75;
-      max-width: 360px;
+      font-family: 'Lora', serif; font-style: italic; font-size: 14px;
+      color: var(--text-muted); line-height: 1.75; max-width: 360px;
     }
-
-    .footer-meta {
-      text-align: right;
-    }
-
+    .footer-meta { text-align: right; }
     .footer-meta-item {
-      font-family: 'Inconsolata', monospace;
-      font-size: 10px;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-      display: block;
-      margin-bottom: 5px;
+      font-family: 'Inconsolata', monospace; font-size: 10px;
+      color: var(--text-muted); letter-spacing: 0.1em; display: block; margin-bottom: 5px;
     }
-
     .footer-meta-item.accent { color: var(--accent); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .footer-legal, .footer-build { font-family: 'Inconsolata', monospace; font-size: 10px; color: var(--text-muted); }
 
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .footer-legal {
-      font-family: 'Inconsolata', monospace;
-      font-size: 10px;
-      color: var(--text-muted);
-    }
-
-    .footer-build {
-      font-family: 'Inconsolata', monospace;
-      font-size: 10px;
-      color: var(--text-muted);
-    }
-
-    /* --- RESPONSIVE --- */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      .nav         { padding: 0 24px; }
-      .nav-link    { display: none; }
-      .container   { padding: 0 24px; }
-      section      { padding: 72px 0; }
-
-      .hero        { padding-top: calc(72px + 56px); padding-bottom: 72px; }
-
-      .hero-stats  { grid-template-columns: repeat(2, 1fr); }
-
-      .how-grid    { grid-template-columns: 1fr; }
-
-      .delivery-states {
-        grid-template-columns: 1fr;
-      }
-
-      .outputs-grid  { grid-template-columns: 1fr; }
-      .pricing-grid  { grid-template-columns: 1fr; }
-
-      .footer-main   { flex-direction: column; }
-      .footer-meta   { text-align: left; }
+      .nav { padding: 0 24px; }
+      .nav-link { display: none; }
+      .container { padding: 0 24px; }
+      section { padding: 72px 0; }
+      .hero { padding-top: calc(72px + 56px); padding-bottom: 72px; }
+      .hero-stats { grid-template-columns: repeat(2,1fr); }
+      .how-grid { grid-template-columns: 1fr; }
+      .delivery-states { grid-template-columns: 1fr; }
+      .outputs-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .footer-main { flex-direction: column; }
+      .footer-meta { text-align: left; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
-
       .governance-bar { flex-direction: column; gap: 12px; }
+      .form-row { grid-template-columns: 1fr; }
+      .intake-form-body { padding: 28px 24px; }
+      .form-footer-row { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
+      .form-submit { width: 100%; text-align: center; }
     }
-
     @media (max-width: 480px) {
-      .hero-headline  { font-size: 44px; }
-      .state-timer    { font-size: 42px; }
-      .hero-stats     { grid-template-columns: 1fr 1fr; }
-      .hero-actions   { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .hero-headline { font-size: 44px; }
+      .state-timer { font-size: 42px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════
-     NAVIGATION
-══════════════════════════ -->
+<!-- NAV -->
 <nav class="nav">
   <a href="#" class="nav-wordmark">MIDILLA</a>
   <div class="nav-links">
     <a href="#how-it-works" class="nav-link">How it works</a>
     <a href="#outputs"      class="nav-link">Outputs</a>
     <a href="#pricing"      class="nav-link">Pricing</a>
-    <a href="#pricing"      class="nav-cta">Start a Brief</a>
+    <a href="#brief-intake" class="nav-cta">Start a Brief</a>
   </div>
 </nav>
 
-
-<!-- ══════════════════════════
-     HERO
-══════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
   <div class="container">
-
     <div class="hero-eyebrow">Content Production System · Active</div>
-
     <h1 class="hero-headline">
       Expert content.
       <span class="accent-line">Delivered.</span>
     </h1>
-
     <p class="hero-sub">
       The content production system for professional service operators
       who need publication-ready written outputs — without building
       the infrastructure to produce them.
     </p>
-
     <div class="hero-actions">
-      <a href="#pricing"      class="btn-primary">Start a Brief</a>
+      <a href="#brief-intake" class="btn-primary">Start a Brief</a>
       <a href="#how-it-works" class="btn-ghost">See how it works →</a>
     </div>
-
     <div class="hero-stats">
       <div class="stat-cell">
         <span class="stat-value">43</span>
@@ -895,20 +519,14 @@
         <span class="stat-label">Publication-ready standard</span>
       </div>
     </div>
-
   </div>
 </section>
 
-
-<!-- ══════════════════════════
-     THE PROBLEM
-══════════════════════════ -->
+<!-- THE PROBLEM -->
 <section class="section-divider-rule">
   <div class="container">
-
     <div class="section-label">The Problem</div>
     <h2 class="section-heading">Your content output is capped by your production infrastructure.</h2>
-
     <p class="section-body">
       Professional service operators — consultants, lawyers, financial advisors, agency owners —
       carry expertise that is worth publishing. The gap is not knowledge.
@@ -920,7 +538,6 @@
       <strong>Engaging an agency</strong> means institutional overhead and pricing built for retainers.
       <strong>Writing it yourself</strong> consumes the hours you should be billing.
     </p>
-
     <div class="statement-block">
       <span class="statement-tag">Positioning Statement</span>
       <p class="statement-text">
@@ -928,40 +545,30 @@
         expert-grade written outputs without managing the production infrastructure.
       </p>
     </div>
-
   </div>
 </section>
 
-
-<!-- ══════════════════════════
-     HOW IT WORKS
-══════════════════════════ -->
+<!-- HOW IT WORKS -->
 <section id="how-it-works" class="section-divider-rule">
   <div class="container">
-
     <div class="section-label">The System</div>
     <h2 class="section-heading">You submit the brief.<br/>The system delivers the document.</h2>
-
     <p class="section-body">
       Every content type on MIDILLA is produced through a documented Bible —
       a complete production architecture built, tested, and quality-gated before
       the first brief was submitted. Output quality is not determined by how well
       you write the brief. It is determined by the architecture applied to it.
     </p>
-
     <div class="how-grid">
-
       <div class="how-step">
         <span class="how-num">Step 01 · Brief</span>
         <div class="how-title">You submit the brief.</div>
         <p class="how-body">
           A structured intake captures everything the production system needs:
           the output type, the target audience, the argument, the evidence you supply.
-          An order number is generated in the format M-[YEAR]-[NNNN].
-          The timer starts.
+          An order number is generated in the format M-[YEAR]-[NNNN]. The timer starts.
         </p>
       </div>
-
       <div class="how-step">
         <span class="how-num">Step 02 · Production</span>
         <div class="how-title">The system produces it.</div>
@@ -972,150 +579,93 @@
           No output ships before all four are cleared.
         </p>
       </div>
-
       <div class="how-step">
         <span class="how-num">Step 03 · Delivered.</span>
         <div class="how-title">The document arrives.</div>
         <p class="how-body">
           Publication-ready. Not "could be improved by an editor" —
           ready to publish without one. The order number is on the document.
-          The timer becomes a green confirmation.
-          The promise kept.
+          The timer becomes a green confirmation. The promise kept.
         </p>
       </div>
-
     </div>
-
   </div>
 </section>
 
-
-<!-- ══════════════════════════
-     THE DELIVERY MOMENT
-══════════════════════════ -->
+<!-- DELIVERY MOMENT -->
 <section class="delivery-section">
   <div class="container">
-
     <div class="section-label">The Defining Moment</div>
     <h2 class="section-heading">Amber becomes green.<br/>The timer becomes a confirmation.</h2>
-
     <p class="section-body">
       Every order on MIDILLA tracks through two states.
       The amber state is the production state — in progress, in system, on schedule.
       The green state is the delivery state — the document has left production
       and is in your inbox. The transition is the brand's defining moment.
     </p>
-
     <div class="delivery-states">
-
       <div class="state-card">
         <span class="state-badge amber">In Production</span>
         <div class="state-timer amber">23:47:12</div>
         <span class="state-order">Order M-2026-0091</span>
         <span class="state-status amber">B2B White Paper · Financial Services · In system</span>
       </div>
-
       <div class="state-card">
         <span class="state-badge accent">Delivered.</span>
         <div class="state-timer accent">00:00:00</div>
         <span class="state-order">Order M-2026-0091</span>
         <span class="state-status accent">B2B White Paper · Financial Services · Ready to publish</span>
       </div>
-
     </div>
-
   </div>
 </section>
 
-
-<!-- ══════════════════════════
-     OUTPUT CATALOGUE
-══════════════════════════ -->
-<section id="outputs" class="section-divider-rule" style="border-bottom: 1px solid var(--border);">
+<!-- OUTPUT CATALOGUE -->
+<section id="outputs" class="section-divider-rule">
   <div class="container">
-
     <div class="section-label">Output Catalogue</div>
     <h2 class="section-heading">What MIDILLA produces.</h2>
     <p class="section-body">
       Each category is a complete production system — not a template,
       not a style guide. A documented architecture from intake to delivery.
     </p>
-
     <div class="outputs-grid">
-
       <div class="output-card">
         <span class="output-code">WP-01</span>
         <div class="output-name">B2B White Papers</div>
-        <p class="output-desc">
-          Long-form authority documents for consultants, financial advisors,
-          and professional service firms. Structured argument, evidenced claims,
-          and formatting ready for client distribution.
-        </p>
+        <p class="output-desc">Long-form authority documents for consultants, financial advisors, and professional service firms. Structured argument, evidenced claims, and formatting ready for client distribution.</p>
       </div>
-
       <div class="output-card">
         <span class="output-code">LC-01</span>
         <div class="output-name">Legal Content</div>
-        <p class="output-desc">
-          Practice area content, attorney profiles, and thought leadership
-          for law firms and legal marketing platforms.
-          Accuracy-first. Editorial-grade. No generic volume claims.
-        </p>
+        <p class="output-desc">Practice area content, attorney profiles, and thought leadership for law firms and legal marketing platforms. Accuracy-first. Editorial-grade. No generic volume claims.</p>
       </div>
-
       <div class="output-card">
         <span class="output-code">ES-01</span>
         <div class="output-name">Email Sequences</div>
-        <p class="output-desc">
-          Onboarding, nurture, and re-engagement sequences for professional
-          service platforms. Each email is engineered to a specific
-          behavioral objective — not filled to a word count.
-        </p>
+        <p class="output-desc">Onboarding, nurture, and re-engagement sequences for professional service platforms. Each email is engineered to a specific behavioral objective — not filled to a word count.</p>
       </div>
-
       <div class="output-card">
         <span class="output-code">TL-01</span>
         <div class="output-name">LinkedIn Thought Leadership</div>
-        <p class="output-desc">
-          Founder and executive content for professional audiences.
-          MIDILLA's voice system — expert precision, deliberate pace,
-          declarative stance — applied to platform distribution mechanics.
-        </p>
+        <p class="output-desc">Founder and executive content for professional audiences. MIDILLA's voice system — expert precision, deliberate pace, declarative stance — applied to platform distribution mechanics.</p>
       </div>
-
     </div>
-
     <div class="moat-block">
       <span class="moat-label">// The Structural Moat</span>
       <div class="moat-title">The quality of the output is determined by the architecture, not the brief.</div>
-      <p class="moat-body">
-        Every content type on MIDILLA is backed by a Bible — a complete production
-        system documented, tested, and quality-gated before the first client brief arrived.
-        A competitor who decides to build equivalent systems requires equivalent investment.
-        The moat deepens with each system added.
-      </p>
+      <p class="moat-body">Every content type on MIDILLA is backed by a Bible — a complete production system documented, tested, and quality-gated before the first client brief arrived. A competitor who decides to build equivalent systems requires equivalent investment. The moat deepens with each system added.</p>
     </div>
-
   </div>
 </section>
 
-
-<!-- ══════════════════════════
-     PRICING
-══════════════════════════ -->
+<!-- PRICING -->
 <section id="pricing" class="section-divider-rule">
   <div class="container">
-
     <div class="section-label">Production Tiers</div>
     <h2 class="section-heading">Three tiers. One standard.</h2>
-    <p class="section-body">
-      Every tier delivers to the same quality gate.
-      The difference is volume and access level.
-    </p>
-
+    <p class="section-body">Every tier delivers to the same quality gate. The difference is volume and access level.</p>
     <div class="pricing-grid">
-
-      <!-- Starter -->
       <div class="pricing-card">
         <span class="tier-label">Tier 01</span>
         <div class="tier-name">Starter</div>
@@ -1129,10 +679,8 @@
           <li>B2B white papers and email sequences</li>
           <li>48-hour production window</li>
         </ul>
-        <a href="#" class="tier-cta">Start a Brief</a>
+        <a href="#brief-intake" class="tier-cta">Start a Brief</a>
       </div>
-
-      <!-- Professional — Featured -->
       <div class="pricing-card featured">
         <span class="tier-label">Tier 02</span>
         <div class="tier-name">Professional</div>
@@ -1146,19 +694,13 @@
           <li>Priority production queue</li>
           <li>24-hour production window</li>
         </ul>
-        <a href="#" class="tier-cta">Start a Brief</a>
+        <a href="#brief-intake" class="tier-cta">Start a Brief</a>
       </div>
-
-      <!-- Architect -->
       <div class="pricing-card">
         <span class="tier-label">Tier 03</span>
         <div class="tier-name">Architect</div>
         <div class="tier-price-custom">Custom</div>
-        <p class="tier-custom-note">
-          For operators who need a dedicated production system —
-          volume, custom output categories, and direct system integration.
-          Scoped to requirement.
-        </p>
+        <p class="tier-custom-note">For operators who need a dedicated production system — volume, custom output categories, and direct system integration. Scoped to requirement.</p>
         <hr class="tier-rule" />
         <ul class="tier-features">
           <li>Everything in Professional</li>
@@ -1167,33 +709,205 @@
           <li>Custom credit volume</li>
           <li>Direct access — scoped engagement</li>
         </ul>
-        <a href="#" class="tier-cta">Request a Scope</a>
+        <a href="#brief-intake" class="tier-cta">Request a Scope</a>
       </div>
-
     </div>
-
     <div class="governance-bar">
       <span class="gov-tag">// Governance</span>
-      <p class="gov-text">
-        Every output produced by MIDILLA passes through four gate levels before delivery:
-        the Brief Gate, the Token Gate, the Composition Gate, and the Brand Gate.
-        An output that fails any gate is revised before delivery. There are no exceptions.
-      </p>
+      <p class="gov-text">Every output produced by MIDILLA passes through four gate levels before delivery: the Brief Gate, the Token Gate, the Composition Gate, and the Brand Gate. An output that fails any gate is revised before delivery. There are no exceptions.</p>
     </div>
-
   </div>
 </section>
 
-
-<!-- ══════════════════════════
-     FOOTER
-══════════════════════════ -->
-<footer class="footer">
+<!-- BRIEF INTAKE FORM -->
+<section id="brief-intake" class="intake-section">
   <div class="container">
 
+    <div class="intake-header">
+      <div class="section-label">Brief Intake</div>
+      <h2 class="section-heading">Start your brief.</h2>
+      <p class="section-body">
+        Complete the form below. Every field informs the production system.
+        A confirmation will be sent to your email address.
+        The production clock starts when your brief is received and reviewed.
+      </p>
+    </div>
+
+    <div class="intake-form" id="intake-form-wrapper">
+
+      <!-- Receipt bar -->
+      <div class="intake-receipt">
+        <div class="receipt-field">
+          <span class="receipt-label">System</span>
+          <span class="receipt-value">MIDILLA Production</span>
+        </div>
+        <div class="receipt-field">
+          <span class="receipt-label">Status</span>
+          <span class="receipt-value">Accepting Briefs</span>
+        </div>
+        <div class="receipt-field">
+          <span class="receipt-label">Quality Gates</span>
+          <span class="receipt-value">4 Active</span>
+        </div>
+        <div class="receipt-field">
+          <span class="receipt-label">Version</span>
+          <span class="receipt-value neutral">Bible v1.0 · 43 Sections</span>
+        </div>
+      </div>
+
+      <!--
+        FORMSPREE FORM
+        action  = your Formspree endpoint
+        method  = POST (required by Formspree)
+        Every input has a name attribute (required by Formspree)
+      -->
+      <form
+        action="https://formspree.io/f/mnjonjkg"
+        method="POST"
+        id="midilla-brief-form"
+      >
+        <div class="intake-form-body">
+
+          <!-- Row 1: Name + Email -->
+          <div class="form-row">
+            <div class="form-field">
+              <label class="field-label" for="name">Full Name</label>
+              <input
+                class="field-input"
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your full name"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label class="field-label" for="email">Email Address</label>
+              <input
+                class="field-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Row 2: Organisation + Output Type -->
+          <div class="form-row">
+            <div class="form-field">
+              <label class="field-label" for="organisation">Organisation / Practice</label>
+              <input
+                class="field-input"
+                type="text"
+                id="organisation"
+                name="organisation"
+                placeholder="Your firm, practice, or company"
+              />
+            </div>
+            <div class="form-field">
+              <label class="field-label" for="output_type">Output Type</label>
+              <select
+                class="field-select placeholder-active"
+                id="output_type"
+                name="output_type"
+                required
+                onchange="this.classList.remove('placeholder-active')"
+              >
+                <option value="" disabled selected>Select an output type</option>
+                <option value="B2B White Paper (WP-01)">B2B White Paper (WP-01)</option>
+                <option value="Legal Content (LC-01)">Legal Content (LC-01)</option>
+                <option value="Email Sequence (ES-01)">Email Sequence (ES-01)</option>
+                <option value="LinkedIn Thought Leadership (TL-01)">LinkedIn Thought Leadership (TL-01)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Row 3: Tier + Target Audience -->
+          <div class="form-row">
+            <div class="form-field">
+              <label class="field-label" for="tier">Production Tier</label>
+              <select
+                class="field-select placeholder-active"
+                id="tier"
+                name="tier"
+                required
+                onchange="this.classList.remove('placeholder-active')"
+              >
+                <option value="" disabled selected>Select a tier</option>
+                <option value="Starter — $49 / 60 credits">Starter — $49 / 60 credits</option>
+                <option value="Professional — $149 / 250 credits">Professional — $149 / 250 credits</option>
+                <option value="Architect — Custom scope">Architect — Custom scope</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="field-label" for="target_audience">Target Audience</label>
+              <input
+                class="field-input"
+                type="text"
+                id="target_audience"
+                name="target_audience"
+                placeholder="Who is this document for?"
+              />
+            </div>
+          </div>
+
+          <!-- Row 4: Brief — full width -->
+          <div class="form-row full">
+            <div class="form-field">
+              <label class="field-label" for="brief">Brief — Describe Your Output</label>
+              <textarea
+                class="field-textarea"
+                id="brief"
+                name="brief"
+                placeholder="Describe the document you need. Include: the core argument or topic, key points to cover, evidence or data you can supply, tone requirements, and any format specifications. The more specific you are, the more precisely the system can be applied."
+                required
+              ></textarea>
+            </div>
+          </div>
+
+        </div><!-- /intake-form-body -->
+
+        <!-- Hidden subject line for your inbox -->
+        <input type="hidden" name="_subject" value="New MIDILLA Brief Submission" />
+
+        <!-- Redirect back to this page after submission with ?success -->
+        <input type="hidden" name="_next" value="?success=true#brief-intake" />
+
+        <div class="form-footer-row">
+          <p class="form-note">
+            Your brief enters the MIDILLA production queue on submission.<br/>
+            Production window begins on confirmation of receipt.
+          </p>
+          <button type="submit" class="form-submit" id="submit-btn">
+            Submit Brief →
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Success state -->
+      <div class="form-success" id="form-success">
+        <span class="success-label">// Brief Received</span>
+        <div class="success-headline">Delivered.</div>
+        <p class="success-body">
+          Your brief has entered the MIDILLA production queue.
+          A confirmation has been sent to your email.
+          The production clock starts on review.
+        </p>
+        <span class="success-order">MIDILLA Production System · Bible v1.0 · 43 Sections</span>
+      </div>
+
+    </div><!-- /intake-form -->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
     <div class="footer-main">
       <div class="footer-brand">
-        <!-- Wordmark — Syne 800 · UPPERCASE · -0.02em · #F8FAFC -->
         <span class="footer-wordmark">MIDILLA</span>
         <p class="footer-positioning">
           The content production system for professional service operators
@@ -1208,14 +922,22 @@
         <span class="footer-meta-item">Samuel Ibrahim · Founder</span>
       </div>
     </div>
-
     <div class="footer-bottom">
       <div class="footer-legal">© 2026 MIDILLA · All rights reserved</div>
-      <div class="footer-build">MIDILLA_Site · v1.0 · Produced by MIDILLA Production System · Bible v1.0 · 43 Sections</div>
+      <div class="footer-build">MIDILLA_Site · v1.1 · Produced by MIDILLA Production System · Bible v1.0 · 43 Sections</div>
     </div>
-
   </div>
 </footer>
+
+<script>
+  // Show success state if Formspree redirected back with ?success
+  if (window.location.search.includes('success')) {
+    var form    = document.getElementById('midilla-brief-form');
+    var success = document.getElementById('form-success');
+    if (form)    form.style.display    = 'none';
+    if (success) success.style.display = 'block';
+  }
+</script>
 
 </body>
 </html>
