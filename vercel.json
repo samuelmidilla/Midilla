@@ -1,8 +1,6 @@
 {
-  "crons": [
-    {
-      "path": "/api/internal/cron/send-e04",
-      "schedule": "0 0 * * *"
-    }
-  ]
+  "framework": null,
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "installCommand": ""
 }
