@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — MIDILLA</title>
+  <meta name="description" content="MIDILLA Privacy Policy — how we collect, use, and protect your information." />
+  <meta name="theme-color" content="#0A0B0F" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0A0B0F;--surface:#12151C;--surface2:#1A1E28;--border:#232838;--accent:#4ADE80;--text-muted:#4A5568;--text-dim:#8892A4;--text:#E2E8F0;--white:#F8FAFC;--nav-h:56px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:16px;line-height:1.9;overflow-x:hidden;}body.nav-open{overflow:hidden;}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(10,11,15,0.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
+    .nav-wordmark{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);text-decoration:none;position:relative;z-index:310;}
+    .nav-links{display:flex;align-items:center;gap:32px;}.nav-link{font-family:'Inconsolata',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.18s;}.nav-link:hover{color:var(--text);}
+    .nav-cta{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:9px 20px;text-decoration:none;transition:opacity 0.18s;}.nav-cta:hover{opacity:0.86;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:6px;background:transparent;border:1px solid var(--border);cursor:pointer;position:relative;z-index:310;}.hamburger-bar{display:block;width:100%;height:1.5px;background:var(--text-dim);transition:transform 0.22s ease,opacity 0.22s ease;transform-origin:center;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(1){transform:translateY(6.5px) rotate(45deg);}.nav-hamburger.is-open .hamburger-bar:nth-child(2){opacity:0;}.nav-hamburger.is-open .hamburger-bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .nav-mobile-panel{position:fixed;top:var(--nav-h);left:0;right:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height 0.32s cubic-bezier(0.4,0,0.2,1);}.nav-mobile-panel.is-open{max-height:480px;}
+    .nav-mobile-inner{padding:32px 24px 36px;display:flex;flex-direction:column;}.nav-mobile-receipt{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}.nmr-dot{width:6px;height:6px;background:var(--accent);flex-shrink:0;}.nmr-text{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);}
+    .nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border);text-decoration:none;}.nav-mobile-link:last-of-type{border-bottom:none;}.nml-label{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;color:var(--white);}.nml-arrow{font-family:'Inconsolata',monospace;font-size:13px;color:var(--text-muted);}
+    .nav-mobile-cta{display:block;margin-top:24px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-align:center;text-decoration:none;color:var(--bg);background:var(--accent);padding:18px 24px;}
+    .container{max-width:800px;margin:0 auto;padding:0 48px;}
+    .page-hero{padding-top:calc(80px + var(--nav-h));padding-bottom:56px;border-bottom:1px solid var(--border);}
+    .doc-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:20px;}
+    .page-title{font-family:'Syne',sans-serif;font-size:clamp(36px,6vw,60px);font-weight:800;letter-spacing:-0.025em;line-height:0.94;color:var(--white);margin-bottom:20px;}
+    .doc-meta{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.1em;}
+    .doc-body{padding:64px 0;}
+    .doc-section{margin-bottom:52px;}
+    .doc-section-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;letter-spacing:-0.01em;color:var(--white);margin-bottom:16px;padding-top:32px;border-top:1px solid var(--border);}
+    .doc-section:first-child .doc-section-title{border-top:none;padding-top:0;}
+    .doc-text{font-family:'Lora',serif;font-size:15px;color:var(--text-dim);line-height:1.9;margin-bottom:16px;max-width:68ch;}
+    .doc-text strong{color:var(--text);font-weight:500;}
+    .doc-list{list-style:none;margin:16px 0;}.doc-list li{font-family:'Lora',serif;font-size:15px;color:var(--text-dim);padding-left:20px;position:relative;margin-bottom:10px;line-height:1.7;}.doc-list li::before{content:'→';position:absolute;left:0;color:var(--accent);font-family:'Inconsolata',monospace;font-size:11px;top:2px;}
+    .contact-block{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);padding:24px 28px;margin:24px 0;}
+    .contact-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:10px;}
+    .contact-text{font-family:'Lora',serif;font-size:15px;color:var(--text-dim);line-height:1.75;}
+    .footer{background:var(--surface);border-top:3px solid var(--accent);padding:48px 0 28px;}.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+    .footer-legal,.footer-build{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);}
+    @media(max-width:768px){.nav{padding:0 24px;}.nav-links{display:none;}.nav-hamburger{display:flex;}.container{padding:0 24px;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-wordmark">MIDILLA</a>
+  <div class="nav-links">
+    <a href="index.html#how-it-works" class="nav-link">How it works</a>
+    <a href="index.html#outputs" class="nav-link">Outputs</a>
+    <a href="index.html#pricing" class="nav-link">Pricing</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="index.html#brief-intake" class="nav-cta">Start a Brief</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+</nav>
+<div class="nav-mobile-panel" id="nav-mobile-panel" aria-hidden="true">
+  <div class="nav-mobile-inner">
+    <div class="nav-mobile-receipt"><div class="nmr-dot"></div><span class="nmr-text">MIDILLA · System Active · v1.0</span></div>
+    <a href="index.html#how-it-works" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">How it works</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#outputs" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">Outputs</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#pricing" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">Pricing</span><span class="nml-arrow">→</span></a>
+    <a href="about.html" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">About</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#brief-intake" class="nav-mobile-cta" onclick="closeNav()">Start a Brief →</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="doc-label">Legal Document</span>
+    <h1 class="page-title">Privacy Policy</h1>
+    <span class="doc-meta">Effective: March 2026 · MIDILLA · Samuel Ibrahim</span>
+  </div>
+</div>
+
+<div class="doc-body">
+  <div class="container">
+
+    <div class="doc-section">
+      <div class="doc-section-title">Overview</div>
+      <p class="doc-text">MIDILLA ("we," "the platform," "the service") is operated by Samuel Ibrahim. This Privacy Policy describes how we collect, use, and protect information provided when you interact with MIDILLA — including through our website, brief intake form, and any communication arising from a service engagement.</p>
+      <p class="doc-text">This policy is written in plain language. It states clearly what we collect, why we collect it, and what we do with it. Nothing in this policy is designed to obscure our practices.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-title">Information We Collect</div>
+      <p class="doc-text">We collect information you provide directly when you submit a brief through our intake form. This includes:</p>
+      <ul class="doc-list">
+        <li>Your full name</li>
+        <li>Your email address</li>
+        <li>Your organisation or practice name (if provided)</li>
+        <li>The content of your brief — the description of the output you are requesting</li>
+        <li>Your selected output type and production tier</li>
+        <li>Your stated target audience</li>
+      </ul>
+      <p class="doc-text">We do not collect payment information through this website. Payment processing, when applicable, is handled through a third-party processor and is governed by that processor's privacy policy.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-title">How We Use Your Information</div>
+      <p class="doc-text">Information you submit through the brief intake form is used exclusively to:</p>
+      <ul class="doc-list">
+        <li>Process and respond to your brief submission</li>
+        <li>Produce the content output you have requested</li>
+        <li>Communicate with you about your order — including confirmation, production status, and delivery</li>
+        <li>Improve the intake system and production process based on the types of briefs received</li>
+      </ul>
+      <p class="doc-text">We do not sell your information to third parties. We do not use your information for advertising purposes. We do not share your brief contents with any party not involved in production of your order.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-title">Form Submission Processing</div>
+      <p class="doc-text">Brief submissions on this website are processed through Formspree, a third-party form processing service. When you submit the brief intake form, your data is transmitted to Formspree's servers and forwarded to our email address. Formspree's handling of your data is governed by their privacy policy, available at formspree.io.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-title">Data Retention</div>
+      <p class="doc-text">We retain brief submission data for the duration required to complete your order and for a reasonable period thereafter to support any follow-up questions or disputes. We do not retain your information indefinitely. If you wish to request deletion of your data, contact us at the address below.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-title">Your Rights</div>
+      <p class="doc-text">You have the right to request access to the personal information we hold about you, to request correction of inaccurate information, and to request deletion of your information. To exercise any of these rights, contact us directly.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-title">Changes to This Policy</div>
+      <p class="doc-text">If this policy changes materially, we will update the effective date at the top of this document. Continued use of the platform after a policy update constitutes acceptance of the revised policy.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-title">Contact</div>
+      <div class="contact-block">
+        <span class="contact-label">// Privacy enquiries</span>
+        <p class="contact-text">Samuel Ibrahim · MIDILLA<br/>samuel.ibrahim.content@gmail.com</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <div class="footer-legal">© 2026 MIDILLA · <a href="privacy.html" style="color:var(--accent);text-decoration:none;">Privacy</a> · <a href="terms.html" style="color:var(--text-muted);text-decoration:none;">Terms</a> · <a href="index.html" style="color:var(--text-muted);text-decoration:none;">Home</a></div>
+      <div class="footer-build">MIDILLA_Site · v1.3 · privacy.html</div>
+    </div>
+  </div>
+</footer>
+<script>
+  var hamburger=document.getElementById('nav-hamburger'),panel=document.getElementById('nav-mobile-panel'),isOpen=false;
+  function openNav(){isOpen=true;hamburger.classList.add('is-open');hamburger.setAttribute('aria-expanded','true');panel.classList.add('is-open');panel.setAttribute('aria-hidden','false');document.body.classList.add('nav-open');}
+  function closeNav(){isOpen=false;hamburger.classList.remove('is-open');hamburger.setAttribute('aria-expanded','false');panel.classList.remove('is-open');panel.setAttribute('aria-hidden','true');document.body.classList.remove('nav-open');}
+  hamburger.addEventListener('click',function(){isOpen?closeNav():openNav();});
+  document.addEventListener('click',function(e){if(isOpen&&!panel.contains(e.target)&&!hamburger.contains(e.target))closeNav();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen)closeNav();});
+</script>
+</body>
+</html>
