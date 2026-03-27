@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- REPLACE: Article title below -->
+  <title>Article Title — MIDILLA</title>
+  <!-- REPLACE: Article description below (150–160 chars for SEO) -->
+  <meta name="description" content="Article description goes here. Write 150 to 160 characters describing the article content for search engine results." />
+  <meta name="author" content="Samuel Ibrahim" />
+  <meta property="og:type" content="article" />
+  <!-- REPLACE: og:title and og:description below -->
+  <meta property="og:title" content="Article Title — MIDILLA" />
+  <meta property="og:description" content="Article description for social sharing." />
+  <meta name="theme-color" content="#0A0B0F" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0A0B0F;--surface:#12151C;--surface2:#1A1E28;--border:#232838;--accent:#4ADE80;--accent-dim:rgba(74,222,128,0.07);--accent-border:rgba(74,222,128,0.22);--text-muted:#4A5568;--text-dim:#8892A4;--text:#E2E8F0;--white:#F8FAFC;--nav-h:56px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:16px;line-height:1.9;overflow-x:hidden;}body.nav-open{overflow:hidden;}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(10,11,15,0.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
+    .nav-wordmark{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);text-decoration:none;position:relative;z-index:310;}
+    .nav-links{display:flex;align-items:center;gap:32px;}.nav-link{font-family:'Inconsolata',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.18s;}.nav-link:hover{color:var(--text);}
+    .nav-cta{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:9px 20px;text-decoration:none;transition:opacity 0.18s;}.nav-cta:hover{opacity:0.86;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:6px;background:transparent;border:1px solid var(--border);cursor:pointer;position:relative;z-index:310;}.hamburger-bar{display:block;width:100%;height:1.5px;background:var(--text-dim);transition:transform 0.22s ease,opacity 0.22s ease;transform-origin:center;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(1){transform:translateY(6.5px) rotate(45deg);}.nav-hamburger.is-open .hamburger-bar:nth-child(2){opacity:0;}.nav-hamburger.is-open .hamburger-bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .nav-mobile-panel{position:fixed;top:var(--nav-h);left:0;right:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height 0.32s cubic-bezier(0.4,0,0.2,1);}.nav-mobile-panel.is-open{max-height:480px;}
+    .nav-mobile-inner{padding:32px 24px 36px;display:flex;flex-direction:column;}.nav-mobile-receipt{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}.nmr-dot{width:6px;height:6px;background:var(--accent);flex-shrink:0;}.nmr-text{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);}
+    .nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border);text-decoration:none;}.nav-mobile-link:last-of-type{border-bottom:none;}.nml-label{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;color:var(--white);}.nml-arrow{font-family:'Inconsolata',monospace;font-size:13px;color:var(--text-muted);}
+    .nav-mobile-cta{display:block;margin-top:24px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-align:center;text-decoration:none;color:var(--bg);background:var(--accent);padding:18px 24px;}
+
+    /* ARTICLE LAYOUT */
+    .article-hero{padding-top:calc(96px + var(--nav-h));padding-bottom:64px;border-bottom:1px solid var(--border);position:relative;}
+    .article-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
+    .article-container{max-width:720px;margin:0 auto;padding:0 48px;}
+    .article-meta-bar{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:36px;}
+    .meta-tag{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent-border);padding:3px 10px;}
+    .meta-date{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.1em;}
+    .meta-read{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.1em;}
+
+    /* REPLACE: Article title */
+    .article-title{font-family:'Syne',sans-serif;font-size:clamp(36px,6vw,60px);font-weight:800;letter-spacing:-0.025em;line-height:0.96;color:var(--white);margin-bottom:28px;}
+
+    /* REPLACE: Article standfirst — one sentence summary of the article argument */
+    .article-standfirst{font-family:'Lora',serif;font-style:italic;font-size:18px;color:var(--text-dim);line-height:1.75;border-left:3px solid var(--accent);padding-left:24px;}
+
+    /* ARTICLE BODY */
+    .article-body{padding:64px 0;}
+    /* Body paragraphs */
+    .article-body p{font-family:'Lora',serif;font-size:16.5px;color:var(--text-dim);line-height:1.95;margin-bottom:28px;max-width:68ch;}
+    .article-body p strong{color:var(--text);font-weight:500;}
+    .article-body p em{color:var(--text);}
+    /* Section headings within the article */
+    .article-body h2{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.01em;color:var(--white);margin:52px 0 20px;line-height:1.1;}
+    .article-body h3{font-family:'Syne',sans-serif;font-size:19px;font-weight:700;letter-spacing:-0.01em;color:var(--white);margin:36px 0 14px;line-height:1.15;}
+    /* Pullquote */
+    .pullquote{background:var(--surface);border-left:3px solid var(--accent);padding:24px 28px;margin:40px 0;}
+    .pullquote p{font-family:'Lora',serif;font-style:italic;font-size:18px;color:var(--white);line-height:1.7;margin:0;}
+    /* Key point block */
+    .key-point{background:var(--surface2);border:1px solid var(--border);padding:24px 28px;margin:36px 0;}
+    .kp-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:12px;}
+    .kp-text{font-family:'Lora',serif;font-size:15px;color:var(--text);line-height:1.8;margin:0;}
+    /* Article divider */
+    .article-divider{border:none;border-top:1px solid var(--border);margin:48px 0;}
+
+    /* ARTICLE FOOTER / RECEIPT */
+    .article-receipt{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--accent);padding:28px 32px;margin-top:64px;}
+    .ar-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px;}
+    .ar-meta{display:flex;gap:32px;flex-wrap:wrap;margin-bottom:20px;}
+    .ar-item{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);}
+    .ar-item span{color:var(--text-dim);}
+    .ar-cta{font-family:'Lora',serif;font-style:italic;font-size:15px;color:var(--text-dim);line-height:1.75;margin-bottom:20px;}
+    .btn-primary{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:12px 28px;text-decoration:none;display:inline-block;transition:opacity 0.18s;}.btn-primary:hover{opacity:0.86;}
+
+    .footer{background:var(--surface);border-top:3px solid var(--accent);padding:48px 0 28px;}
+    .footer-inner{max-width:720px;margin:0 auto;padding:0 48px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+    .footer-legal,.footer-build{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);}
+
+    @media(max-width:768px){
+      .nav{padding:0 24px;}.nav-links{display:none;}.nav-hamburger{display:flex;}
+      .article-container{padding:0 24px;}.article-hero{padding-top:calc(72px + var(--nav-h));padding-bottom:48px;}
+      .article-body{padding:48px 0;}.footer-inner{padding:0 24px;flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="../index.html" class="nav-wordmark">MIDILLA</a>
+  <div class="nav-links">
+    <a href="../index.html#how-it-works" class="nav-link">How it works</a>
+    <a href="../index.html#outputs" class="nav-link">Outputs</a>
+    <a href="../index.html#pricing" class="nav-link">Pricing</a>
+    <a href="../about.html" class="nav-link">About</a>
+    <a href="../index.html#brief-intake" class="nav-cta">Start a Brief</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+</nav>
+<div class="nav-mobile-panel" id="nav-mobile-panel" aria-hidden="true">
+  <div class="nav-mobile-inner">
+    <div class="nav-mobile-receipt"><div class="nmr-dot"></div><span class="nmr-text">MIDILLA · System Active · v1.0</span></div>
+    <a href="../index.html#how-it-works" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">How it works</span><span class="nml-arrow">→</span></a>
+    <a href="../index.html#outputs" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">Outputs</span><span class="nml-arrow">→</span></a>
+    <a href="../index.html#pricing" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">Pricing</span><span class="nml-arrow">→</span></a>
+    <a href="../about.html" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">About</span><span class="nml-arrow">→</span></a>
+    <a href="../index.html#brief-intake" class="nav-mobile-cta" onclick="closeNav()">Start a Brief →</a>
+  </div>
+</div>
+
+<!-- ================================================================
+     ARTICLE HERO — REPLACE all REPLACE comments below
+================================================================ -->
+<div class="article-hero">
+  <div class="article-container">
+
+    <div class="article-meta-bar">
+      <!-- REPLACE: Category tag — e.g. B2B Content, Legal Marketing, Email Strategy -->
+      <span class="meta-tag">Category Tag</span>
+      <!-- REPLACE: Publication date -->
+      <span class="meta-date">March 2026</span>
+      <!-- REPLACE: Estimated read time -->
+      <span class="meta-read">6 min read</span>
+    </div>
+
+    <!-- REPLACE: Article title -->
+    <h1 class="article-title">Your Article Title Goes Here — Make It Specific</h1>
+
+    <!-- REPLACE: One-sentence standfirst that states the article's core argument -->
+    <p class="article-standfirst">
+      The standfirst is a single sentence that states the article's argument — specific, declarative, and precise enough to be argued with.
+    </p>
+
+  </div>
+</div>
+
+
+<!-- ================================================================
+     ARTICLE BODY — REPLACE placeholder content below
+================================================================ -->
+<div class="article-body">
+  <div class="article-container">
+
+    <!--
+      WRITING INSTRUCTIONS FOR MIDILLA ARTICLES:
+      ─────────────────────────────────────────
+      Voice attributes (all four active simultaneously):
+      VA-01 Expert Precision  — specific numbers, named decisions, documented reasoning
+      VA-02 Deliberate Pace   — one idea per paragraph, short paragraphs, earned conclusions
+      VA-03 Declarative Stance — no hedging, no "perhaps", no "might"
+      VA-04 Verbal Economy    — every word earns its position, end when the thought is complete
+
+      Opening line rule: A specific observation — not a hook, not a question.
+      Closing line rule: A declarative statement of implication — the logical conclusion.
+
+      SEO instruction: Use the target keyword phrase naturally in the first 100 words,
+      in at least one H2 subheading, and in the closing paragraph.
+    -->
+
+    <!-- REPLACE: Opening paragraph — specific observation, no hook, no question -->
+    <p>
+      This is where your article opening goes. It begins with a specific observation — a fact, a decision, a thing that was noticed. Not a question. Not a promise of what is to come. The reader encounters substance immediately.
+    </p>
+
+    <p>
+      Second paragraph advances the argument one step. It does not summarise the first paragraph. It builds on it. Each paragraph earns its position by moving the argument forward.
+    </p>
+
+    <!-- REPLACE: H2 subheading — should contain your target keyword phrase -->
+    <h2>Your First Section Heading — Contains Target Keyword</h2>
+
+    <p>
+      The section opens on the claim it is going to make. Then it makes the case for that claim with specific evidence, named decisions, or documented reasoning. Abstract claims are not made. Every claim is specific.
+    </p>
+
+    <!-- REPLACE: Pullquote — a single precise sentence from the article worth emphasising -->
+    <div class="pullquote">
+      <p>"A pullquote pulls the single most precise, most arguable sentence from the section. It earns its position by being specific enough to be challenged."</p>
+    </div>
+
+    <p>
+      Continue the argument. One idea per paragraph. The reader moves through at the speed the writing intends.
+    </p>
+
+    <hr class="article-divider" />
+
+    <!-- REPLACE: H2 subheading -->
+    <h2>Your Second Section Heading</h2>
+
+    <p>
+      This section advances the argument from where the previous section left it. It does not repeat. It does not summarise. It goes one step further.
+    </p>
+
+    <!-- REPLACE: Key point block — a specific, documented insight worth isolating -->
+    <div class="key-point">
+      <span class="kp-label">// Key point</span>
+      <p class="kp-text">A key point block isolates one specific, documented insight that the reader should carry with them after this article. It is precise. It is arguable. It is not a platitude.</p>
+    </div>
+
+    <p>
+      The argument continues in the paragraphs below the key point block. Use as many paragraphs as the argument requires — not more.
+    </p>
+
+    <hr class="article-divider" />
+
+    <!-- REPLACE: Closing paragraph — declarative statement of implication -->
+    <p>
+      The closing paragraph is a declarative statement of the logical implication of everything that preceded it. It does not summarise the article. It states the conclusion the article has earned. It ends when the thought is complete.
+    </p>
+
+    <!-- ARTICLE RECEIPT / CTA -->
+    <div class="article-receipt">
+      <span class="ar-label">// MIDILLA Production System</span>
+      <div class="ar-meta">
+        <!-- REPLACE: Author, date, category -->
+        <span class="ar-item">Author: <span>Samuel Ibrahim</span></span>
+        <span class="ar-item">Published: <span>March 2026</span></span>
+        <span class="ar-item">Category: <span>Replace Category</span></span>
+      </div>
+      <p class="ar-cta">
+        MIDILLA produces expert-grade written content for professional service operators.
+        If you need publication-ready outputs without managing the production infrastructure,
+        the system is ready to receive your brief.
+      </p>
+      <a href="../index.html#brief-intake" class="btn-primary">Start a Brief →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-legal">© 2026 MIDILLA · <a href="../privacy.html" style="color:var(--text-muted);text-decoration:none;">Privacy</a> · <a href="../terms.html" style="color:var(--text-muted);text-decoration:none;">Terms</a> · <a href="../index.html" style="color:var(--text-muted);text-decoration:none;">Home</a></div>
+    <div class="footer-build">MIDILLA_Site · v1.3 · articles/template.html</div>
+  </div>
+</footer>
+
+<script>
+  var hamburger=document.getElementById('nav-hamburger'),panel=document.getElementById('nav-mobile-panel'),isOpen=false;
+  function openNav(){isOpen=true;hamburger.classList.add('is-open');hamburger.setAttribute('aria-expanded','true');panel.classList.add('is-open');panel.setAttribute('aria-hidden','false');document.body.classList.add('nav-open');}
+  function closeNav(){isOpen=false;hamburger.classList.remove('is-open');hamburger.setAttribute('aria-expanded','false');panel.classList.remove('is-open');panel.setAttribute('aria-hidden','true');document.body.classList.remove('nav-open');}
+  hamburger.addEventListener('click',function(){isOpen?closeNav():openNav();});
+  document.addEventListener('click',function(e){if(isOpen&&!panel.contains(e.target)&&!hamburger.contains(e.target))closeNav();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen)closeNav();});
+</script>
+</body>
+</html>
