@@ -14,6 +14,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
+    /* ================================================================
+       MIDILLA — WEBSITE v1.2
+       Token-faithful · Brand Identity v1.0 · 43 Sections
+       Zero corner radius rule enforced throughout
+       v1.2 — Mobile navigation added
+    ================================================================ */
+
     :root {
       --bg:             #0A0B0F;
       --surface:        #12151C;
@@ -27,7 +34,8 @@
       --text-dim:       #8892A4;
       --text:           #E2E8F0;
       --white:          #F8FAFC;
-      --sp-10: 96px;
+      --nav-h:          56px;
+      --sp-10:          96px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,38 +50,195 @@
       overflow-x: hidden;
     }
 
-    /* NAV */
+    /* body lock when mobile nav is open */
+    body.nav-open { overflow: hidden; }
+
+    /* ================================================================
+       NAVIGATION — DESKTOP
+    ================================================================ */
     .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      background: rgba(10,11,15,0.94);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 300;
+      background: rgba(10,11,15,0.96);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      height: 56px;
-      display: flex; align-items: center; justify-content: space-between;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 0 48px;
     }
+
     .nav-wordmark {
-      font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800;
+      font-family: 'Syne', sans-serif;
+      font-size: 15px; font-weight: 800;
       letter-spacing: -0.02em; text-transform: uppercase;
       color: var(--white); text-decoration: none;
+      position: relative; z-index: 310;
     }
-    .nav-links { display: flex; align-items: center; gap: 32px; }
+
+    /* Desktop links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
     .nav-link {
-      font-family: 'Inconsolata', monospace; font-size: 11px;
-      letter-spacing: 0.1em; text-transform: uppercase;
+      font-family: 'Inconsolata', monospace;
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--text-muted); text-decoration: none; transition: color 0.18s;
     }
     .nav-link:hover { color: var(--text); }
+
     .nav-cta {
-      font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+      font-family: 'Syne', sans-serif;
+      font-size: 11px; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--bg); background: var(--accent);
       padding: 9px 20px; text-decoration: none; transition: opacity 0.18s;
     }
     .nav-cta:hover { opacity: 0.86; }
 
-    /* LAYOUT */
+    /* ================================================================
+       HAMBURGER BUTTON — visible on mobile only
+    ================================================================ */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px; height: 36px;
+      padding: 6px;
+      background: transparent;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      position: relative; z-index: 310;
+      transition: border-color 0.18s;
+    }
+    .nav-hamburger:hover { border-color: var(--accent); }
+
+    .hamburger-bar {
+      display: block;
+      width: 100%; height: 1.5px;
+      background: var(--text-dim);
+      transition: transform 0.22s ease, opacity 0.22s ease, background 0.18s;
+      transform-origin: center;
+    }
+
+    /* X state when open */
+    .nav-hamburger.is-open .hamburger-bar:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+      background: var(--accent);
+    }
+    .nav-hamburger.is-open .hamburger-bar:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-hamburger.is-open .hamburger-bar:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+      background: var(--accent);
+    }
+
+    /* ================================================================
+       MOBILE NAV PANEL — drops from top
+    ================================================================ */
+    .nav-mobile-panel {
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      z-index: 200;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+
+      /* Closed state */
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Open state — JS adds this class */
+    .nav-mobile-panel.is-open {
+      max-height: 480px;
+    }
+
+    .nav-mobile-inner {
+      padding: 32px 24px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Receipt bar at top of mobile panel */
+    .nav-mobile-receipt {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nmr-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .nmr-text {
+      font-family: 'Inconsolata', monospace;
+      font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Mobile nav links */
+    .nav-mobile-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+
+    .nav-mobile-link:last-of-type { border-bottom: none; }
+
+    .nml-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--white);
+      transition: color 0.18s;
+    }
+
+    .nml-arrow {
+      font-family: 'Inconsolata', monospace;
+      font-size: 13px; color: var(--text-muted);
+      transition: color 0.18s, transform 0.18s;
+    }
+
+    .nav-mobile-link:hover .nml-label { color: var(--accent); }
+    .nav-mobile-link:hover .nml-arrow { color: var(--accent); transform: translateX(4px); }
+
+    /* Mobile CTA */
+    .nav-mobile-cta {
+      display: block;
+      margin-top: 24px;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      text-align: center; text-decoration: none;
+      color: var(--bg); background: var(--accent);
+      padding: 18px 24px;
+      transition: opacity 0.18s;
+    }
+    .nav-mobile-cta:hover { opacity: 0.86; }
+
+    /* ================================================================
+       LAYOUT
+    ================================================================ */
     .container { max-width: 1040px; margin: 0 auto; padding: 0 48px; }
     section { padding: var(--sp-10) 0; }
     .section-divider-rule { border-top: 1px solid var(--border); }
@@ -98,6 +263,7 @@
       line-height: 1.9; max-width: 64ch; margin-bottom: 20px;
     }
     .section-body strong { color: var(--text); font-weight: 500; }
+
     .statement-block {
       background: var(--surface); border-left: 3px solid var(--accent);
       padding: 28px 32px; margin: 36px 0;
@@ -114,8 +280,10 @@
 
     /* HERO */
     .hero {
-      padding-top: calc(var(--sp-10) + 56px); padding-bottom: var(--sp-10);
-      border-bottom: 1px solid var(--border); position: relative; overflow: hidden;
+      padding-top: calc(var(--sp-10) + var(--nav-h));
+      padding-bottom: var(--sp-10);
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
     }
     .hero::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0;
@@ -153,6 +321,7 @@
       color: var(--text-muted); text-decoration: none; transition: color 0.18s;
     }
     .btn-ghost:hover { color: var(--text); }
+
     .hero-stats {
       display: grid; grid-template-columns: repeat(4,1fr);
       gap: 1px; background: var(--border);
@@ -239,6 +408,7 @@
       color: var(--white); margin-bottom: 12px; letter-spacing: -0.01em;
     }
     .output-desc { font-family: 'Lora', serif; font-size: 14px; color: var(--text-dim); line-height: 1.8; }
+
     .moat-block {
       background: var(--surface); border: 1px solid var(--border);
       border-top: 3px solid var(--accent); padding: 44px; margin-top: 48px;
@@ -309,6 +479,7 @@
     .tier-cta:hover { border-color: var(--accent); color: var(--accent); }
     .pricing-card.featured .tier-cta { background: var(--accent); color: var(--bg); border-color: var(--accent); }
     .pricing-card.featured .tier-cta:hover { opacity: 0.86; color: var(--bg); }
+
     .governance-bar {
       background: var(--surface); border: 1px solid var(--border);
       padding: 28px 36px; margin-top: 48px;
@@ -321,11 +492,10 @@
     }
     .gov-text { font-family: 'Lora', serif; font-size: 14px; font-style: italic; color: var(--text-dim); line-height: 1.75; }
 
-    /* BRIEF INTAKE FORM */
+    /* BRIEF INTAKE */
     .intake-section {
       background: var(--surface);
-      border-top: 3px solid var(--accent);
-      border-bottom: 1px solid var(--border);
+      border-top: 3px solid var(--accent); border-bottom: 1px solid var(--border);
     }
     .intake-header { margin-bottom: 52px; }
     .intake-form { background: var(--bg); border: 1px solid var(--border); }
@@ -391,12 +561,10 @@
       white-space: nowrap; flex-shrink: 0;
     }
     .form-submit:hover { opacity: 0.86; }
-    .form-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    /* Success state */
     .form-success {
-      display: none;
-      background: var(--bg); border: 1px solid var(--accent-border);
+      display: none; background: var(--bg);
+      border: 1px solid rgba(74,222,128,0.22);
       border-top: 3px solid var(--accent);
       padding: 64px 44px; text-align: center;
     }
@@ -443,48 +611,108 @@
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
     .footer-legal, .footer-build { font-family: 'Inconsolata', monospace; font-size: 10px; color: var(--text-muted); }
 
-    /* RESPONSIVE */
+    /* ================================================================
+       RESPONSIVE
+    ================================================================ */
     @media (max-width: 768px) {
+      /* Show hamburger, hide desktop links */
+      .nav-links  { display: none; }
+      .nav-hamburger { display: flex; }
       .nav { padding: 0 24px; }
-      .nav-link { display: none; }
-      .container { padding: 0 24px; }
-      section { padding: 72px 0; }
-      .hero { padding-top: calc(72px + 56px); padding-bottom: 72px; }
-      .hero-stats { grid-template-columns: repeat(2,1fr); }
-      .how-grid { grid-template-columns: 1fr; }
+
+      .container   { padding: 0 24px; }
+      section      { padding: 72px 0; }
+      .hero        { padding-top: calc(72px + var(--nav-h)); padding-bottom: 72px; }
+      .hero-stats  { grid-template-columns: repeat(2,1fr); }
+      .how-grid    { grid-template-columns: 1fr; }
       .delivery-states { grid-template-columns: 1fr; }
       .outputs-grid { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; }
-      .footer-main { flex-direction: column; }
-      .footer-meta { text-align: left; }
+      .footer-main  { flex-direction: column; }
+      .footer-meta  { text-align: left; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
       .governance-bar { flex-direction: column; gap: 12px; }
-      .form-row { grid-template-columns: 1fr; }
+      .form-row     { grid-template-columns: 1fr; }
       .intake-form-body { padding: 28px 24px; }
-      .form-footer-row { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
-      .form-submit { width: 100%; text-align: center; }
+      .form-footer-row  { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
+      .form-submit  { width: 100%; text-align: center; }
+      .state-card   { padding: 36px 28px; }
     }
+
     @media (max-width: 480px) {
-      .hero-headline { font-size: 44px; }
-      .state-timer { font-size: 42px; }
-      .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .hero-headline  { font-size: 44px; }
+      .state-timer    { font-size: 38px; }
+      .hero-actions   { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .moat-block     { padding: 28px 24px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ================================================================
+     NAVIGATION
+================================================================ -->
 <nav class="nav">
   <a href="#" class="nav-wordmark">MIDILLA</a>
+
+  <!-- Desktop links -->
   <div class="nav-links">
     <a href="#how-it-works" class="nav-link">How it works</a>
     <a href="#outputs"      class="nav-link">Outputs</a>
     <a href="#pricing"      class="nav-link">Pricing</a>
     <a href="#brief-intake" class="nav-cta">Start a Brief</a>
   </div>
+
+  <!-- Hamburger — mobile only -->
+  <button
+    class="nav-hamburger"
+    id="nav-hamburger"
+    aria-label="Open navigation"
+    aria-expanded="false"
+    aria-controls="nav-mobile-panel"
+  >
+    <span class="hamburger-bar"></span>
+    <span class="hamburger-bar"></span>
+    <span class="hamburger-bar"></span>
+  </button>
 </nav>
 
-<!-- HERO -->
+<!-- Mobile nav panel — drops from top -->
+<div class="nav-mobile-panel" id="nav-mobile-panel" aria-hidden="true">
+  <div class="nav-mobile-inner">
+
+    <!-- System status receipt -->
+    <div class="nav-mobile-receipt">
+      <div class="nmr-dot"></div>
+      <span class="nmr-text">MIDILLA · System Active · v1.0</span>
+    </div>
+
+    <!-- Navigation links -->
+    <a href="#how-it-works" class="nav-mobile-link" onclick="closeNav()">
+      <span class="nml-label">How it works</span>
+      <span class="nml-arrow">→</span>
+    </a>
+    <a href="#outputs" class="nav-mobile-link" onclick="closeNav()">
+      <span class="nml-label">Outputs</span>
+      <span class="nml-arrow">→</span>
+    </a>
+    <a href="#pricing" class="nav-mobile-link" onclick="closeNav()">
+      <span class="nml-label">Pricing</span>
+      <span class="nml-arrow">→</span>
+    </a>
+
+    <!-- CTA -->
+    <a href="#brief-intake" class="nav-mobile-cta" onclick="closeNav()">
+      Start a Brief →
+    </a>
+
+  </div>
+</div>
+
+
+<!-- ================================================================
+     HERO
+================================================================ -->
 <section class="hero">
   <div class="container">
     <div class="hero-eyebrow">Content Production System · Active</div>
@@ -522,7 +750,10 @@
   </div>
 </section>
 
-<!-- THE PROBLEM -->
+
+<!-- ================================================================
+     THE PROBLEM
+================================================================ -->
 <section class="section-divider-rule">
   <div class="container">
     <div class="section-label">The Problem</div>
@@ -548,7 +779,10 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+
+<!-- ================================================================
+     HOW IT WORKS
+================================================================ -->
 <section id="how-it-works" class="section-divider-rule">
   <div class="container">
     <div class="section-label">The System</div>
@@ -563,36 +797,26 @@
       <div class="how-step">
         <span class="how-num">Step 01 · Brief</span>
         <div class="how-title">You submit the brief.</div>
-        <p class="how-body">
-          A structured intake captures everything the production system needs:
-          the output type, the target audience, the argument, the evidence you supply.
-          An order number is generated in the format M-[YEAR]-[NNNN]. The timer starts.
-        </p>
+        <p class="how-body">A structured intake captures everything the production system needs: the output type, the target audience, the argument, the evidence you supply. An order number is generated in the format M-[YEAR]-[NNNN]. The timer starts.</p>
       </div>
       <div class="how-step">
         <span class="how-num">Step 02 · Production</span>
         <div class="how-title">The system produces it.</div>
-        <p class="how-body">
-          Your brief moves through the documented Bible for that content type.
-          Every output passes four quality gates before delivery: Brief Gate,
-          Token Gate, Composition Gate, Brand Gate.
-          No output ships before all four are cleared.
-        </p>
+        <p class="how-body">Your brief moves through the documented Bible for that content type. Every output passes four quality gates before delivery: Brief Gate, Token Gate, Composition Gate, Brand Gate. No output ships before all four are cleared.</p>
       </div>
       <div class="how-step">
         <span class="how-num">Step 03 · Delivered.</span>
         <div class="how-title">The document arrives.</div>
-        <p class="how-body">
-          Publication-ready. Not "could be improved by an editor" —
-          ready to publish without one. The order number is on the document.
-          The timer becomes a green confirmation. The promise kept.
-        </p>
+        <p class="how-body">Publication-ready. Not "could be improved by an editor" — ready to publish without one. The order number is on the document. The timer becomes a green confirmation. The promise kept.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DELIVERY MOMENT -->
+
+<!-- ================================================================
+     THE DELIVERY MOMENT
+================================================================ -->
 <section class="delivery-section">
   <div class="container">
     <div class="section-label">The Defining Moment</div>
@@ -620,15 +844,15 @@
   </div>
 </section>
 
-<!-- OUTPUT CATALOGUE -->
+
+<!-- ================================================================
+     OUTPUT CATALOGUE
+================================================================ -->
 <section id="outputs" class="section-divider-rule">
   <div class="container">
     <div class="section-label">Output Catalogue</div>
     <h2 class="section-heading">What MIDILLA produces.</h2>
-    <p class="section-body">
-      Each category is a complete production system — not a template,
-      not a style guide. A documented architecture from intake to delivery.
-    </p>
+    <p class="section-body">Each category is a complete production system — not a template, not a style guide. A documented architecture from intake to delivery.</p>
     <div class="outputs-grid">
       <div class="output-card">
         <span class="output-code">WP-01</span>
@@ -659,7 +883,10 @@
   </div>
 </section>
 
-<!-- PRICING -->
+
+<!-- ================================================================
+     PRICING
+================================================================ -->
 <section id="pricing" class="section-divider-rule">
   <div class="container">
     <div class="section-label">Production Tiers</div>
@@ -719,10 +946,12 @@
   </div>
 </section>
 
-<!-- BRIEF INTAKE FORM -->
+
+<!-- ================================================================
+     BRIEF INTAKE FORM
+================================================================ -->
 <section id="brief-intake" class="intake-section">
   <div class="container">
-
     <div class="intake-header">
       <div class="section-label">Brief Intake</div>
       <h2 class="section-heading">Start your brief.</h2>
@@ -734,8 +963,6 @@
     </div>
 
     <div class="intake-form" id="intake-form-wrapper">
-
-      <!-- Receipt bar -->
       <div class="intake-receipt">
         <div class="receipt-field">
           <span class="receipt-label">System</span>
@@ -755,66 +982,26 @@
         </div>
       </div>
 
-      <!--
-        FORMSPREE FORM
-        action  = your Formspree endpoint
-        method  = POST (required by Formspree)
-        Every input has a name attribute (required by Formspree)
-      -->
-      <form
-        action="https://formspree.io/f/mnjonjkg"
-        method="POST"
-        id="midilla-brief-form"
-      >
+      <form action="https://formspree.io/f/mnjonjkg" method="POST" id="midilla-brief-form">
         <div class="intake-form-body">
-
-          <!-- Row 1: Name + Email -->
           <div class="form-row">
             <div class="form-field">
               <label class="field-label" for="name">Full Name</label>
-              <input
-                class="field-input"
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Your full name"
-                required
-              />
+              <input class="field-input" type="text" id="name" name="name" placeholder="Your full name" required />
             </div>
             <div class="form-field">
               <label class="field-label" for="email">Email Address</label>
-              <input
-                class="field-input"
-                type="email"
-                id="email"
-                name="email"
-                placeholder="your@email.com"
-                required
-              />
+              <input class="field-input" type="email" id="email" name="email" placeholder="your@email.com" required />
             </div>
           </div>
-
-          <!-- Row 2: Organisation + Output Type -->
           <div class="form-row">
             <div class="form-field">
               <label class="field-label" for="organisation">Organisation / Practice</label>
-              <input
-                class="field-input"
-                type="text"
-                id="organisation"
-                name="organisation"
-                placeholder="Your firm, practice, or company"
-              />
+              <input class="field-input" type="text" id="organisation" name="organisation" placeholder="Your firm, practice, or company" />
             </div>
             <div class="form-field">
               <label class="field-label" for="output_type">Output Type</label>
-              <select
-                class="field-select placeholder-active"
-                id="output_type"
-                name="output_type"
-                required
-                onchange="this.classList.remove('placeholder-active')"
-              >
+              <select class="field-select placeholder-active" id="output_type" name="output_type" required onchange="this.classList.remove('placeholder-active')">
                 <option value="" disabled selected>Select an output type</option>
                 <option value="B2B White Paper (WP-01)">B2B White Paper (WP-01)</option>
                 <option value="Legal Content (LC-01)">Legal Content (LC-01)</option>
@@ -823,18 +1010,10 @@
               </select>
             </div>
           </div>
-
-          <!-- Row 3: Tier + Target Audience -->
           <div class="form-row">
             <div class="form-field">
               <label class="field-label" for="tier">Production Tier</label>
-              <select
-                class="field-select placeholder-active"
-                id="tier"
-                name="tier"
-                required
-                onchange="this.classList.remove('placeholder-active')"
-              >
+              <select class="field-select placeholder-active" id="tier" name="tier" required onchange="this.classList.remove('placeholder-active')">
                 <option value="" disabled selected>Select a tier</option>
                 <option value="Starter — $49 / 60 credits">Starter — $49 / 60 credits</option>
                 <option value="Professional — $149 / 250 credits">Professional — $149 / 250 credits</option>
@@ -843,67 +1022,41 @@
             </div>
             <div class="form-field">
               <label class="field-label" for="target_audience">Target Audience</label>
-              <input
-                class="field-input"
-                type="text"
-                id="target_audience"
-                name="target_audience"
-                placeholder="Who is this document for?"
-              />
+              <input class="field-input" type="text" id="target_audience" name="target_audience" placeholder="Who is this document for?" />
             </div>
           </div>
-
-          <!-- Row 4: Brief — full width -->
           <div class="form-row full">
             <div class="form-field">
               <label class="field-label" for="brief">Brief — Describe Your Output</label>
-              <textarea
-                class="field-textarea"
-                id="brief"
-                name="brief"
-                placeholder="Describe the document you need. Include: the core argument or topic, key points to cover, evidence or data you can supply, tone requirements, and any format specifications. The more specific you are, the more precisely the system can be applied."
-                required
-              ></textarea>
+              <textarea class="field-textarea" id="brief" name="brief" placeholder="Describe the document you need. Include: the core argument or topic, key points to cover, evidence or data you can supply, tone requirements, and any format specifications." required></textarea>
             </div>
           </div>
-
-        </div><!-- /intake-form-body -->
-
-        <!-- Hidden subject line for your inbox -->
+        </div>
         <input type="hidden" name="_subject" value="New MIDILLA Brief Submission" />
-
-        <!-- Redirect back to this page after submission with ?success -->
         <input type="hidden" name="_next" value="?success=true#brief-intake" />
-
         <div class="form-footer-row">
           <p class="form-note">
             Your brief enters the MIDILLA production queue on submission.<br/>
             Production window begins on confirmation of receipt.
           </p>
-          <button type="submit" class="form-submit" id="submit-btn">
-            Submit Brief →
-          </button>
+          <button type="submit" class="form-submit">Submit Brief →</button>
         </div>
-
       </form>
 
-      <!-- Success state -->
       <div class="form-success" id="form-success">
         <span class="success-label">// Brief Received</span>
         <div class="success-headline">Delivered.</div>
-        <p class="success-body">
-          Your brief has entered the MIDILLA production queue.
-          A confirmation has been sent to your email.
-          The production clock starts on review.
-        </p>
+        <p class="success-body">Your brief has entered the MIDILLA production queue. A confirmation has been sent to your email. The production clock starts on review.</p>
         <span class="success-order">MIDILLA Production System · Bible v1.0 · 43 Sections</span>
       </div>
-
-    </div><!-- /intake-form -->
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
 <footer class="footer">
   <div class="container">
     <div class="footer-main">
@@ -924,13 +1077,57 @@
     </div>
     <div class="footer-bottom">
       <div class="footer-legal">© 2026 MIDILLA · All rights reserved</div>
-      <div class="footer-build">MIDILLA_Site · v1.1 · Produced by MIDILLA Production System · Bible v1.0 · 43 Sections</div>
+      <div class="footer-build">MIDILLA_Site · v1.2 · Produced by MIDILLA Production System · Bible v1.0 · 43 Sections</div>
     </div>
   </div>
 </footer>
 
+
 <script>
-  // Show success state if Formspree redirected back with ?success
+  /* ================================================================
+     MOBILE NAVIGATION
+  ================================================================ */
+  var hamburger = document.getElementById('nav-hamburger');
+  var panel     = document.getElementById('nav-mobile-panel');
+  var isOpen    = false;
+
+  function openNav() {
+    isOpen = true;
+    hamburger.classList.add('is-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    panel.classList.add('is-open');
+    panel.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('nav-open');
+  }
+
+  function closeNav() {
+    isOpen = false;
+    hamburger.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    panel.classList.remove('is-open');
+    panel.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('nav-open');
+  }
+
+  hamburger.addEventListener('click', function () {
+    isOpen ? closeNav() : openNav();
+  });
+
+  // Close on outside tap
+  document.addEventListener('click', function (e) {
+    if (isOpen && !panel.contains(e.target) && !hamburger.contains(e.target)) {
+      closeNav();
+    }
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && isOpen) closeNav();
+  });
+
+  /* ================================================================
+     FORM SUCCESS STATE
+  ================================================================ */
   if (window.location.search.includes('success')) {
     var form    = document.getElementById('midilla-brief-form');
     var success = document.getElementById('form-success');
