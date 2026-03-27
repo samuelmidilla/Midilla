@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — MIDILLA</title>
+  <meta name="description" content="MIDILLA was built by Samuel Ibrahim — a systems architect who builds documented production systems for content that professional service operators need but cannot consistently produce." />
+  <meta name="theme-color" content="#0A0B0F" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#0A0B0F;--surface:#12151C;--surface2:#1A1E28;
+      --border:#232838;--accent:#4ADE80;--accent-dim:rgba(74,222,128,0.07);
+      --accent-border:rgba(74,222,128,0.22);--amber:#FBB040;
+      --text-muted:#4A5568;--text-dim:#8892A4;--text:#E2E8F0;--white:#F8FAFC;
+      --nav-h:56px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:16px;line-height:1.9;overflow-x:hidden;}
+    body.nav-open{overflow:hidden;}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(10,11,15,0.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
+    .nav-wordmark{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);text-decoration:none;position:relative;z-index:310;}
+    .nav-links{display:flex;align-items:center;gap:32px;}
+    .nav-link{font-family:'Inconsolata',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.18s;}
+    .nav-link:hover{color:var(--text);}
+    .nav-link.active{color:var(--accent);}
+    .nav-cta{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:9px 20px;text-decoration:none;transition:opacity 0.18s;}
+    .nav-cta:hover{opacity:0.86;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:6px;background:transparent;border:1px solid var(--border);cursor:pointer;position:relative;z-index:310;transition:border-color 0.18s;}
+    .nav-hamburger:hover{border-color:var(--accent);}
+    .hamburger-bar{display:block;width:100%;height:1.5px;background:var(--text-dim);transition:transform 0.22s ease,opacity 0.22s ease,background 0.18s;transform-origin:center;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--accent);}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(2){opacity:0;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--accent);}
+    .nav-mobile-panel{position:fixed;top:var(--nav-h);left:0;right:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border);border-top:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height 0.32s cubic-bezier(0.4,0,0.2,1);}
+    .nav-mobile-panel.is-open{max-height:480px;}
+    .nav-mobile-inner{padding:32px 24px 36px;display:flex;flex-direction:column;}
+    .nav-mobile-receipt{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+    .nmr-dot{width:6px;height:6px;background:var(--accent);flex-shrink:0;}
+    .nmr-text{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);}
+    .nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border);text-decoration:none;}
+    .nav-mobile-link:last-of-type{border-bottom:none;}
+    .nml-label{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;color:var(--white);transition:color 0.18s;}
+    .nml-arrow{font-family:'Inconsolata',monospace;font-size:13px;color:var(--text-muted);transition:color 0.18s,transform 0.18s;}
+    .nav-mobile-link:hover .nml-label{color:var(--accent);}
+    .nav-mobile-link:hover .nml-arrow{color:var(--accent);transform:translateX(4px);}
+    .nav-mobile-cta{display:block;margin-top:24px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-align:center;text-decoration:none;color:var(--bg);background:var(--accent);padding:18px 24px;transition:opacity 0.18s;}
+    .nav-mobile-cta:hover{opacity:0.86;}
+
+    /* LAYOUT */
+    .container{max-width:1040px;margin:0 auto;padding:0 48px;}
+    .page-hero{padding-top:calc(96px + var(--nav-h));padding-bottom:80px;border-bottom:1px solid var(--border);position:relative;}
+    .page-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
+
+    /* SHARED TYPE */
+    .section-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+    .section-label::before{content:'';display:block;width:28px;height:1px;background:var(--accent);flex-shrink:0;}
+    .page-title{font-family:'Syne',sans-serif;font-size:clamp(48px,8vw,88px);font-weight:800;letter-spacing:-0.025em;line-height:0.94;color:var(--white);margin-bottom:32px;}
+    .page-subtitle{font-family:'Lora',serif;font-size:18px;font-style:italic;color:var(--text-dim);line-height:1.8;max-width:56ch;}
+
+    /* BODY SECTIONS */
+    .body-section{padding:80px 0;border-bottom:1px solid var(--border);}
+    .body-section:last-of-type{border-bottom:none;}
+    .section-heading{font-family:'Syne',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-0.02em;color:var(--white);line-height:1.05;margin-bottom:24px;}
+    .body-text{font-family:'Lora',serif;font-size:16px;color:var(--text-dim);line-height:1.9;max-width:68ch;margin-bottom:20px;}
+    .body-text strong{color:var(--text);font-weight:500;}
+    .body-text em{color:var(--text);font-style:italic;}
+
+    /* STATEMENT */
+    .statement-block{background:var(--surface);border-left:3px solid var(--accent);padding:28px 32px;margin:36px 0;}
+    .statement-tag{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:12px;}
+    .statement-text{font-family:'Lora',serif;font-style:italic;font-size:17px;color:var(--white);line-height:1.75;}
+
+    /* FOUNDER BLOCK */
+    .founder-block{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--accent);padding:44px;margin:48px 0;}
+    .founder-meta{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:36px;}
+    .founder-meta-cell{background:var(--surface2);padding:16px 20px;}
+    .fmc-label{font-family:'Inconsolata',monospace;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:6px;}
+    .fmc-value{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--white);}
+    .founder-name{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.02em;color:var(--white);margin-bottom:8px;}
+    .founder-title{font-family:'Inconsolata',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:24px;}
+    .founder-bio{font-family:'Lora',serif;font-size:15px;color:var(--text-dim);line-height:1.9;max-width:64ch;}
+
+    /* SYSTEMS LIST */
+    .systems-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin:36px 0;}
+    .system-cell{background:var(--surface);padding:24px 26px;}
+    .system-code{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent-border);padding:3px 10px;display:inline-block;margin-bottom:12px;}
+    .system-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px;}
+    .system-desc{font-family:'Lora',serif;font-size:13px;color:var(--text-dim);line-height:1.75;}
+
+    /* CTA BLOCK */
+    .cta-block{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--accent);padding:56px 44px;text-align:center;margin-top:80px;}
+    .cta-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:20px;}
+    .cta-heading{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-0.02em;color:var(--white);margin-bottom:16px;line-height:1.05;}
+    .cta-body{font-family:'Lora',serif;font-style:italic;font-size:16px;color:var(--text-dim);line-height:1.8;max-width:48ch;margin:0 auto 36px;}
+    .btn-primary{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:15px 36px;text-decoration:none;display:inline-block;transition:opacity 0.18s;}
+    .btn-primary:hover{opacity:0.86;}
+
+    /* FOOTER */
+    .footer{background:var(--surface);border-top:3px solid var(--accent);padding:64px 0 36px;}
+    .footer-main{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;padding-bottom:44px;border-bottom:1px solid var(--border);margin-bottom:36px;}
+    .footer-wordmark{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);display:block;margin-bottom:12px;}
+    .footer-positioning{font-family:'Lora',serif;font-style:italic;font-size:14px;color:var(--text-muted);line-height:1.75;max-width:360px;}
+    .footer-meta{text-align:right;}
+    .footer-meta-item{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.1em;display:block;margin-bottom:5px;}
+    .footer-meta-item.accent{color:var(--accent);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;}
+    .footer-legal,.footer-build{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .nav{padding:0 24px;}.nav-links{display:none;}.nav-hamburger{display:flex;}
+      .container{padding:0 24px;}
+      .page-hero{padding-top:calc(72px + var(--nav-h));padding-bottom:56px;}
+      .body-section{padding:56px 0;}
+      .founder-meta{grid-template-columns:1fr;}
+      .systems-grid{grid-template-columns:1fr;}
+      .founder-block{padding:28px 24px;}
+      .cta-block{padding:40px 24px;}
+      .footer-main{flex-direction:column;}.footer-meta{text-align:left;}
+      .footer-bottom{flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-wordmark">MIDILLA</a>
+  <div class="nav-links">
+    <a href="index.html#how-it-works" class="nav-link">How it works</a>
+    <a href="index.html#outputs" class="nav-link">Outputs</a>
+    <a href="index.html#pricing" class="nav-link">Pricing</a>
+    <a href="about.html" class="nav-link active">About</a>
+    <a href="index.html#brief-intake" class="nav-cta">Start a Brief</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+    <span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span>
+  </button>
+</nav>
+
+<div class="nav-mobile-panel" id="nav-mobile-panel" aria-hidden="true">
+  <div class="nav-mobile-inner">
+    <div class="nav-mobile-receipt">
+      <div class="nmr-dot"></div>
+      <span class="nmr-text">MIDILLA · System Active · v1.0</span>
+    </div>
+    <a href="index.html#how-it-works" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">How it works</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#outputs" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">Outputs</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#pricing" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">Pricing</span><span class="nml-arrow">→</span></a>
+    <a href="about.html" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">About</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#brief-intake" class="nav-mobile-cta" onclick="closeNav()">Start a Brief →</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label">The Founder</div>
+    <h1 class="page-title">Built by one person.<br/>Governed by systems.</h1>
+    <p class="page-subtitle">
+      MIDILLA is not a team. It is a production architecture —
+      documented systems that deliver expert-grade content
+      at a standard most agencies cannot match,
+      operated by a single systems architect.
+    </p>
+  </div>
+</div>
+
+<!-- THE FOUNDER -->
+<section class="body-section">
+  <div class="container">
+    <div class="section-label">Samuel Ibrahim</div>
+    <h2 class="section-heading">The architect behind the system.</h2>
+
+    <div class="founder-block">
+      <div class="founder-meta">
+        <div class="founder-meta-cell">
+          <span class="fmc-label">Role</span>
+          <span class="fmc-value">Founder · Content Systems Architect</span>
+        </div>
+        <div class="founder-meta-cell">
+          <span class="fmc-label">Platform</span>
+          <span class="fmc-value">MIDILLA · v1.0 · March 2026</span>
+        </div>
+        <div class="founder-meta-cell">
+          <span class="fmc-label">Location</span>
+          <span class="fmc-value">Kaduna, Nigeria</span>
+        </div>
+        <div class="founder-meta-cell">
+          <span class="fmc-label">Systems built</span>
+          <span class="fmc-value">6 documented production Bibles</span>
+        </div>
+      </div>
+
+      <div class="founder-name">Samuel Ibrahim</div>
+      <span class="founder-title">Content Systems Architect · Founder, MIDILLA</span>
+      <p class="founder-bio">
+        I am a writer and systems architect with over six years of creative experience.
+        I do not produce content by instinct. I build documented production systems —
+        Bibles — that govern every output from intake to delivery. Each system is tested,
+        quality-gated, and locked before the first brief enters it.
+      </p>
+      <br/>
+      <p class="founder-bio">
+        MIDILLA is the platform I built to make those systems available to professional
+        service operators who need the output without managing the infrastructure.
+        The name comes from a simple idea: the one who handles what you cannot.
+        That is what the system does. That is what I built it to do.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- THE PHILOSOPHY -->
+<section class="body-section">
+  <div class="container">
+    <div class="section-label">The Operating Philosophy</div>
+    <h2 class="section-heading">Systems first. Always.</h2>
+
+    <p class="body-text">
+      Every content domain I work in is governed by a documented system before
+      any client work begins. This is not a workflow preference. It is a quality standard.
+      A system built before the first brief ensures that output quality is determined
+      by the architecture — not by the brief, not by the day, not by the operator's mood.
+    </p>
+    <p class="body-text">
+      The quality gate does not have exceptions. Every output passes four gate levels
+      before delivery. An output that fails any gate is revised.
+      <strong>The standard does not move.</strong>
+    </p>
+
+    <div class="statement-block">
+      <span class="statement-tag">Operating Principle</span>
+      <p class="statement-text">
+        "I build systems, not outputs. The outputs are what the systems produce.
+        The system is what I invest in — because a system that compounds is worth
+        more than any single deliverable, no matter how good."
+      </p>
+    </div>
+
+    <p class="body-text">
+      This philosophy is visible in every layer of MIDILLA — in the Brand Identity
+      Bible that governs every visual and verbal decision, in the production Bibles
+      that govern every content category, in the quality gates that govern every
+      output before it reaches the client. The system is shown because it can bear being shown.
+    </p>
+  </div>
+</section>
+
+<!-- THE SYSTEMS -->
+<section class="body-section">
+  <div class="container">
+    <div class="section-label">The Production Systems</div>
+    <h2 class="section-heading">Six documented Bibles. Active before the first brief.</h2>
+
+    <p class="body-text">
+      Each Bible is a complete production architecture — intake protocol, quality gates,
+      voice standards, output specifications, and delivery criteria. None of these systems
+      were built in response to a client request. They were built first, so that
+      every client request has a documented system to receive it.
+    </p>
+
+    <div class="systems-grid">
+      <div class="system-cell">
+        <span class="system-code">WP-01</span>
+        <div class="system-name">B2B White Paper Bible</div>
+        <p class="system-desc">26 parts. Structured argument architecture, evidence frameworks, and formatting standards for long-form authority documents.</p>
+      </div>
+      <div class="system-cell">
+        <span class="system-code">LC-01</span>
+        <div class="system-name">Legal Content Bible</div>
+        <p class="system-desc">26 sections. 17 quality gates. Accuracy-first production system for law firms, attorneys, and legal marketing platforms.</p>
+      </div>
+      <div class="system-cell">
+        <span class="system-code">ES-01</span>
+        <div class="system-name">SERAPH Email System</div>
+        <p class="system-desc">25 sections. Complete email sequence operating system for onboarding, nurture, and re-engagement. Behavioral objective per email.</p>
+      </div>
+      <div class="system-cell">
+        <span class="system-code">LS-01</span>
+        <div class="system-name">Web3 LinkedIn Growth Bible</div>
+        <p class="system-desc">42 parts. ~122,000 words. Calendar-based content system for founders and executives building authority on LinkedIn.</p>
+      </div>
+      <div class="system-cell">
+        <span class="system-code">BI-01</span>
+        <div class="system-name">Brand Identity Bible</div>
+        <p class="system-desc">43 sections. 12 parts. Complete governance document for the MIDILLA brand — every visual, verbal, and positioning decision documented.</p>
+      </div>
+      <div class="system-cell">
+        <span class="system-code">PL-01</span>
+        <div class="system-name">Platform Bible</div>
+        <p class="system-desc">24 sections. Governing document for the MIDILLA freelance operation — Upwork, Fiverr, client intake, and delivery standards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="body-section" style="border-bottom:none;">
+  <div class="container">
+    <div class="cta-block">
+      <span class="cta-label">// Start Here</span>
+      <h2 class="cta-heading">The system is ready.<br/>Submit your brief.</h2>
+      <p class="cta-body">
+        Every production system on MIDILLA was built before this page existed.
+        Your brief has a documented architecture waiting to receive it.
+      </p>
+      <a href="index.html#brief-intake" class="btn-primary">Start a Brief →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div>
+        <span class="footer-wordmark">MIDILLA</span>
+        <p class="footer-positioning">The content production system for professional service operators who need expert-grade written outputs without managing the production infrastructure.</p>
+      </div>
+      <div class="footer-meta">
+        <span class="footer-meta-item accent">System Active · v1.0 · March 2026</span>
+        <span class="footer-meta-item">Bible: 43 Sections · 12 Parts</span>
+        <span class="footer-meta-item">Samuel Ibrahim · Founder</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">© 2026 MIDILLA · All rights reserved · <a href="privacy.html" style="color:var(--text-muted);text-decoration:none;">Privacy</a> · <a href="terms.html" style="color:var(--text-muted);text-decoration:none;">Terms</a></div>
+      <div class="footer-build">MIDILLA_Site · v1.3 · about.html</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var hamburger=document.getElementById('nav-hamburger');
+  var panel=document.getElementById('nav-mobile-panel');
+  var isOpen=false;
+  function openNav(){isOpen=true;hamburger.classList.add('is-open');hamburger.setAttribute('aria-expanded','true');panel.classList.add('is-open');panel.setAttribute('aria-hidden','false');document.body.classList.add('nav-open');}
+  function closeNav(){isOpen=false;hamburger.classList.remove('is-open');hamburger.setAttribute('aria-expanded','false');panel.classList.remove('is-open');panel.setAttribute('aria-hidden','true');document.body.classList.remove('nav-open');}
+  hamburger.addEventListener('click',function(){isOpen?closeNav():openNav();});
+  document.addEventListener('click',function(e){if(isOpen&&!panel.contains(e.target)&&!hamburger.contains(e.target))closeNav();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen)closeNav();});
+</script>
+</body>
+</html>
