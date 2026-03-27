@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkedIn Content Calendar — MIDILLA</title>
+  <meta name="description" content="A mapped, sequenced LinkedIn content calendar for founders and executives. 3 posts per week, 30 to 90 days, structured for authority positioning through the Web3 LinkedIn Growth Bible." />
+  <meta name="theme-color" content="#0A0B0F" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0A0B0F;--surface:#12151C;--surface2:#1A1E28;--border:#232838;--accent:#4ADE80;--accent-dim:rgba(74,222,128,0.07);--accent-border:rgba(74,222,128,0.22);--amber:#FBB040;--amber-dim:rgba(251,176,64,0.08);--amber-border:rgba(251,176,64,0.22);--text-muted:#4A5568;--text-dim:#8892A4;--text:#E2E8F0;--white:#F8FAFC;--nav-h:56px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:16px;line-height:1.9;overflow-x:hidden;}body.nav-open{overflow:hidden;}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(10,11,15,0.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
+    .nav-wordmark{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);text-decoration:none;position:relative;z-index:310;}
+    .nav-links{display:flex;align-items:center;gap:32px;}.nav-link{font-family:'Inconsolata',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.18s;}.nav-link:hover{color:var(--text);}
+    .nav-cta{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:9px 20px;text-decoration:none;transition:opacity 0.18s;}.nav-cta:hover{opacity:0.86;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:6px;background:transparent;border:1px solid var(--border);cursor:pointer;position:relative;z-index:310;transition:border-color 0.18s;}.nav-hamburger:hover{border-color:var(--accent);}
+    .hamburger-bar{display:block;width:100%;height:1.5px;background:var(--text-dim);transition:transform 0.22s ease,opacity 0.22s ease,background 0.18s;transform-origin:center;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--accent);}.nav-hamburger.is-open .hamburger-bar:nth-child(2){opacity:0;}.nav-hamburger.is-open .hamburger-bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--accent);}
+    .nav-mobile-panel{position:fixed;top:var(--nav-h);left:0;right:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border);border-top:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height 0.32s cubic-bezier(0.4,0,0.2,1);}.nav-mobile-panel.is-open{max-height:480px;}
+    .nav-mobile-inner{padding:32px 24px 36px;display:flex;flex-direction:column;}.nav-mobile-receipt{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}.nmr-dot{width:6px;height:6px;background:var(--accent);flex-shrink:0;}.nmr-text{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);}
+    .nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border);text-decoration:none;}.nav-mobile-link:last-of-type{border-bottom:none;}.nml-label{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;color:var(--white);transition:color 0.18s;}.nml-arrow{font-family:'Inconsolata',monospace;font-size:13px;color:var(--text-muted);transition:color 0.18s,transform 0.18s;}.nav-mobile-link:hover .nml-label{color:var(--accent);}.nav-mobile-link:hover .nml-arrow{color:var(--accent);transform:translateX(4px);}
+    .nav-mobile-cta{display:block;margin-top:24px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-align:center;text-decoration:none;color:var(--bg);background:var(--accent);padding:18px 24px;transition:opacity 0.18s;}.nav-mobile-cta:hover{opacity:0.86;}
+    .container{max-width:1040px;margin:0 auto;padding:0 48px;}
+    .page-hero{padding-top:calc(96px + var(--nav-h));padding-bottom:80px;border-bottom:1px solid var(--border);position:relative;}.page-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber);}
+    .section-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:12px;margin-bottom:28px;}.section-label::before{content:'';display:block;width:28px;height:1px;background:var(--amber);flex-shrink:0;}
+    .section-label.accent{color:var(--accent);}.section-label.accent::before{background:var(--accent);}
+    .page-title{font-family:'Syne',sans-serif;font-size:clamp(44px,7vw,80px);font-weight:800;letter-spacing:-0.025em;line-height:0.94;color:var(--white);margin-bottom:32px;}
+    .page-subtitle{font-family:'Lora',serif;font-size:17px;font-style:italic;color:var(--text-dim);line-height:1.8;max-width:56ch;margin-bottom:48px;}
+    .tier-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+    .tier-cell{background:var(--surface);padding:22px 26px;border-top:2px solid var(--amber);}
+    .tc-label{font-family:'Inconsolata',monospace;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:8px;}
+    .tc-code{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--white);letter-spacing:-0.01em;display:block;margin-bottom:4px;}
+    .tc-detail{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);}
+    .body-section{padding:80px 0;border-bottom:1px solid var(--border);}
+    .section-heading{font-family:'Syne',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-0.02em;color:var(--white);line-height:1.05;margin-bottom:24px;}
+    .body-text{font-family:'Lora',serif;font-size:16px;color:var(--text-dim);line-height:1.9;max-width:68ch;margin-bottom:20px;}.body-text strong{color:var(--text);font-weight:500;}
+    .statement-block{background:var(--surface);border-left:3px solid var(--amber);padding:28px 32px;margin:36px 0;}.statement-tag{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:12px;}.statement-text{font-family:'Lora',serif;font-style:italic;font-size:17px;color:var(--white);line-height:1.75;}
+    .bible-block{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--amber);padding:40px;margin:36px 0;}.bible-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:16px;}.bible-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.01em;color:var(--white);margin-bottom:16px;line-height:1.1;}.bible-body{font-family:'Lora',serif;font-size:15px;color:var(--text-dim);line-height:1.9;max-width:64ch;}
+    .calendar-spec{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin:36px 0;}
+    .cs-cell{background:var(--surface2);padding:22px 24px;}.cs-label{font-family:'Inconsolata',monospace;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:8px;}.cs-value{font-family:'Lora',serif;font-size:14px;color:var(--text);line-height:1.7;}
+    .cta-block{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--amber);padding:56px 44px;text-align:center;margin-top:80px;}.cta-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:20px;}.cta-heading{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-0.02em;color:var(--white);margin-bottom:16px;line-height:1.05;}.cta-body{font-family:'Lora',serif;font-style:italic;font-size:16px;color:var(--text-dim);line-height:1.8;max-width:48ch;margin:0 auto 36px;}
+    .btn-amber{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--amber);padding:15px 36px;text-decoration:none;display:inline-block;transition:opacity 0.18s;}.btn-amber:hover{opacity:0.86;}
+    .footer{background:var(--surface);border-top:3px solid var(--amber);padding:64px 0 36px;}.footer-main{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;padding-bottom:44px;border-bottom:1px solid var(--border);margin-bottom:36px;}.footer-wordmark{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);display:block;margin-bottom:12px;}.footer-positioning{font-family:'Lora',serif;font-style:italic;font-size:14px;color:var(--text-muted);line-height:1.75;max-width:360px;}.footer-meta{text-align:right;}.footer-meta-item{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.1em;display:block;margin-bottom:5px;}.footer-meta-item.amber{color:var(--amber);}.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;}.footer-legal,.footer-build{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);}
+    @media(max-width:768px){.nav{padding:0 24px;}.nav-links{display:none;}.nav-hamburger{display:flex;}.container{padding:0 24px;}.page-hero{padding-top:calc(72px + var(--nav-h));padding-bottom:56px;}.tier-bar{grid-template-columns:1fr;}.body-section{padding:56px 0;}.calendar-spec{grid-template-columns:1fr;}.bible-block{padding:24px;}.cta-block{padding:36px 24px;}.footer-main{flex-direction:column;}.footer-meta{text-align:left;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-wordmark">MIDILLA</a>
+  <div class="nav-links">
+    <a href="index.html#how-it-works" class="nav-link">How it works</a>
+    <a href="index.html#outputs" class="nav-link">Outputs</a>
+    <a href="index.html#pricing" class="nav-link">Pricing</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="index.html#brief-intake" class="nav-cta">Start a Brief</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+</nav>
+<div class="nav-mobile-panel" id="nav-mobile-panel" aria-hidden="true">
+  <div class="nav-mobile-inner">
+    <div class="nav-mobile-receipt"><div class="nmr-dot"></div><span class="nmr-text">MIDILLA · System Active · v1.0</span></div>
+    <a href="index.html#how-it-works" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">How it works</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#outputs" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">Outputs</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#pricing" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">Pricing</span><span class="nml-arrow">→</span></a>
+    <a href="about.html" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">About</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#brief-intake" class="nav-mobile-cta" onclick="closeNav()">Start a Brief →</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label">LS-01 / LS-02 / LS-03 · LinkedIn Content Calendar</div>
+    <h1 class="page-title">A calendar.<br/>Not a post.</h1>
+    <p class="page-subtitle">A mapped, sequenced 30 to 90-day content calendar for founders and executives building authority on LinkedIn — 3 posts per week, structured through the Web3 LinkedIn Growth Bible.</p>
+    <div class="tier-bar">
+      <div class="tier-cell"><span class="tc-label">LS-01 · 30-day</span><span class="tc-code">25 cr</span><span class="tc-detail">12 posts · 72-hour window</span></div>
+      <div class="tier-cell"><span class="tc-label">LS-02 · 60-day</span><span class="tc-code">50 cr</span><span class="tc-detail">24 posts · 72-hour window</span></div>
+      <div class="tier-cell"><span class="tc-label">LS-03 · 90-day</span><span class="tc-code">75 cr</span><span class="tc-detail">36 posts · 72-hour window</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="body-section">
+  <div class="container">
+    <div class="section-label">What this output is</div>
+    <h2 class="section-heading">Authority is built over time. The calendar is the system.</h2>
+    <p class="body-text">A single LinkedIn post is not an authority-building strategy. A random collection of posts is not a strategy either. Authority on LinkedIn is built through consistent, sequenced, strategically positioned content — content that has a narrative arc, that advances the audience's understanding of you over time, and that positions you for the conversion you are actually trying to achieve.</p>
+    <p class="body-text"><strong>The MIDILLA LinkedIn Content Calendar is not a list of topics.</strong> It is a mapped content sequence — every post has a defined purpose within the sequence's architecture. The posts are written, the calendar is scheduled, and the narrative arc is deliberate.</p>
+    <div class="statement-block">
+      <span class="statement-tag">The Standard</span>
+      <p class="statement-text">"Three posts per week. Every post serving the sequence. Every sequence serving the positioning. The calendar is the architecture. The posts are its execution."</p>
+    </div>
+  </div>
+</section>
+
+<section class="body-section">
+  <div class="container">
+    <div class="section-label">The Production System</div>
+    <h2 class="section-heading">The Web3 LinkedIn Growth Bible — 42 parts.</h2>
+    <div class="bible-block">
+      <span class="bible-label">// Web3 LinkedIn Growth Bible · 42 Parts · ~122,000 Words</span>
+      <div class="bible-title">Built for founders and executives building authority in professional markets.</div>
+      <p class="bible-body">The Web3 LinkedIn Growth Bible is a 42-part, 122,000-word production system for LinkedIn content — covering positioning strategy, post architecture, narrative sequencing, hook engineering, authority signal placement, and distribution mechanics. Every calendar produced by MIDILLA moves through this system. The output is not generic LinkedIn advice applied to your situation. It is your positioning, your argument, your expertise — structured through a system that knows how LinkedIn authority is built.</p>
+    </div>
+    <div class="calendar-spec">
+      <div class="cs-cell"><span class="cs-label">What you supply in the brief</span><div class="cs-value">Your positioning · Your expertise domain · Target audience · Key topics and themes · Posts per week preference · Any existing content to reference</div></div>
+      <div class="cs-cell"><span class="cs-label">What the calendar delivers</span><div class="cs-value">A complete day-by-day calendar · Written post copy for every entry · Hook lines · Post structure type · Hashtag strategy · Sequencing rationale per post</div></div>
+    </div>
+    <div class="cta-block">
+      <span class="cta-label">// LS-01 / LS-02 / LS-03 · 72-Hour Window</span>
+      <h2 class="cta-heading">Start your LinkedIn calendar brief.</h2>
+      <p class="cta-body">Choose your duration — 30, 60, or 90 days. Submit the brief. Receive a complete, written content calendar ready to execute.</p>
+      <a href="index.html#brief-intake" class="btn-amber">Start a Brief →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div><span class="footer-wordmark">MIDILLA</span><p class="footer-positioning">The content production system for professional service operators who need expert-grade written outputs without managing the production infrastructure.</p></div>
+      <div class="footer-meta"><span class="footer-meta-item amber">LinkedIn Calendar System · LS-01/02/03</span><span class="footer-meta-item">Web3 LinkedIn Growth Bible · 42 Parts · ~122K Words</span><span class="footer-meta-item">Samuel Ibrahim · Founder</span></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">© 2026 MIDILLA · <a href="privacy.html" style="color:var(--text-muted);text-decoration:none;">Privacy</a> · <a href="terms.html" style="color:var(--text-muted);text-decoration:none;">Terms</a></div>
+      <div class="footer-build">MIDILLA_Site · v1.3 · linkedin-calendar.html</div>
+    </div>
+  </div>
+</footer>
+<script>
+  var hamburger=document.getElementById('nav-hamburger'),panel=document.getElementById('nav-mobile-panel'),isOpen=false;
+  function openNav(){isOpen=true;hamburger.classList.add('is-open');hamburger.setAttribute('aria-expanded','true');panel.classList.add('is-open');panel.setAttribute('aria-hidden','false');document.body.classList.add('nav-open');}
+  function closeNav(){isOpen=false;hamburger.classList.remove('is-open');hamburger.setAttribute('aria-expanded','false');panel.classList.remove('is-open');panel.setAttribute('aria-hidden','true');document.body.classList.remove('nav-open');}
+  hamburger.addEventListener('click',function(){isOpen?closeNav():openNav();});
+  document.addEventListener('click',function(e){if(isOpen&&!panel.contains(e.target)&&!hamburger.contains(e.target))closeNav();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen)closeNav();});
+</script>
+</body>
+</html>
