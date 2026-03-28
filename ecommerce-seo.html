@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecommerce SEO Content — MIDILLA</title>
+  <meta name="description" content="Search-engineered, AI-citation-eligible ecommerce content. Produced through a 26-section system covering traditional SEO, Generative Engine Optimization, and research-grade writing — simultaneously." />
+  <meta name="theme-color" content="#0A0B0F" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Crect x='0' y='0' width='32' height='3' fill='%234ADE80'/%3E%3Ctext x='4' y='24' font-family='sans-serif' font-weight='900' font-size='18' fill='%23F8FAFC' letter-spacing='-1'%3EM%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0A0B0F;--surface:#12151C;--surface2:#1A1E28;--border:#232838;--accent:#4ADE80;--accent-dim:rgba(74,222,128,0.07);--accent-border:rgba(74,222,128,0.22);--blue:#60A5FA;--blue-dim:rgba(96,165,250,0.07);--blue-border:rgba(96,165,250,0.22);--text-muted:#4A5568;--text-dim:#8892A4;--text:#E2E8F0;--white:#F8FAFC;--nav-h:56px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:16px;line-height:1.9;overflow-x:hidden;}body.nav-open{overflow:hidden;}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(10,11,15,0.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
+    .nav-wordmark{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);text-decoration:none;position:relative;z-index:310;}
+    .nav-links{display:flex;align-items:center;gap:28px;}.nav-link{font-family:'Inconsolata',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.18s;}.nav-link:hover{color:var(--text);}
+    .nav-cta{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:9px 20px;text-decoration:none;transition:opacity 0.18s;}.nav-cta:hover{opacity:0.86;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:8px;background:transparent;border:1px solid var(--border);cursor:pointer;position:relative;z-index:310;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+    .nav-hamburger:hover{border-color:var(--accent);}
+    .hamburger-bar{display:block;width:100%;height:1.5px;background:var(--text-dim);transition:transform 0.22s ease,opacity 0.22s ease,background 0.18s;transform-origin:center;pointer-events:none;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--accent);}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(2){opacity:0;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--accent);}
+    .nav-mobile-panel{position:fixed;top:var(--nav-h);left:0;right:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border);border-top:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height 0.32s cubic-bezier(0.4,0,0.2,1);pointer-events:none;}
+    .nav-mobile-panel.is-open{max-height:560px;pointer-events:auto;}
+    .nav-mobile-inner{padding:32px 24px 36px;display:flex;flex-direction:column;}
+    .nav-mobile-receipt{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+    .nmr-dot{width:6px;height:6px;background:var(--accent);flex-shrink:0;}.nmr-text{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);}
+    .nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);text-decoration:none;-webkit-tap-highlight-color:transparent;}
+    .nav-mobile-link:last-of-type{border-bottom:none;}
+    .nml-label{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.02em;color:var(--white);}
+    .nml-arrow{font-family:'Inconsolata',monospace;font-size:13px;color:var(--text-muted);}
+    .nav-mobile-link:active .nml-label{color:var(--accent);}
+    .nav-mobile-cta{display:block;margin-top:24px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-align:center;text-decoration:none;color:var(--bg);background:var(--accent);padding:18px 24px;}
+    .container{max-width:1040px;margin:0 auto;padding:0 48px;}
+    .page-hero{padding-top:calc(96px + var(--nav-h));padding-bottom:80px;border-bottom:1px solid var(--border);position:relative;}
+    .page-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
+    .section-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+    .section-label::before{content:'';display:block;width:28px;height:1px;background:var(--accent);flex-shrink:0;}
+    .page-title{font-family:'Syne',sans-serif;font-size:clamp(44px,7vw,80px);font-weight:800;letter-spacing:-0.025em;line-height:0.94;color:var(--white);margin-bottom:32px;}
+    .page-subtitle{font-family:'Lora',serif;font-size:17px;font-style:italic;color:var(--text-dim);line-height:1.8;max-width:56ch;margin-bottom:48px;}
+    .spec-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+    .spec-cell{background:var(--surface);padding:18px 22px;}
+    .spec-label{font-family:'Inconsolata',monospace;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:6px;}
+    .spec-value{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--accent);letter-spacing:-0.01em;}
+    .spec-value.white{color:var(--white);}
+    .body-section{padding:80px 0;border-bottom:1px solid var(--border);}
+    .section-heading{font-family:'Syne',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-0.02em;color:var(--white);line-height:1.05;margin-bottom:24px;}
+    .body-text{font-family:'Lora',serif;font-size:16px;color:var(--text-dim);line-height:1.9;max-width:68ch;margin-bottom:20px;}
+    .body-text strong{color:var(--text);font-weight:500;}
+    .statement-block{background:var(--surface);border-left:3px solid var(--accent);padding:28px 32px;margin:36px 0;}
+    .statement-tag{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:12px;}
+    .statement-text{font-family:'Lora',serif;font-style:italic;font-size:17px;color:var(--white);line-height:1.75;}
+    .three-disciplines{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin:36px 0;}
+    .discipline-cell{background:var(--surface);padding:32px 26px;}
+    .dc-code{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent-border);padding:3px 10px;display:inline-block;margin-bottom:14px;}
+    .dc-code.blue{color:var(--blue);background:var(--blue-dim);border-color:var(--blue-border);}
+    .dc-name{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:var(--white);margin-bottom:12px;line-height:1.1;}
+    .dc-desc{font-family:'Lora',serif;font-size:13.5px;color:var(--text-dim);line-height:1.75;}
+    .deliverables-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin:36px 0;}
+    .deliverable-cell{background:var(--surface);padding:24px 26px;}
+    .del-num{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px;}
+    .del-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px;}
+    .del-desc{font-family:'Lora',serif;font-size:13px;color:var(--text-dim);line-height:1.7;}
+    .cta-block{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--accent);padding:56px 44px;text-align:center;margin-top:80px;}
+    .cta-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:20px;}
+    .cta-heading{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-0.02em;color:var(--white);margin-bottom:16px;line-height:1.05;}
+    .cta-body{font-family:'Lora',serif;font-style:italic;font-size:16px;color:var(--text-dim);line-height:1.8;max-width:48ch;margin:0 auto 36px;}
+    .btn-primary{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:15px 36px;text-decoration:none;display:inline-block;transition:opacity 0.18s;}.btn-primary:hover{opacity:0.86;}
+    .footer{background:var(--surface);border-top:3px solid var(--accent);padding:64px 0 36px;}
+    .footer-main{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;padding-bottom:44px;border-bottom:1px solid var(--border);margin-bottom:36px;}
+    .footer-wordmark{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);display:block;margin-bottom:12px;}
+    .footer-positioning{font-family:'Lora',serif;font-style:italic;font-size:14px;color:var(--text-muted);line-height:1.75;max-width:360px;}
+    .footer-meta{text-align:right;}
+    .footer-meta-item{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.1em;display:block;margin-bottom:5px;}
+    .footer-meta-item.accent{color:var(--accent);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+    .footer-legal,.footer-build{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);}
+    .footer-legal a{color:var(--text-muted);text-decoration:none;}
+    @media(max-width:768px){
+      .nav{padding:0 24px;}.nav-links{display:none;}.nav-hamburger{display:flex;}
+      .container{padding:0 24px;}.page-hero{padding-top:calc(72px + var(--nav-h));padding-bottom:56px;}
+      .spec-bar{grid-template-columns:1fr 1fr;}.body-section{padding:56px 0;}
+      .three-disciplines{grid-template-columns:1fr;}.deliverables-grid{grid-template-columns:1fr;}
+      .cta-block{padding:36px 24px;}
+      .footer-main{flex-direction:column;}.footer-meta{text-align:left;}
+      .footer-bottom{flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-wordmark">MIDILLA</a>
+  <div class="nav-links">
+    <a href="index.html#how-it-works" class="nav-link">How it works</a>
+    <a href="index.html#outputs" class="nav-link">Outputs</a>
+    <a href="index.html#pricing" class="nav-link">Pricing</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="index.html#brief-intake" class="nav-cta">Start a Brief</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" type="button" aria-label="Open navigation" aria-expanded="false">
+    <span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span>
+  </button>
+</nav>
+<div class="nav-mobile-panel" id="nav-mobile-panel" aria-hidden="true">
+  <div class="nav-mobile-inner">
+    <div class="nav-mobile-receipt"><div class="nmr-dot"></div><span class="nmr-text">MIDILLA · System Active · v1.0</span></div>
+    <a href="index.html#how-it-works" class="nav-mobile-link"><span class="nml-label">How it works</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#outputs" class="nav-mobile-link"><span class="nml-label">Outputs</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#pricing" class="nav-mobile-link"><span class="nml-label">Pricing</span><span class="nml-arrow">→</span></a>
+    <a href="about.html" class="nav-mobile-link"><span class="nml-label">About</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#brief-intake" class="nav-mobile-cta">Start a Brief →</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label">EC-01 · Ecommerce SEO + AI Visibility Content</div>
+    <h1 class="page-title">Ranks in search.<br/>Cited by AI.</h1>
+    <p class="page-subtitle">Ecommerce content that wins in both discovery layers simultaneously — produced through a 26-section system covering traditional SEO, Generative Engine Optimization, and research-grade writing.</p>
+    <div class="spec-bar">
+      <div class="spec-cell"><span class="spec-label">Credit cost</span><span class="spec-value">35 cr</span></div>
+      <div class="spec-cell"><span class="spec-label">Production window</span><span class="spec-value white">48 hrs</span></div>
+      <div class="spec-cell"><span class="spec-label">System depth</span><span class="spec-value white">26 sections</span></div>
+      <div class="spec-cell"><span class="spec-label">Disciplines covered</span><span class="spec-value white">3 simultaneously</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="body-section">
+  <div class="container">
+    <div class="section-label">The problem this system solves</div>
+    <h2 class="section-heading">The discovery layer has bifurcated. One content system now has to win both.</h2>
+    <p class="body-text">In 2026, traditional search rankings still matter. But a significant and growing share of buyer intent is now intercepted by AI interfaces before a single click occurs. Google AI Overviews, Perplexity, and ChatGPT answer product research queries, comparison questions, and category education requests directly — drawing from content they classify as authoritative.</p>
+    <p class="body-text"><strong>Brands that are not present in those answers are losing top-of-funnel visibility daily, regardless of their traditional rankings.</strong> This system solves that problem by building content that wins in both layers simultaneously — because content that wins traditional search but misses AI citation is already operating at a fraction of its potential.</p>
+    <div class="statement-block">
+      <span class="statement-tag">The Architectural Difference</span>
+      <p class="statement-text">"No other content system in this field operationalizes all three disciplines — Ecommerce SEO, AI Visibility, and Research Writing — as a single compound intelligence. That is the architectural difference between this system and any comparable resource a competitor, generic writer, or standard AI prompt would produce."</p>
+    </div>
+  </div>
+</section>
+
+<section class="body-section">
+  <div class="container">
+    <div class="section-label">Three disciplines. One system.</div>
+    <h2 class="section-heading">Every output satisfies all three dimensions simultaneously.</h2>
+    <div class="three-disciplines">
+      <div class="discipline-cell">
+        <span class="dc-code">SEO</span>
+        <div class="dc-name">Ecommerce SEO Architecture</div>
+        <p class="dc-desc">Site structure, internal authority flow, keyword and intent mapping, conversion alignment. Every output is built for the search queries it is meant to rank for — from product pages to buyer guides to topical cluster content.</p>
+      </div>
+      <div class="discipline-cell">
+        <span class="dc-code blue">GEO</span>
+        <div class="dc-name">AI Visibility (GEO)</div>
+        <p class="dc-desc">Generative Engine Optimization — content structured for extraction and citation by Google AI Overviews, Perplexity, ChatGPT, and all major generative answer engines. The system operationalizes this discipline as a full section, not a surface-level add-on.</p>
+      </div>
+      <div class="discipline-cell">
+        <span class="dc-code">RW</span>
+        <div class="dc-name">Research-Grade Writing</div>
+        <p class="dc-desc">Sourced from a strict tiered source hierarchy, fact-checked across three production phases, and built to the comprehensiveness standard required for genuine AI citation eligibility. Research is load-bearing, not decorative.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="body-section">
+  <div class="container">
+    <div class="section-label">Output types</div>
+    <h2 class="section-heading">Ten deliverable types. One production standard.</h2>
+    <div class="deliverables-grid">
+      <div class="deliverable-cell"><span class="del-num">01</span><div class="del-name">Product Page Optimization</div><p class="del-desc">On-page content built for conversion and search simultaneously.</p></div>
+      <div class="deliverable-cell"><span class="del-num">02</span><div class="del-name">Category and Collection Pages</div><p class="del-desc">Architecture-level strategy for collection page authority building.</p></div>
+      <div class="deliverable-cell"><span class="del-num">03</span><div class="del-name">Long-form Buyer Guides</div><p class="del-desc">1,500–4,000 word guides structured for featured snippet capture and AI citation.</p></div>
+      <div class="deliverable-cell"><span class="del-num">04</span><div class="del-name">Comparison Articles</div><p class="del-desc">Structured comparison content that intercepts high-intent research queries.</p></div>
+      <div class="deliverable-cell"><span class="del-num">05</span><div class="del-name">Topical Cluster Architecture</div><p class="del-desc">Content roadmap design for building compounding topical authority.</p></div>
+      <div class="deliverable-cell"><span class="del-num">06</span><div class="del-name">Schema Markup Specifications</div><p class="del-desc">Structured data specifications to support rich result eligibility.</p></div>
+      <div class="deliverable-cell"><span class="del-num">07</span><div class="del-name">AI Visibility Audits</div><p class="del-desc">Assessment of existing content against AI citation eligibility criteria.</p></div>
+      <div class="deliverable-cell"><span class="del-num">08</span><div class="del-name">E-E-A-T Signal Construction</div><p class="del-desc">Expertise, Experience, Authoritativeness, and Trustworthiness signals built into content structure.</p></div>
+    </div>
+    <div class="cta-block">
+      <span class="cta-label">// EC-01 · 35 Credits · 48-Hour Window · 26 Sections · 3 Disciplines</span>
+      <h2 class="cta-heading">Submit your ecommerce content brief.</h2>
+      <p class="cta-body">Ranks in traditional search. Gets cited by AI. Built to the comprehensiveness standard that makes both possible — simultaneously, not sequentially.</p>
+      <a href="index.html#brief-intake" class="btn-primary">Start a Brief →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div><span class="footer-wordmark">MIDILLA</span><p class="footer-positioning">The content production system for professional service operators who need expert-grade written outputs without managing the production infrastructure.</p></div>
+      <div class="footer-meta"><span class="footer-meta-item accent">System Active · v1.0 · March 2026</span><span class="footer-meta-item">EC-01 · Ecommerce SEO + AI Visibility Bible · 26 Sections</span><span class="footer-meta-item">Samuel Ibrahim · Founder</span></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">© 2026 MIDILLA · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
+      <div class="footer-build">MIDILLA_Site · v1.7 · ecommerce-seo.html</div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){var h=document.getElementById('nav-hamburger'),p=document.getElementById('nav-mobile-panel');if(!h||!p)return;var o=false;function on(){o=true;h.classList.add('is-open');h.setAttribute('aria-expanded','true');p.classList.add('is-open');p.setAttribute('aria-hidden','false');document.body.classList.add('nav-open');}function off(){o=false;h.classList.remove('is-open');h.setAttribute('aria-expanded','false');p.classList.remove('is-open');p.setAttribute('aria-hidden','true');document.body.classList.remove('nav-open');}function tog(e){e.preventDefault();e.stopPropagation();o?off():on();}h.addEventListener('click',tog);h.addEventListener('touchend',tog,{passive:false});p.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){setTimeout(off,80);});l.addEventListener('touchend',function(){setTimeout(off,80);});});document.addEventListener('click',function(e){if(o&&!p.contains(e.target)&&!h.contains(e.target))off();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&o)off();});})();
+</script>
+</body>
+</html>
