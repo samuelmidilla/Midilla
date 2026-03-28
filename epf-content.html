@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Finance Content — MIDILLA</title>
+  <meta name="description" content="Publication-ready personal finance articles for financial platforms and media. Produced through a 17-section, 21-component AI content production system — YMYL-compliant, E-E-A-T aligned, editorially submission-ready." />
+  <meta name="theme-color" content="#0A0B0F" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Crect x='0' y='0' width='32' height='3' fill='%234ADE80'/%3E%3Ctext x='4' y='24' font-family='sans-serif' font-weight='900' font-size='18' fill='%23F8FAFC' letter-spacing='-1'%3EM%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0A0B0F;--surface:#12151C;--surface2:#1A1E28;--border:#232838;--accent:#4ADE80;--accent-dim:rgba(74,222,128,0.07);--accent-border:rgba(74,222,128,0.22);--text-muted:#4A5568;--text-dim:#8892A4;--text:#E2E8F0;--white:#F8FAFC;--nav-h:56px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:16px;line-height:1.9;overflow-x:hidden;}body.nav-open{overflow:hidden;}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(10,11,15,0.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
+    .nav-wordmark{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);text-decoration:none;position:relative;z-index:310;}
+    .nav-links{display:flex;align-items:center;gap:28px;}.nav-link{font-family:'Inconsolata',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.18s;}.nav-link:hover{color:var(--text);}
+    .nav-cta{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:9px 20px;text-decoration:none;transition:opacity 0.18s;}.nav-cta:hover{opacity:0.86;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:8px;background:transparent;border:1px solid var(--border);cursor:pointer;position:relative;z-index:310;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+    .nav-hamburger:hover{border-color:var(--accent);}
+    .hamburger-bar{display:block;width:100%;height:1.5px;background:var(--text-dim);transition:transform 0.22s ease,opacity 0.22s ease,background 0.18s;transform-origin:center;pointer-events:none;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--accent);}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(2){opacity:0;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--accent);}
+    .nav-mobile-panel{position:fixed;top:var(--nav-h);left:0;right:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border);border-top:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height 0.32s cubic-bezier(0.4,0,0.2,1);pointer-events:none;}
+    .nav-mobile-panel.is-open{max-height:560px;pointer-events:auto;}
+    .nav-mobile-inner{padding:32px 24px 36px;display:flex;flex-direction:column;}
+    .nav-mobile-receipt{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+    .nmr-dot{width:6px;height:6px;background:var(--accent);flex-shrink:0;}.nmr-text{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);}
+    .nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);text-decoration:none;-webkit-tap-highlight-color:transparent;}
+    .nav-mobile-link:last-of-type{border-bottom:none;}
+    .nml-label{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.02em;color:var(--white);}
+    .nml-arrow{font-family:'Inconsolata',monospace;font-size:13px;color:var(--text-muted);}
+    .nav-mobile-link:active .nml-label{color:var(--accent);}
+    .nav-mobile-cta{display:block;margin-top:24px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-align:center;text-decoration:none;color:var(--bg);background:var(--accent);padding:18px 24px;}
+    .container{max-width:1040px;margin:0 auto;padding:0 48px;}
+    .page-hero{padding-top:calc(96px + var(--nav-h));padding-bottom:80px;border-bottom:1px solid var(--border);position:relative;}
+    .page-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
+    .section-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+    .section-label::before{content:'';display:block;width:28px;height:1px;background:var(--accent);flex-shrink:0;}
+    .page-title{font-family:'Syne',sans-serif;font-size:clamp(44px,7vw,80px);font-weight:800;letter-spacing:-0.025em;line-height:0.94;color:var(--white);margin-bottom:32px;}
+    .page-subtitle{font-family:'Lora',serif;font-size:17px;font-style:italic;color:var(--text-dim);line-height:1.8;max-width:56ch;margin-bottom:48px;}
+    .spec-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+    .spec-cell{background:var(--surface);padding:18px 22px;}
+    .spec-label{font-family:'Inconsolata',monospace;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:6px;}
+    .spec-value{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--accent);letter-spacing:-0.01em;}
+    .spec-value.white{color:var(--white);}
+    .body-section{padding:80px 0;border-bottom:1px solid var(--border);}
+    .section-heading{font-family:'Syne',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-0.02em;color:var(--white);line-height:1.05;margin-bottom:24px;}
+    .body-text{font-family:'Lora',serif;font-size:16px;color:var(--text-dim);line-height:1.9;max-width:68ch;margin-bottom:20px;}
+    .body-text strong{color:var(--text);font-weight:500;}
+    .statement-block{background:var(--surface);border-left:3px solid var(--accent);padding:28px 32px;margin:36px 0;}
+    .statement-tag{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:12px;}
+    .statement-text{font-family:'Lora',serif;font-style:italic;font-size:17px;color:var(--white);line-height:1.75;}
+    .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin:36px 0;}
+    .feature-cell{background:var(--surface);padding:28px 26px;}
+    .fc-num{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:10px;}
+    .fc-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:10px;}
+    .fc-desc{font-family:'Lora',serif;font-size:13.5px;color:var(--text-dim);line-height:1.75;}
+    .categories-block{background:var(--surface);border:1px solid var(--border);padding:32px 36px;margin:36px 0;}
+    .cb-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:20px;}
+    .categories-list{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+    .cat-item{font-family:'Inconsolata',monospace;font-size:11px;color:var(--text-dim);padding:8px 12px;background:var(--surface2);border:1px solid var(--border);}
+    .gate-block{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--accent);padding:36px 40px;margin:36px 0;}
+    .gate-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:20px;}
+    .gate-row{display:flex;align-items:flex-start;gap:20px;padding:14px 0;border-bottom:1px solid var(--border);}
+    .gate-row:last-child{border-bottom:none;}
+    .gate-marker{font-family:'Inconsolata',monospace;font-size:10px;color:var(--accent);flex-shrink:0;margin-top:2px;}
+    .gate-text{font-family:'Lora',serif;font-size:14px;color:var(--text-dim);line-height:1.7;}
+    .gate-text strong{color:var(--text);font-weight:500;}
+    .cta-block{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--accent);padding:56px 44px;text-align:center;margin-top:80px;}
+    .cta-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:20px;}
+    .cta-heading{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-0.02em;color:var(--white);margin-bottom:16px;line-height:1.05;}
+    .cta-body{font-family:'Lora',serif;font-style:italic;font-size:16px;color:var(--text-dim);line-height:1.8;max-width:48ch;margin:0 auto 36px;}
+    .btn-primary{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:15px 36px;text-decoration:none;display:inline-block;transition:opacity 0.18s;}.btn-primary:hover{opacity:0.86;}
+    .footer{background:var(--surface);border-top:3px solid var(--accent);padding:64px 0 36px;}
+    .footer-main{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;padding-bottom:44px;border-bottom:1px solid var(--border);margin-bottom:36px;}
+    .footer-wordmark{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);display:block;margin-bottom:12px;}
+    .footer-positioning{font-family:'Lora',serif;font-style:italic;font-size:14px;color:var(--text-muted);line-height:1.75;max-width:360px;}
+    .footer-meta{text-align:right;}
+    .footer-meta-item{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.1em;display:block;margin-bottom:5px;}
+    .footer-meta-item.accent{color:var(--accent);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+    .footer-legal,.footer-build{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);}
+    .footer-legal a{color:var(--text-muted);text-decoration:none;}
+    @media(max-width:768px){
+      .nav{padding:0 24px;}.nav-links{display:none;}.nav-hamburger{display:flex;}
+      .container{padding:0 24px;}.page-hero{padding-top:calc(72px + var(--nav-h));padding-bottom:56px;}
+      .spec-bar{grid-template-columns:1fr 1fr;}.body-section{padding:56px 0;}
+      .features-grid{grid-template-columns:1fr;}.categories-list{grid-template-columns:1fr 1fr;}
+      .gate-block{padding:24px;}.cta-block{padding:36px 24px;}
+      .footer-main{flex-direction:column;}.footer-meta{text-align:left;}
+      .footer-bottom{flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-wordmark">MIDILLA</a>
+  <div class="nav-links">
+    <a href="index.html#how-it-works" class="nav-link">How it works</a>
+    <a href="index.html#outputs" class="nav-link">Outputs</a>
+    <a href="index.html#pricing" class="nav-link">Pricing</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="index.html#brief-intake" class="nav-cta">Start a Brief</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" type="button" aria-label="Open navigation" aria-expanded="false">
+    <span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span>
+  </button>
+</nav>
+<div class="nav-mobile-panel" id="nav-mobile-panel" aria-hidden="true">
+  <div class="nav-mobile-inner">
+    <div class="nav-mobile-receipt"><div class="nmr-dot"></div><span class="nmr-text">MIDILLA · System Active · v1.0</span></div>
+    <a href="index.html#how-it-works" class="nav-mobile-link"><span class="nml-label">How it works</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#outputs" class="nav-mobile-link"><span class="nml-label">Outputs</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#pricing" class="nav-mobile-link"><span class="nml-label">Pricing</span><span class="nml-arrow">→</span></a>
+    <a href="about.html" class="nav-mobile-link"><span class="nml-label">About</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#brief-intake" class="nav-mobile-cta">Start a Brief →</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label">PF-01 · Personal Finance Content</div>
+    <h1 class="page-title">YMYL-compliant.<br/>Editorially submission-ready.</h1>
+    <p class="page-subtitle">Long-form personal finance articles for financial platforms and media — produced through a 17-section, 21-component system. Not good. Not great. The best article ever written on any given topic for this specific audience.</p>
+    <div class="spec-bar">
+      <div class="spec-cell"><span class="spec-label">Credit cost</span><span class="spec-value">30 cr</span></div>
+      <div class="spec-cell"><span class="spec-label">Production window</span><span class="spec-value white">36 hrs</span></div>
+      <div class="spec-cell"><span class="spec-label">System depth</span><span class="spec-value white">17 sections · 21 components</span></div>
+      <div class="spec-cell"><span class="spec-label">Quality gates</span><span class="spec-value white">8 applied</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="body-section">
+  <div class="container">
+    <div class="section-label">What this output is</div>
+    <h2 class="section-heading">Intelligence-driven content. Not content-shaped content.</h2>
+    <p class="body-text">Most personal finance content systems produce content. This system produces intelligence-driven content. The difference is the research mandate: no writing decision — not the angle, not the structure, not a single sentence — is made before a five-phase research protocol is complete.</p>
+    <p class="body-text">The system actively hunts for what is missing from the existing content landscape, not what already exists. It identifies seven distinct gap types, eight angle types, five originality mechanisms, and six positioning types — then locks one of each before any article begins. The result is content that fills real gaps rather than reproducing what already ranks.</p>
+    <div class="statement-block">
+      <span class="statement-tag">System Directive</span>
+      <p class="statement-text">"Produce the best article ever written on any given topic for this specific audience. Not good. Not great. The best."</p>
+    </div>
+  </div>
+</section>
+
+<section class="body-section">
+  <div class="container">
+    <div class="section-label">System architecture</div>
+    <h2 class="section-heading">What makes this system different.</h2>
+    <div class="features-grid">
+      <div class="feature-cell">
+        <span class="fc-num">01</span>
+        <div class="fc-title">Reader Psychology Map</div>
+        <p class="fc-desc">Six named emotional states — Anxious/Fearful, Confused/Overwhelmed, Curious/Exploring, Motivated/Action-Ready, Skeptical/Guarded, Aspirational/Dream-Driven — each with its own tone directive, opening approach, and trust threshold. Tone is a strategic decision, not a stylistic preference.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="fc-num">02</span>
+        <div class="fc-title">Originality Engine</div>
+        <p class="fc-desc">Five originality mechanisms with four-criterion testing — ensuring every article delivers something absent from the current content landscape. The system identifies content gaps before writing begins and builds specifically to exploit them.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="fc-num">03</span>
+        <div class="fc-title">YMYL Compliance</div>
+        <p class="fc-desc">Personal finance is a Your Money or Your Life category. Every article produced by this system is YMYL-compliant, E-E-A-T aligned, and built to Google's highest scrutiny standard for financial content. No claim is made without supporting evidence from verified sources.</p>
+      </div>
+      <div class="feature-cell">
+        <span class="fc-num">04</span>
+        <div class="fc-title">8-Gate Quality Control</div>
+        <p class="fc-desc">A multi-dimensional quality gate evaluating depth, originality, evidence, credibility, clarity, momentum, actionability, and voice. Every article passes all eight gates before delivery. An article that fails any gate is revised — not delivered.</p>
+      </div>
+    </div>
+
+    <div class="categories-block">
+      <span class="cb-label">// 12 Content Categories Covered</span>
+      <div class="categories-list">
+        <div class="cat-item">Personal Finance</div>
+        <div class="cat-item">Business</div>
+        <div class="cat-item">Make Money Online</div>
+        <div class="cat-item">Save Money</div>
+        <div class="cat-item">Loans</div>
+        <div class="cat-item">Credit Cards</div>
+        <div class="cat-item">Identity Theft</div>
+        <div class="cat-item">Credit Report</div>
+        <div class="cat-item">Guides</div>
+        <div class="cat-item">Unique Content</div>
+        <div class="cat-item">Helpful Tips</div>
+        <div class="cat-item">Financial Planning</div>
+      </div>
+    </div>
+
+    <div class="gate-block">
+      <span class="gate-label">// 8-Gate Quality Control System</span>
+      <div class="gate-row"><span class="gate-marker">G-01</span><div class="gate-text"><strong>Depth</strong> — the article covers its topic at a depth that exceeds what currently ranks for the same search intent.</div></div>
+      <div class="gate-row"><span class="gate-marker">G-02</span><div class="gate-text"><strong>Originality</strong> — at least one of the five originality mechanisms is present and passes the four-criterion test.</div></div>
+      <div class="gate-row"><span class="gate-marker">G-03</span><div class="gate-text"><strong>Evidence</strong> — every claim that requires substantiation is sourced from a verified, named source. No unsourced assertions pass.</div></div>
+      <div class="gate-row"><span class="gate-marker">G-04</span><div class="gate-text"><strong>Credibility</strong> — the article reads as the work of a domain expert, not a content generalist. E-E-A-T signals are present throughout.</div></div>
+      <div class="gate-row"><span class="gate-marker">G-05</span><div class="gate-text"><strong>Clarity</strong> — the reader understands every sentence on the first reading. No unnecessary complexity, no jargon without definition.</div></div>
+      <div class="gate-row"><span class="gate-marker">G-06</span><div class="gate-text"><strong>Momentum</strong> — the article does not lose the reader. Every section earns the transition to the next.</div></div>
+      <div class="gate-row"><span class="gate-marker">G-07</span><div class="gate-text"><strong>Actionability</strong> — the reader leaves with something concrete they can use. Insight without application does not pass.</div></div>
+      <div class="gate-row"><span class="gate-marker">G-08</span><div class="gate-text"><strong>Voice</strong> — the article is consistent in tone across every section and matches the reader psychology map completed before production began.</div></div>
+    </div>
+
+    <div class="cta-block">
+      <span class="cta-label">// PF-01 · 30 Credits · 36-Hour Window · 17 Sections · 8 Quality Gates</span>
+      <h2 class="cta-heading">Submit your personal finance content brief.</h2>
+      <p class="cta-body">YMYL-compliant. E-E-A-T aligned. Eight quality gates applied. The best article on any topic in your category — built to rank and built to hold attention.</p>
+      <a href="index.html#brief-intake" class="btn-primary">Start a Brief →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div><span class="footer-wordmark">MIDILLA</span><p class="footer-positioning">The content production system for professional service operators who need expert-grade written outputs without managing the production infrastructure.</p></div>
+      <div class="footer-meta"><span class="footer-meta-item accent">System Active · v1.0 · March 2026</span><span class="footer-meta-item">PF-01 · Personal Finance Content Bible · 17 Sections · 21 Components</span><span class="footer-meta-item">Samuel Ibrahim · Founder</span></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">© 2026 MIDILLA · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
+      <div class="footer-build">MIDILLA_Site · v1.7 · epf-content.html</div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){var h=document.getElementById('nav-hamburger'),p=document.getElementById('nav-mobile-panel');if(!h||!p)return;var o=false;function on(){o=true;h.classList.add('is-open');h.setAttribute('aria-expanded','true');p.classList.add('is-open');p.setAttribute('aria-hidden','false');document.body.classList.add('nav-open');}function off(){o=false;h.classList.remove('is-open');h.setAttribute('aria-expanded','false');p.classList.remove('is-open');p.setAttribute('aria-hidden','true');document.body.classList.remove('nav-open');}function tog(e){e.preventDefault();e.stopPropagation();o?off():on();}h.addEventListener('click',tog);h.addEventListener('touchend',tog,{passive:false});p.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){setTimeout(off,80);});l.addEventListener('touchend',function(){setTimeout(off,80);});});document.addEventListener('click',function(e){if(o&&!p.contains(e.target)&&!h.contains(e.target))off();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&o)off();});})();
+</script>
+</body>
+</html>
