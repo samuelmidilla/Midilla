@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms of Service — MIDILLA</title>
-  <meta name="description" content="MIDILLA Terms of Service — the conditions governing use of the MIDILLA content production platform." />
+  <meta name="description" content="MIDILLA Terms of Service — the terms governing use of the MIDILLA content production platform." />
   <meta name="theme-color" content="#0A0B0F" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Crect x='0' y='0' width='32' height='3' fill='%234ADE80'/%3E%3Ctext x='4' y='24' font-family='sans-serif' font-weight='900' font-size='18' fill='%23F8FAFC' letter-spacing='-1'%3EM%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,700;0,800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root{--bg:#0A0B0F;--surface:#12151C;--surface2:#1A1E28;--border:#232838;--accent:#4ADE80;--text-muted:#4A5568;--text-dim:#8892A4;--text:#E2E8F0;--white:#F8FAFC;--nav-h:56px;}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:16px;line-height:1.9;overflow-x:hidden;}body.nav-open{overflow:hidden;}
+    :root{--bg:#0A0B0F;--surface:#12151C;--border:#232838;--accent:#4ADE80;--text-muted:#4A5568;--text-dim:#8892A4;--text:#E2E8F0;--white:#F8FAFC;--nav-h:56px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:16px;line-height:1.9;overflow-x:hidden;}
+    body.nav-open{overflow:hidden;}
     .nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(10,11,15,0.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
-    .nav-wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);text-decoration:none;position:relative;z-index:310;}
-    .nav-links{display:flex;align-items:center;gap:32px;}.nav-link{font-family:'Inconsolata',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.18s;}.nav-link:hover{color:var(--text);}
-    .nav-cta{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:9px 20px;text-decoration:none;transition:opacity 0.18s;}.nav-cta:hover{opacity:0.86;}
-    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:6px;background:transparent;border:1px solid var(--border);cursor:pointer;position:relative;z-index:310;}.hamburger-bar{display:block;width:100%;height:1.5px;background:var(--text-dim);transition:transform 0.22s ease,opacity 0.22s ease;transform-origin:center;}
-    .nav-hamburger.is-open .hamburger-bar:nth-child(1){transform:translateY(6.5px) rotate(45deg);}.nav-hamburger.is-open .hamburger-bar:nth-child(2){opacity:0;}.nav-hamburger.is-open .hamburger-bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-    .nav-mobile-panel{position:fixed;top:var(--nav-h);left:0;right:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height 0.32s cubic-bezier(0.4,0,0.2,1);}.nav-mobile-panel.is-open{max-height:480px;}
-    .nav-mobile-inner{padding:32px 24px 36px;display:flex;flex-direction:column;}.nav-mobile-receipt{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}.nmr-dot{width:6px;height:6px;background:var(--accent);flex-shrink:0;}.nmr-text{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);}
-    .nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border);text-decoration:none;}.nav-mobile-link:last-of-type{border-bottom:none;}.nml-label{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;color:var(--white);}.nml-arrow{font-family:'Inconsolata',monospace;font-size:13px;color:var(--text-muted);}
-    .nav-mobile-cta{display:block;margin-top:24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-align:center;text-decoration:none;color:var(--bg);background:var(--accent);padding:18px 24px;}
+    .nav-wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);text-decoration:none;z-index:310;position:relative;}
+    .nav-links{display:flex;align-items:center;gap:32px;}
+    .nav-link{font-family:'Inconsolata',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.18s;}
+    .nav-link:hover{color:var(--text);}
+    .nav-cta{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:9px 20px;text-decoration:none;transition:opacity 0.18s;}
+    .nav-cta:hover{opacity:0.86;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:8px;background:transparent;border:1px solid var(--border);cursor:pointer;z-index:310;position:relative;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+    .nav-hamburger:hover{border-color:var(--accent);}
+    .hamburger-bar{display:block;width:100%;height:1.5px;background:var(--text-dim);transition:transform 0.22s ease,opacity 0.22s ease,background 0.18s;transform-origin:center;pointer-events:none;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--accent);}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(2){opacity:0;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--accent);}
+    .nav-mobile-panel{position:fixed;top:var(--nav-h);left:0;right:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border);border-top:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height 0.32s cubic-bezier(0.4,0,0.2,1);pointer-events:none;}
+    .nav-mobile-panel.is-open{max-height:480px;pointer-events:auto;}
+    .nav-mobile-inner{padding:32px 24px 36px;display:flex;flex-direction:column;}
+    .nav-mobile-receipt{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+    .nmr-dot{width:6px;height:6px;background:var(--accent);flex-shrink:0;}
+    .nmr-text{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);}
+    .nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border);text-decoration:none;-webkit-tap-highlight-color:transparent;}
+    .nav-mobile-link:last-of-type{border-bottom:none;}
+    .nml-label{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;color:var(--white);}
+    .nml-arrow{font-family:'Inconsolata',monospace;font-size:13px;color:var(--text-muted);}
+    .nav-mobile-link:active .nml-label{color:var(--accent);}
+    .nav-mobile-cta{display:block;margin-top:24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-align:center;text-decoration:none;color:var(--bg);background:var(--accent);padding:18px 24px;-webkit-tap-highlight-color:transparent;}
     .container{max-width:800px;margin:0 auto;padding:0 48px;}
     .page-hero{padding-top:calc(80px + var(--nav-h));padding-bottom:56px;border-bottom:1px solid var(--border);}
     .doc-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:20px;}
@@ -32,35 +52,53 @@
     .doc-section:first-child .doc-section-title{border-top:none;padding-top:0;}
     .doc-text{font-family:'Lora',serif;font-size:15px;color:var(--text-dim);line-height:1.9;margin-bottom:16px;max-width:68ch;}
     .doc-text strong{color:var(--text);font-weight:500;}
-    .doc-list{list-style:none;margin:16px 0;}.doc-list li{font-family:'Lora',serif;font-size:15px;color:var(--text-dim);padding-left:20px;position:relative;margin-bottom:10px;line-height:1.7;}.doc-list li::before{content:'→';position:absolute;left:0;color:var(--accent);font-family:'Inconsolata',monospace;font-size:11px;top:2px;}
+    .doc-list{list-style:none;margin:16px 0;}
+    .doc-list li{font-family:'Lora',serif;font-size:15px;color:var(--text-dim);padding-left:20px;position:relative;margin-bottom:10px;line-height:1.7;}
+    .doc-list li::before{content:'→';position:absolute;left:0;color:var(--accent);font-family:'Inconsolata',monospace;font-size:11px;top:2px;}
     .contact-block{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);padding:24px 28px;margin:24px 0;}
     .contact-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:10px;}
     .contact-text{font-family:'Lora',serif;font-size:15px;color:var(--text-dim);line-height:1.75;}
-    .footer{background:var(--surface);border-top:3px solid var(--accent);padding:48px 0 28px;}.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+    .contact-text a{color:var(--accent);text-decoration:none;}
+    .footer{background:var(--surface);border-top:3px solid var(--accent);padding:48px 0 28px;}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
     .footer-legal,.footer-build{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);}
-    @media(max-width:768px){.nav{padding:0 24px;}.nav-links{display:none;}.nav-hamburger{display:flex;}.container{padding:0 24px;}.footer-bottom{flex-direction:column;align-items:flex-start;}}
+    .footer-legal a{color:var(--text-muted);text-decoration:none;transition:color 0.18s;}
+    .footer-legal a:hover{color:var(--accent);}
+    @media(max-width:768px){
+      .nav{padding:0 24px;}
+      .nav-links{display:none;}
+      .nav-hamburger{display:flex;}
+      .container{padding:0 24px;}
+      .footer-bottom{flex-direction:column;align-items:flex-start;}
+    }
   </style>
 </head>
 <body>
+
 <nav class="nav">
   <a href="index.html" class="nav-wordmark">MIDILLA</a>
   <div class="nav-links">
     <a href="index.html#how-it-works" class="nav-link">How it works</a>
-    <a href="index.html#outputs" class="nav-link">Outputs</a>
-    <a href="index.html#pricing" class="nav-link">Pricing</a>
-    <a href="about.html" class="nav-link">About</a>
+    <a href="index.html#outputs"      class="nav-link">Outputs</a>
+    <a href="index.html#pricing"      class="nav-link">Pricing</a>
+    <a href="about.html"             class="nav-link">About</a>
     <a href="index.html#brief-intake" class="nav-cta">Start a Brief</a>
   </div>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+  <button class="nav-hamburger" id="nav-hamburger" type="button" aria-label="Open navigation" aria-expanded="false">
+    <span class="hamburger-bar"></span>
+    <span class="hamburger-bar"></span>
+    <span class="hamburger-bar"></span>
+  </button>
 </nav>
+
 <div class="nav-mobile-panel" id="nav-mobile-panel" aria-hidden="true">
   <div class="nav-mobile-inner">
     <div class="nav-mobile-receipt"><div class="nmr-dot"></div><span class="nmr-text">MIDILLA · System Active · v1.0</span></div>
-    <a href="index.html#how-it-works" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">How it works</span><span class="nml-arrow">→</span></a>
-    <a href="index.html#outputs" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">Outputs</span><span class="nml-arrow">→</span></a>
-    <a href="index.html#pricing" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">Pricing</span><span class="nml-arrow">→</span></a>
-    <a href="about.html" class="nav-mobile-link" onclick="closeNav()"><span class="nml-label">About</span><span class="nml-arrow">→</span></a>
-    <a href="index.html#brief-intake" class="nav-mobile-cta" onclick="closeNav()">Start a Brief →</a>
+    <a href="index.html#how-it-works"  class="nav-mobile-link"><span class="nml-label">How it works</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#outputs"       class="nav-mobile-link"><span class="nml-label">Outputs</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#pricing"       class="nav-mobile-link"><span class="nml-label">Pricing</span><span class="nml-arrow">→</span></a>
+    <a href="about.html"              class="nav-mobile-link"><span class="nml-label">About</span><span class="nml-arrow">→</span></a>
+    <a href="index.html#brief-intake"  class="nav-mobile-cta">Start a Brief →</a>
   </div>
 </div>
 
@@ -77,57 +115,67 @@
 
     <div class="doc-section">
       <div class="doc-section-title">Agreement</div>
-      <p class="doc-text">By submitting a brief through the MIDILLA platform or engaging with MIDILLA services in any capacity, you agree to the terms set out in this document. These terms govern the relationship between you (the client) and MIDILLA (operated by Samuel Ibrahim).</p>
+      <p class="doc-text">By submitting a brief through the MIDILLA intake form or engaging with any service provided by MIDILLA, you agree to these Terms of Service. MIDILLA is operated by Samuel Ibrahim.</p>
+      <p class="doc-text">These terms govern the relationship between MIDILLA and any person or organisation that submits a brief, receives a delivered output, or otherwise engages with the platform.</p>
     </div>
 
     <div class="doc-section">
-      <div class="doc-section-title">Services</div>
-      <p class="doc-text">MIDILLA provides content production services — including B2B white papers, legal content, email sequences, and LinkedIn content calendars — as described on this website. Services are provided as specified in the output catalogue and are subject to the credit and pricing structure in effect at the time of order.</p>
-      <p class="doc-text">MIDILLA reserves the right to update its output catalogue, pricing, and credit structure. Changes do not apply retroactively to orders already submitted and confirmed.</p>
+      <div class="doc-section-title">The Service</div>
+      <p class="doc-text">MIDILLA is a content production platform. It produces written outputs — including but not limited to B2B white papers, legal content, email sequences, LinkedIn content calendars, personal finance articles, and ecommerce SEO content — in exchange for credit-based subscription payments.</p>
+      <p class="doc-text">Every output is produced through a documented production system. The quality standard applied is the publication-ready standard — meaning the delivered document does not require editorial revision before it reaches its intended audience.</p>
     </div>
 
     <div class="doc-section">
-      <div class="doc-section-title">Brief Submission and Order Confirmation</div>
-      <p class="doc-text">Submission of a brief through the intake form constitutes a request for service, not a confirmed order. An order is confirmed when MIDILLA acknowledges receipt and confirms production has begun. The production window stated for each output type begins at the point of order confirmation, not at the point of brief submission.</p>
-    </div>
-
-    <div class="doc-section">
-      <div class="doc-section-title">Content Accuracy and Client Responsibility</div>
-      <p class="doc-text">MIDILLA produces content based on the information provided in the client's brief. The accuracy of the output depends on the accuracy of the brief. The client is responsible for:</p>
-      <ul class="doc-list">
-        <li>Providing accurate information in the brief</li>
-        <li>Verifying that all factual claims in the delivered output are accurate before publication</li>
-        <li>Ensuring the output complies with any jurisdiction-specific requirements applicable to their practice or industry</li>
-      </ul>
-      <p class="doc-text">MIDILLA applies quality gates to every output but does not independently verify third-party data or claims provided by the client in the brief.</p>
-    </div>
-
-    <div class="doc-section">
-      <div class="doc-section-title">Intellectual Property</div>
-      <p class="doc-text">Upon delivery and full payment, the client owns the delivered content output. MIDILLA retains no claim to the content after delivery. MIDILLA retains ownership of its production systems, Bibles, frameworks, and operating methodologies — none of which are transferred as part of a content delivery.</p>
+      <div class="doc-section-title">Briefs and Orders</div>
+      <p class="doc-text">An order begins when a brief is submitted through the intake form and confirmed by MIDILLA. Confirmation is sent to the email address provided in the brief. The production window begins on confirmation, not on submission.</p>
+      <p class="doc-text">The production window stated for each output type is a maximum. MIDILLA consistently delivers before the window closes. If a delivery is delayed beyond the stated window, you will be notified directly.</p>
+      <p class="doc-text">The quality of the output is governed by the production Bible applied to the brief. The more specific and complete the brief, the more precisely the system can be applied.</p>
     </div>
 
     <div class="doc-section">
       <div class="doc-section-title">Revisions</div>
-      <p class="doc-text">MIDILLA's quality standard is designed to produce publication-ready output without revision. If a delivered output does not meet the specifications stated in the original brief, MIDILLA will revise the output. Revision requests must be submitted within 7 days of delivery and must reference specific elements of the brief that the output does not satisfy.</p>
-      <p class="doc-text">Revision requests that introduce new requirements not present in the original brief are treated as new orders.</p>
+      <p class="doc-text">MIDILLA's quality standard is designed to produce publication-ready output without revision. If a delivered output does not satisfy requirements stated in the original brief, it will be revised at no additional credit cost.</p>
+      <p class="doc-text">Revision requests must:</p>
+      <ul class="doc-list">
+        <li>Be submitted within 7 days of delivery</li>
+        <li>Reference specific requirements stated in the original brief that the output does not satisfy</li>
+        <li>Not introduce new requirements not present in the original brief</li>
+      </ul>
+      <p class="doc-text">Revision requests that introduce new requirements are treated as new briefs and consume credits accordingly.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-title">Credits and Billing</div>
+      <p class="doc-text">Credits are the unit of production on MIDILLA. Each output type has a documented credit cost. Subscription tiers determine credit allocation per billing cycle. Unused credits do not roll over to the next cycle.</p>
+      <p class="doc-text">Subscription payments are processed through a third-party payment processor. MIDILLA does not store payment information. Billing disputes are handled through the payment processor's dispute mechanism.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-title">Intellectual Property</div>
+      <p class="doc-text">Upon delivery and full payment, ownership of the delivered content transfers to the client. MIDILLA retains no ownership rights over delivered outputs. MIDILLA may retain anonymised examples of output types for portfolio and capability demonstration purposes, with all identifying client information removed, unless the client explicitly requests otherwise.</p>
+    </div>
+
+    <div class="doc-section">
+      <div class="doc-section-title">Confidentiality</div>
+      <p class="doc-text">Brief contents are treated as confidential. MIDILLA does not share brief contents with any third party not involved in production. This confidentiality obligation survives termination of the service relationship.</p>
     </div>
 
     <div class="doc-section">
       <div class="doc-section-title">Limitation of Liability</div>
-      <p class="doc-text">MIDILLA's liability in connection with any order is limited to the credit value or monetary value of that order. MIDILLA is not liable for any indirect, consequential, or reputational damages arising from the use of delivered content.</p>
+      <p class="doc-text">MIDILLA's liability for any claim arising from a service engagement is limited to the credit value of the specific order in question. MIDILLA is not liable for indirect, consequential, or incidental damages arising from use of delivered content.</p>
     </div>
 
     <div class="doc-section">
-      <div class="doc-section-title">Governing Law</div>
-      <p class="doc-text">These terms are governed by applicable law. Disputes will be resolved through direct communication between the client and MIDILLA before any formal process is initiated.</p>
+      <div class="doc-section-title">Changes to These Terms</div>
+      <p class="doc-text">If these terms change materially, MIDILLA will update the effective date at the top of this document. Continued use of the service after a terms update constitutes acceptance of the revised terms.</p>
     </div>
 
     <div class="doc-section">
       <div class="doc-section-title">Contact</div>
       <div class="contact-block">
         <span class="contact-label">// Terms enquiries</span>
-        <p class="contact-text">Samuel Ibrahim · MIDILLA<br/><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abd8cac6decec785c2c9d9cac3c2c685c8c4c5dfcec5dfebccc6cac2c785c8c4c6">[email&#160;protected]</a></p>
+        <p class="contact-text">Samuel Ibrahim · MIDILLA<br/>
+        For questions about these terms, use the <a href="index.html#brief-intake">brief intake form</a> and note "Terms Enquiry" in the brief field.</p>
       </div>
     </div>
 
@@ -137,14 +185,31 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-bottom">
-      <div class="footer-legal">© 2026 MIDILLA · <a href="privacy.html" style="color:var(--text-muted);text-decoration:none;">Privacy</a> · <a href="terms.html" style="color:var(--accent);text-decoration:none;">Terms</a> · <a href="index.html" style="color:var(--text-muted);text-decoration:none;">Home</a></div>
+      <div class="footer-legal">© 2026 MIDILLA · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="index.html">Home</a></div>
       <div class="footer-build">MIDILLA_Site · v1.8 · terms.html</div>
     </div>
   </div>
 </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  var hamburger=document.getElementById('nav-hamburger'),panel=document.getElementById('nav-mobile-panel'),isOpen=false;
-  function openNav(){isOpen=true;hamburger.classList.add('is-open');hamburger.setAttribute('aria-expanded','true');panel.classList.add('is-open');panel.setAttribute('aria-hidden','false');document.body.classList.add('nav-open');}
-  function closeNav(){isOpen=false;hamburger.classList.remove('is-open');hamburger.setAttribute('aria-expanded','false');panel.classList.remove('is-open');panel.setAttribute('aria-hidden','true');document.body.classList.remove('nav-open');}
-  hamburger.addEventListener('click',function(){isOpen?closeNav():openNav();});
-  docum
+
+<script data-cfasync="false">
+(function () {
+  var h = document.getElementById('nav-hamburger');
+  var p = document.getElementById('nav-mobile-panel');
+  if (!h || !p) return;
+  var o = false;
+  function on()  { o=true;  h.classList.add('is-open');    h.setAttribute('aria-expanded','true');  p.classList.add('is-open');    p.setAttribute('aria-hidden','false'); document.body.classList.add('nav-open'); }
+  function off() { o=false; h.classList.remove('is-open'); h.setAttribute('aria-expanded','false'); p.classList.remove('is-open'); p.setAttribute('aria-hidden','true');  document.body.classList.remove('nav-open'); }
+  function tog(e) { e.preventDefault(); e.stopPropagation(); o ? off() : on(); }
+  h.addEventListener('click',    tog);
+  h.addEventListener('touchend', tog, { passive: false });
+  p.querySelectorAll('a').forEach(function (l) {
+    l.addEventListener('click',    function () { setTimeout(off, 80); });
+    l.addEventListener('touchend', function () { setTimeout(off, 80); });
+  });
+  document.addEventListener('click',   function (e) { if (o && !p.contains(e.target) && !h.contains(e.target)) off(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && o) off(); });
+})();
+</script>
+
+</body>
+</html>
