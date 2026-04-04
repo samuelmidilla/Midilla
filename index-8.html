@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MIDILLA — The Content Production System</title>
+  <meta name="description" content="The content production system for professional service operators who need expert-grade written outputs without managing the production infrastructure." />
+  <meta property="og:title" content="MIDILLA — The Content Production System" />
+  <meta property="og:description" content="Expert-grade written content. Publication-ready. Delivered." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0A0B0F" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0B0F'/%3E%3Crect x='0' y='0' width='32' height='3' fill='%234ADE80'/%3E%3Ctext x='4' y='24' font-family='sans-serif' font-weight='900' font-size='18' fill='%23F8FAFC' letter-spacing='-1'%3EM%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,700;0,800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#0A0B0F; --surface:#12151C; --surface2:#1A1E28; --border:#232838;
+      --accent:#4ADE80; --accent-dim:rgba(74,222,128,0.07); --accent-border:rgba(74,222,128,0.22);
+      --amber:#FBB040; --amber-dim:rgba(251,176,64,0.08); --amber-border:rgba(251,176,64,0.22);
+      --text-muted:#4A5568; --text-dim:#8892A4; --text:#E2E8F0; --white:#F8FAFC;
+      --nav-h:56px; --sp-10:96px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:16px;line-height:1.9;overflow-x:hidden;}
+    body.nav-open{overflow:hidden;}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(10,11,15,0.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
+    .nav-wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);text-decoration:none;position:relative;z-index:310;}
+    .nav-links{display:flex;align-items:center;gap:28px;}
+    .nav-link{font-family:'Inconsolata',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.18s;}
+    .nav-link:hover{color:var(--text);}
+    .nav-cta{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:9px 20px;text-decoration:none;transition:opacity 0.18s;}
+    .nav-cta:hover{opacity:0.86;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:8px;background:transparent;border:1px solid var(--border);cursor:pointer;position:relative;z-index:310;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+    .nav-hamburger:hover{border-color:var(--accent);}
+    .hamburger-bar{display:block;width:100%;height:1.5px;background:var(--text-dim);transition:transform 0.22s ease,opacity 0.22s ease,background 0.18s;transform-origin:center;pointer-events:none;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--accent);}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(2){opacity:0;}
+    .nav-hamburger.is-open .hamburger-bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--accent);}
+    .nav-mobile-panel{position:fixed;top:var(--nav-h);left:0;right:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--border);border-top:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height 0.32s cubic-bezier(0.4,0,0.2,1);pointer-events:none;}
+    .nav-mobile-panel.is-open{max-height:560px;pointer-events:auto;}
+    .nav-mobile-inner{padding:32px 24px 36px;display:flex;flex-direction:column;}
+    .nav-mobile-receipt{display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+    .nmr-dot{width:6px;height:6px;background:var(--accent);flex-shrink:0;}
+    .nmr-text{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);}
+    .nav-mobile-link{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);text-decoration:none;-webkit-tap-highlight-color:transparent;}
+    .nav-mobile-link:last-of-type{border-bottom:none;}
+    .nml-label{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.02em;color:var(--white);transition:color 0.18s;}
+    .nml-arrow{font-family:'Inconsolata',monospace;font-size:13px;color:var(--text-muted);}
+    .nav-mobile-link:active .nml-label{color:var(--accent);}
+    .nav-mobile-cta{display:block;margin-top:24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-align:center;text-decoration:none;color:var(--bg);background:var(--accent);padding:18px 24px;-webkit-tap-highlight-color:transparent;}
+
+    /* LAYOUT */
+    .container{max-width:1040px;margin:0 auto;padding:0 48px;}
+    section{padding:var(--sp-10) 0;}
+    .section-divider-rule{border-top:1px solid var(--border);}
+
+    /* SHARED TYPE */
+    .section-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+    .section-label::before{content:'';display:block;width:28px;height:1px;background:var(--accent);flex-shrink:0;}
+    .section-heading{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-0.02em;color:var(--white);line-height:1.02;margin-bottom:24px;}
+    .section-body{font-family:'Lora',serif;font-size:16px;color:var(--text-dim);line-height:1.9;max-width:64ch;margin-bottom:20px;}
+    .section-body strong{color:var(--text);font-weight:500;}
+    .statement-block{background:var(--surface);border-left:3px solid var(--accent);padding:28px 32px;margin:36px 0;}
+    .statement-tag{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:12px;}
+    .statement-text{font-family:'Lora',serif;font-style:italic;font-size:17px;color:var(--white);line-height:1.75;}
+
+    /* HERO */
+    .hero{padding-top:calc(var(--sp-10) + var(--nav-h));padding-bottom:var(--sp-10);border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);}
+    .hero-eyebrow{font-family:'Inconsolata',monospace;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:32px;}
+    .hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--accent);}
+    .hero-headline{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(48px,9vw,104px);font-weight:800;letter-spacing:-0.025em;line-height:0.94;color:var(--white);margin-bottom:36px;max-width:800px;}
+    .hero-headline .accent-line{color:var(--accent);display:block;}
+    .hero-sub{font-family:'Lora',serif;font-size:17px;font-style:italic;color:var(--text-dim);line-height:1.8;max-width:52ch;margin-bottom:48px;}
+    .hero-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+    .btn-primary{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:15px 32px;text-decoration:none;display:inline-block;transition:opacity 0.18s;}
+    .btn-primary:hover{opacity:0.86;}
+    .btn-ghost{font-family:'Inconsolata',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.18s;}
+    .btn-ghost:hover{color:var(--text);}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:72px;}
+    .stat-cell{background:var(--surface);padding:22px 24px;}
+    .stat-value{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:800;letter-spacing:-0.02em;color:var(--white);display:block;line-height:1;margin-bottom:6px;}
+    .stat-value.accent{color:var(--accent);}
+    .stat-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);display:block;}
+
+    /* HOW IT WORKS */
+    .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:52px;}
+    .how-step{background:var(--surface);padding:40px 34px;}
+    .how-num{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:20px;}
+    .how-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;font-weight:700;letter-spacing:-0.01em;color:var(--white);margin-bottom:14px;line-height:1.1;}
+    .how-body{font-family:'Lora',serif;font-size:14px;color:var(--text-dim);line-height:1.85;}
+
+    /* DELIVERY */
+    .delivery-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .delivery-states{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:52px;}
+    .state-card{background:var(--bg);padding:52px 44px;}
+    .state-badge{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;display:block;margin-bottom:20px;}
+    .state-badge.amber{color:var(--amber);}
+    .state-badge.accent{color:var(--accent);}
+    .state-timer{font-family:'Plus Jakarta Sans',sans-serif;font-size:56px;font-weight:800;letter-spacing:-0.025em;line-height:1;margin-bottom:14px;font-variant-numeric:tabular-nums;transition:color 0.6s ease;}
+    .state-timer.amber{color:var(--amber);}
+    .state-timer.accent{color:var(--accent);}
+    @keyframes timerPulse{0%,100%{opacity:1}50%{opacity:0.7}}
+    .state-timer.pulsing{animation:timerPulse 2s ease-in-out infinite;}
+    @keyframes deliveredFlash{0%{opacity:0;transform:scale(0.96)}100%{opacity:1;transform:scale(1)}}
+    .state-timer.delivered-anim{animation:deliveredFlash 0.5s ease forwards;}
+    .state-order{font-family:'Inconsolata',monospace;font-size:11px;color:var(--text-muted);margin-bottom:6px;display:block;}
+    .state-status{font-family:'Inconsolata',monospace;font-size:11px;display:block;transition:color 0.6s ease;}
+    .state-status.amber{color:rgba(251,176,64,0.6);}
+    .state-status.accent{color:rgba(74,222,128,0.6);}
+    .timer-note{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);display:block;margin-top:14px;}
+
+    /* OUTPUT CATALOGUE — 6 cards: 3 cols on desktop, 2 on tablet, 1 on mobile */
+    .outputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:52px;}
+    .output-card{background:var(--surface);padding:28px 26px;display:flex;flex-direction:column;}
+    .output-card.amber-card{background:var(--surface2);border-top:2px solid var(--amber);}
+    .output-code{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent-border);padding:3px 10px;display:inline-block;margin-bottom:14px;}
+    .output-code.amber-code{color:var(--amber);background:var(--amber-dim);border-color:var(--amber-border);}
+    .output-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:6px;letter-spacing:-0.01em;}
+    .output-credit{font-family:'Inconsolata',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:4px;}
+    .output-credit.amber-credit{color:var(--amber);}
+    .output-window{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);display:block;margin-bottom:12px;}
+    .output-desc{font-family:'Lora',serif;font-size:13.5px;color:var(--text-dim);line-height:1.8;flex:1;}
+    .output-link{display:inline-block;margin-top:16px;font-family:'Inconsolata',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;transition:opacity 0.18s;}
+    .output-link:hover{opacity:0.7;}
+    .output-card.amber-card .output-link{color:var(--amber);}
+    .moat-block{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--accent);padding:44px;margin-top:48px;}
+    .moat-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px;}
+    .moat-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.01em;color:var(--white);margin-bottom:16px;line-height:1.15;}
+    .moat-body{font-family:'Lora',serif;font-size:15px;color:var(--text-dim);line-height:1.9;max-width:68ch;}
+
+    /* PROOF SECTION */
+    .proof-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .proof-holding{background:var(--bg);border:1px solid var(--border);padding:56px 44px;text-align:center;margin-top:52px;}
+    .proof-holding-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:18px;}
+    .proof-holding-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.01em;color:var(--text-dim);margin-bottom:12px;}
+    .proof-holding-body{font-family:'Lora',serif;font-style:italic;font-size:15px;color:var(--text-muted);line-height:1.8;max-width:48ch;margin:0 auto;}
+    .proof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:52px;}
+    .proof-card{background:var(--bg);padding:32px 28px;}
+    .proof-type{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent-border);padding:3px 10px;display:inline-block;margin-bottom:14px;}
+    .proof-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:700;color:var(--white);margin-bottom:10px;letter-spacing:-0.01em;line-height:1.2;}
+    .proof-meta{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);margin-bottom:14px;display:block;}
+    .proof-excerpt{font-family:'Lora',serif;font-size:13.5px;color:var(--text-dim);line-height:1.8;}
+
+    /* PRICING */
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:52px;}
+    .pricing-card{background:var(--surface);padding:40px 32px;display:flex;flex-direction:column;}
+    .pricing-card.featured{background:var(--surface2);border-top:3px solid var(--accent);}
+    .pricing-card.architect{background:var(--surface2);border-top:3px solid var(--amber);}
+    .tier-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:14px;}
+    .pricing-card.featured .tier-label{color:var(--accent);}
+    .pricing-card.architect .tier-label{color:var(--amber);}
+    .tier-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:21px;font-weight:800;letter-spacing:-0.01em;color:var(--white);margin-bottom:24px;}
+    .tier-price{font-family:'Plus Jakarta Sans',sans-serif;font-size:44px;font-weight:800;letter-spacing:-0.025em;color:var(--white);line-height:1;margin-bottom:6px;}
+    .tier-price .currency{font-size:22px;color:var(--text-muted);font-weight:400;}
+    .tier-price-custom{font-family:'Plus Jakarta Sans',sans-serif;font-size:30px;font-weight:800;letter-spacing:-0.02em;color:var(--white);line-height:1;margin-bottom:6px;}
+    .tier-from{font-family:'Inconsolata',monospace;font-size:10px;color:var(--amber);letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:6px;}
+    .tier-credits{font-family:'Inconsolata',monospace;font-size:11px;color:var(--text-muted);display:block;margin-bottom:28px;}
+    .tier-rule{border:none;border-top:1px solid var(--border);margin:0 0 24px;}
+    .tier-features{list-style:none;display:flex;flex-direction:column;gap:11px;flex:1;margin-bottom:32px;}
+    .tier-features li{font-family:'Lora',serif;font-size:13.5px;color:var(--text-dim);padding-left:20px;position:relative;line-height:1.65;}
+    .tier-features li::before{content:'→';position:absolute;left:0;color:var(--accent);font-family:'Inconsolata',monospace;font-size:11px;top:2px;}
+    .pricing-card.architect .tier-features li::before{color:var(--amber);}
+    .tier-custom-note{font-family:'Lora',serif;font-style:italic;font-size:14px;color:var(--text-dim);line-height:1.75;margin-bottom:28px;flex:1;}
+    .tier-cta{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-align:center;text-decoration:none;padding:14px 20px;border:1px solid var(--border);color:var(--text-dim);transition:border-color 0.18s,color 0.18s;margin-top:auto;}
+    .tier-cta:hover{border-color:var(--accent);color:var(--accent);}
+    .pricing-card.featured .tier-cta{background:var(--accent);color:var(--bg);border-color:var(--accent);}
+    .pricing-card.featured .tier-cta:hover{opacity:0.86;color:var(--bg);}
+    .pricing-card.architect .tier-cta{border-color:var(--amber-border);color:var(--amber);}
+    .pricing-card.architect .tier-cta:hover{background:var(--amber);color:var(--bg);}
+
+    /* CREDIT TABLE */
+    .credit-table-block{background:var(--surface);border:1px solid var(--border);margin-top:48px;}
+    .ctb-header{padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px;}
+    .ctb-tag{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent-border);padding:3px 10px;}
+    .ctb-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:var(--white);}
+    .ctb-row{display:grid;grid-template-columns:1fr 100px 120px 100px;border-bottom:1px solid var(--border);}
+    .ctb-row:last-child{border-bottom:none;}
+    .ctb-row.header-row{background:var(--surface2);}
+    .ctb-cell{padding:12px 18px;font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.08em;border-right:1px solid var(--border);display:flex;align-items:center;}
+    .ctb-cell:last-child{border-right:none;}
+    .ctb-row.header-row .ctb-cell{font-size:8px;letter-spacing:0.2em;text-transform:uppercase;}
+    .ctb-name{font-family:'Lora',serif;font-size:13.5px;color:var(--text);font-weight:500;}
+    .ctb-credit{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;color:var(--accent);}
+    .ctb-credit.amber{color:var(--amber);}
+    .ctb-window{color:var(--text-dim);font-size:11px;}
+    .ctb-note{color:var(--text-muted);font-size:10px;font-style:italic;font-family:'Lora',serif;letter-spacing:0;}
+    .governance-bar{background:var(--surface);border:1px solid var(--border);padding:28px 36px;margin-top:48px;display:flex;align-items:flex-start;gap:24px;}
+    .gov-tag{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;margin-top:2px;}
+    .gov-text{font-family:'Lora',serif;font-size:14px;font-style:italic;color:var(--text-dim);line-height:1.75;}
+
+    /* FAQ */
+    .faq-section{border-top:1px solid var(--border);}
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:52px;}
+    .faq-item{background:var(--surface);padding:32px 30px;}
+    .faq-q{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:14px;letter-spacing:-0.01em;line-height:1.2;}
+    .faq-a{font-family:'Lora',serif;font-size:14px;color:var(--text-dim);line-height:1.85;}
+    .faq-a strong{color:var(--text);font-weight:500;}
+
+    /* BRIEF INTAKE */
+    .intake-section{background:var(--surface);border-top:3px solid var(--accent);border-bottom:1px solid var(--border);}
+    .intake-header{margin-bottom:52px;}
+    .intake-form{background:var(--bg);border:1px solid var(--border);}
+    .intake-receipt{display:flex;align-items:stretch;border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .receipt-field{flex:1;min-width:120px;padding:14px 20px;border-right:1px solid var(--border);}
+    .receipt-field:last-child{border-right:none;}
+    .receipt-label{font-family:'Inconsolata',monospace;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:4px;}
+    .receipt-value{font-family:'Inconsolata',monospace;font-size:11px;color:var(--accent);}
+    .receipt-value.neutral{color:var(--text-dim);}
+    .intake-form-body{padding:44px;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-bottom:1px;}
+    .form-row.full{grid-template-columns:1fr;}
+    .form-field{background:var(--bg);display:flex;flex-direction:column;}
+    .form-field:focus-within{outline:1px solid rgba(74,222,128,0.30);outline-offset:-1px;}
+    .field-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);padding:16px 20px 0;display:block;}
+    .field-input,.field-select,.field-textarea{font-family:'Lora',serif;font-size:15px;color:var(--text);background:transparent;border:none;outline:none;padding:10px 20px 16px;width:100%;-webkit-appearance:none;appearance:none;}
+    .field-input::placeholder,.field-textarea::placeholder{color:var(--text-muted);}
+    .field-select{cursor:pointer;}
+    .field-select option{background:var(--surface2);color:var(--text);}
+    .field-select.placeholder-active{color:var(--text-muted);}
+    .field-textarea{resize:vertical;min-height:140px;line-height:1.75;}
+    .field-file-wrapper{padding:12px 20px 16px;display:flex;flex-direction:column;gap:10px;}
+    .field-file-note{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.1em;color:var(--text-muted);line-height:1.6;}
+    .field-file-input{font-family:'Inconsolata',monospace;font-size:11px;color:var(--text-dim);background:var(--surface);border:1px solid var(--border);padding:10px 14px;cursor:pointer;width:100%;transition:border-color 0.18s;}
+    .field-file-input:hover{border-color:var(--accent);}
+    .field-file-input::file-selector-button{font-family:'Inconsolata',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--bg);background:var(--accent);border:none;padding:6px 14px;cursor:pointer;margin-right:12px;}
+    .form-footer-row{background:var(--surface);border-top:1px solid var(--border);padding:24px 44px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+    .form-note{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.06em;line-height:1.7;}
+    .form-submit{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);border:none;padding:15px 36px;cursor:pointer;transition:opacity 0.18s;white-space:nowrap;flex-shrink:0;}
+    .form-submit:hover{opacity:0.86;}
+    .form-success{display:none;background:var(--bg);border:1px solid var(--accent-border);border-top:3px solid var(--accent);padding:64px 44px;text-align:center;}
+    .success-label{font-family:'Inconsolata',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:20px;}
+    .success-headline{font-family:'Plus Jakarta Sans',sans-serif;font-size:48px;font-weight:800;letter-spacing:-0.025em;color:var(--accent);margin-bottom:16px;line-height:1;}
+    .success-body{font-family:'Lora',serif;font-style:italic;font-size:16px;color:var(--text-dim);line-height:1.8;max-width:48ch;margin:0 auto;}
+    .success-order{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);margin-top:24px;display:block;}
+
+    /* FOOTER */
+    .footer{background:var(--surface);border-top:3px solid var(--accent);padding:64px 0 36px;}
+    .footer-main{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;padding-bottom:44px;border-bottom:1px solid var(--border);margin-bottom:36px;}
+    .footer-wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;color:var(--white);display:block;margin-bottom:12px;}
+    .footer-positioning{font-family:'Lora',serif;font-style:italic;font-size:14px;color:var(--text-muted);line-height:1.75;max-width:360px;}
+    .footer-nav{display:flex;flex-direction:column;gap:10px;}
+    .footer-nav-link{font-family:'Inconsolata',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.18s;}
+    .footer-nav-link:hover{color:var(--accent);}
+    .footer-meta{text-align:right;}
+    .footer-meta-item{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);letter-spacing:0.1em;display:block;margin-bottom:5px;}
+    .footer-meta-item.accent{color:var(--accent);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+    .footer-legal,.footer-build{font-family:'Inconsolata',monospace;font-size:10px;color:var(--text-muted);}
+    .footer-legal a{color:var(--text-muted);text-decoration:none;transition:color 0.18s;}
+    .footer-legal a:hover{color:var(--accent);}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){.outputs-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:768px){
+      .nav-links{display:none;}.nav-hamburger{display:flex;}.nav{padding:0 24px;}
+      .container{padding:0 24px;}section{padding:72px 0;}
+      .hero{padding-top:calc(72px + var(--nav-h));padding-bottom:72px;}
+      .hero-stats{grid-template-columns:repeat(2,1fr);}
+      .how-grid{grid-template-columns:1fr;}
+      .delivery-states{grid-template-columns:1fr;}
+      .outputs-grid{grid-template-columns:1fr;}
+      .pricing-grid{grid-template-columns:1fr;}
+      .faq-grid{grid-template-columns:1fr;}
+      .proof-grid{grid-template-columns:1fr;}
+      .ctb-row{grid-template-columns:1fr 80px 90px;}
+      .ctb-row .ctb-cell:nth-child(4){display:none;}
+      .footer-main{flex-direction:column;}.footer-meta{text-align:left;}
+      .footer-bottom{flex-direction:column;align-items:flex-start;}
+      .governance-bar{flex-direction:column;gap:12px;}
+      .form-row{grid-template-columns:1fr;}
+      .intake-form-body{padding:28px 24px;}
+      .form-footer-row{padding:20px 24px;flex-direction:column;align-items:flex-start;}
+      .form-submit{width:100%;text-align:center;}
+      .state-card{padding:36px 28px;}
+      .state-timer{font-size:42px;}
+    }
+    @media(max-width:480px){
+      .hero-headline{font-size:44px;}.hero-actions{flex-direction:column;align-items:flex-start;gap:16px;}
+      .state-timer{font-size:36px;}.moat-block{padding:28px 24px;}
+      .ctb-row{grid-template-columns:1fr 80px;}
+      .ctb-row .ctb-cell:nth-child(3),.ctb-row .ctb-cell:nth-child(4){display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-wordmark">MIDILLA</a>
+  <div class="nav-links">
+    <a href="#how-it-works" class="nav-link">How it works</a>
+    <a href="#outputs"      class="nav-link">Outputs</a>
+    <a href="#pricing"      class="nav-link">Pricing</a>
+    <a href="about.html"   class="nav-link">About</a>
+    <a href="#brief-intake" class="nav-cta">Start a Brief</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" type="button" aria-label="Open navigation" aria-expanded="false">
+    <span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span>
+  </button>
+</nav>
+<div class="nav-mobile-panel" id="nav-mobile-panel" aria-hidden="true">
+  <div class="nav-mobile-inner">
+    <div class="nav-mobile-receipt"><div class="nmr-dot"></div><span class="nmr-text">MIDILLA · System Active · v1.0</span></div>
+    <a href="#how-it-works"  class="nav-mobile-link"><span class="nml-label">How it works</span><span class="nml-arrow">→</span></a>
+    <a href="#outputs"       class="nav-mobile-link"><span class="nml-label">Outputs</span><span class="nml-arrow">→</span></a>
+    <a href="#pricing"       class="nav-mobile-link"><span class="nml-label">Pricing</span><span class="nml-arrow">→</span></a>
+    <a href="about.html"    class="nav-mobile-link"><span class="nml-label">About</span><span class="nml-arrow">→</span></a>
+    <a href="#brief-intake"  class="nav-mobile-cta">Start a Brief →</a>
+  </div>
+</div>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Content Production System · Active</div>
+    <h1 class="hero-headline">Expert content.<span class="accent-line">Delivered.</span></h1>
+    <p class="hero-sub">The content production system for professional service operators who need publication-ready written outputs — without building the infrastructure to produce them.</p>
+    <div class="hero-actions">
+      <a href="#brief-intake" class="btn-primary">Start a Brief</a>
+      <a href="#how-it-works" class="btn-ghost">See how it works →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-cell"><span class="stat-value">6</span><span class="stat-label">Production systems</span></div>
+      <div class="stat-cell"><span class="stat-value">0</span><span class="stat-label">Outputs without quality gates</span></div>
+      <div class="stat-cell"><span class="stat-value">8hrs</span><span class="stat-label">Maximum delivery window</span></div>
+      <div class="stat-cell"><span class="stat-value accent">100%</span><span class="stat-label">Publication-ready standard</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- THE PROBLEM -->
+<section class="section-divider-rule">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-heading">Your content output is capped by your production infrastructure.</h2>
+    <p class="section-body">Professional service operators — consultants, lawyers, financial advisors, agency owners — carry expertise that is worth publishing. The gap is not knowledge. It is the production system that translates that knowledge into documents ready to go out under their name.</p>
+    <p class="section-body"><strong>Hiring a freelancer</strong> introduces management overhead and quality variance. <strong>Engaging an agency</strong> means institutional overhead and pricing built for retainers. <strong>Writing it yourself</strong> consumes the hours you should be billing.</p>
+    <div class="statement-block">
+      <span class="statement-tag">Positioning Statement</span>
+      <p class="statement-text">The content production system for professional service operators who need expert-grade written outputs without managing the production infrastructure.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="section-divider-rule">
+  <div class="container">
+    <div class="section-label">The System</div>
+    <h2 class="section-heading">You submit the brief.<br/>The system delivers the document.</h2>
+    <p class="section-body">Every content type on MIDILLA is produced through a documented Bible — a complete production architecture built, tested, and quality-gated before the first brief was submitted. Output quality is not determined by how well you write the brief. It is determined by the architecture applied to it.</p>
+    <div class="how-grid">
+      <div class="how-step"><span class="how-num">Step 01 · Brief</span><div class="how-title">You submit the brief.</div><p class="how-body">A structured intake captures the output type, the target audience, the argument, and the evidence you supply. An order number is generated in the format M-[YEAR]-[NNNN]. The timer starts.</p></div>
+      <div class="how-step"><span class="how-num">Step 02 · Production</span><div class="how-title">The system produces it.</div><p class="how-body">Your brief moves through the documented production system for that content type. Every output passes through the quality gates specific to its system before delivery. No output ships before all gates are cleared.</p></div>
+      <div class="how-step"><span class="how-num">Step 03 · Delivered.</span><div class="how-title">The document arrives.</div><p class="how-body">Publication-ready. Not "could be improved by an editor" — ready to publish without one. The order number is on the document. The timer becomes a green confirmation. The promise kept.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- DELIVERY — LIVE TIMER -->
+<section class="delivery-section">
+  <div class="container">
+    <div class="section-label">The Defining Moment</div>
+    <h2 class="section-heading">Amber becomes green.<br/>The timer becomes a confirmation.</h2>
+    <p class="section-body">Every order on MIDILLA tracks through two states. The amber state is the production state — in progress, in system, on schedule. The green state is the delivery state — the document has left production and is in your inbox. The transition is the brand's defining moment.</p>
+    <div class="delivery-states">
+      <div class="state-card">
+        <span class="state-badge amber" id="timer-badge">In Production</span>
+        <div class="state-timer amber pulsing" id="live-timer">08:00:00</div>
+        <span class="state-order">Order M-2026-0091</span>
+        <span class="state-status amber" id="timer-status">B2B White Paper · Financial Services · In system</span>
+        <span class="timer-note" id="timer-note">// Live production window · Counting down</span>
+      </div>
+      <div class="state-card">
+        <span class="state-badge accent">Delivered.</span>
+        <div class="state-timer accent">00:00:00</div>
+        <span class="state-order">Order M-2026-0090</span>
+        <span class="state-status accent">Email Sequence · Professional Services · Ready to publish</span>
+        <span class="timer-note">// Delivered 3 hours ahead of schedule</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- OUTPUT CATALOGUE — 6 systems -->
+<section id="outputs" class="section-divider-rule">
+  <div class="container">
+    <div class="section-label">Output Catalogue</div>
+    <h2 class="section-heading">Six production systems. One standard.</h2>
+    <p class="section-body">Each output category is a complete documented production system — a Bible — built and quality-gated before the first brief was submitted. Credit costs reflect production complexity, not word count.</p>
+
+    <div class="outputs-grid">
+
+      <div class="output-card">
+        <span class="output-code">WP-01</span>
+        <div class="output-name">B2B White Paper</div>
+        <span class="output-credit">60 credits · one full Starter cycle</span>
+        <span class="output-window">8-hour delivery window · 6 quality tests</span>
+        <p class="output-desc">Long-form authority documents engineered from a Belief Gap Statement. Six governing documents completed before writing begins. Six quality tests applied per draft. Publication-ready without editorial revision.</p>
+        <a href="white-papers.html" class="output-link">Full overview →</a>
+      </div>
+
+      <div class="output-card">
+        <span class="output-code">LC-01</span>
+        <div class="output-name">Legal Content</div>
+        <span class="output-credit">40 credits per engagement</span>
+        <span class="output-window">8-hour delivery window · 17 quality gates</span>
+        <p class="output-desc">Practice area content, attorney profiles, and thought leadership for law firms. Accuracy-first. YMYL-compliant. 17 quality gates applied — the highest gate count of any system in the catalogue.</p>
+        <a href="legal-content.html" class="output-link">Full overview →</a>
+      </div>
+
+      <div class="output-card">
+        <span class="output-code">ES-01</span>
+        <div class="output-name">Email Sequence</div>
+        <span class="output-credit">25 credits per sequence</span>
+        <span class="output-window">8-hour delivery window · SERAPH system</span>
+        <p class="output-desc">Onboarding, nurture, and re-engagement sequences engineered through SERAPH — a 24-section system that separates the thinking process from the writing process. One objective per email.</p>
+        <a href="email-sequences.html" class="output-link">Full overview →</a>
+      </div>
+
+      <div class="output-card amber-card">
+        <span class="output-code amber-code">LS-01 / LS-02 / LS-03</span>
+        <div class="output-name">LinkedIn Content Calendar</div>
+        <span class="output-credit amber-credit">25 cr (30-day) · 50 cr (60-day) · 75 cr (90-day)</span>
+        <span class="output-window">8-hour delivery window · LinkedIn Growth Bible</span>
+        <p class="output-desc">A mapped, sequenced content calendar — 3 posts per week as standard, structured for authority positioning. Produced through the LinkedIn Growth Bible. Every calendar carries a narrative arc from the first post to the last.</p>
+        <a href="linkedin-calendar.html" class="output-link">Full overview →</a>
+      </div>
+
+      <div class="output-card">
+        <span class="output-code">PF-01</span>
+        <div class="output-name">Personal Finance Content</div>
+        <span class="output-credit">30 credits per article</span>
+        <span class="output-window">8-hour delivery window · 8 quality gates · YMYL</span>
+        <p class="output-desc">YMYL-compliant long-form articles for financial platforms and media. Built through a reader psychology map and five-phase research protocol before writing begins. The best article on any topic — not good, not great.</p>
+        <a href="epf-content.html" class="output-link">Full overview →</a>
+      </div>
+
+      <div class="output-card">
+        <span class="output-code">EC-01</span>
+        <div class="output-name">Ecommerce SEO + AI Visibility</div>
+        <span class="output-credit">35 credits per output</span>
+        <span class="output-window">8-hour delivery window · SEO + GEO + Research</span>
+        <p class="output-desc">Content that wins in both discovery layers simultaneously — traditional search rankings and AI citation. Ecommerce SEO, Generative Engine Optimization, and research-grade writing as a single compound system.</p>
+        <a href="ecommerce-seo.html" class="output-link">Full overview →</a>
+      </div>
+
+    </div>
+
+    <div class="moat-block">
+      <span class="moat-label">// The Structural Moat</span>
+      <div class="moat-title">The quality of the output is determined by the architecture, not the brief.</div>
+      <p class="moat-body">Every content type on MIDILLA is backed by a Bible — a complete production system documented, tested, and quality-gated before the first client brief arrived. A competitor who decides to build equivalent systems requires equivalent investment. The moat deepens with each system added.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROOF SECTION -->
+<section class="proof-section">
+  <div class="container">
+    <div class="section-label">Client Results</div>
+    <h2 class="section-heading">The standard, in evidence.</h2>
+    <p class="section-body">Every output MIDILLA delivers is evidence of the production system's integrity. Sample outputs and client delivery records are published here as they accumulate.</p>
+    <div class="proof-holding">
+      <span class="proof-holding-label">// Production in progress</span>
+      <div class="proof-holding-title">Sample outputs are being prepared.</div>
+      <p class="proof-holding-body">The first delivered documents will be published here. The system was built before the first brief. The results follow.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- PRICING -->
+<section id="pricing" class="section-divider-rule">
+  <div class="container">
+    <div class="section-label">Production Tiers</div>
+    <h2 class="section-heading">Three tiers. One standard.</h2>
+    <p class="section-body">Every tier delivers to the same quality gate. Credits are the unit of production — each output type has a documented credit cost so you know exactly what you are purchasing before you submit a brief.</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <span class="tier-label">Tier 01</span><div class="tier-name">Starter</div>
+        <div class="tier-price"><span class="currency">$</span>49</div>
+        <span class="tier-credits">60 credits per cycle</span><hr class="tier-rule" />
+        <ul class="tier-features">
+          <li>One major output per cycle — your choice of system</li>
+          <li>Full production system applied to every brief</li>
+          <li>Every output quality-gated before delivery</li>
+          <li>Revision included if brief requirements are not met</li>
+          <li>The same production standard as every tier above it</li>
+        </ul>
+        <a href="#brief-intake" class="tier-cta">Start a Brief</a>
+      </div>
+      <div class="pricing-card featured">
+        <span class="tier-label">Tier 02</span><div class="tier-name">Professional</div>
+        <div class="tier-price"><span class="currency">$</span>149</div>
+        <span class="tier-credits">250 credits per cycle</span><hr class="tier-rule" />
+        <ul class="tier-features">
+          <li>Sustained production capacity — run multiple systems per cycle</li>
+          <li>Priority queue — your briefs move ahead of standard submissions</li>
+          <li>No catalogue restrictions — any system, any cycle</li>
+          <li>Stack output types without restriction</li>
+          <li>Everything in Starter, built for operators running at volume</li>
+        </ul>
+        <a href="#brief-intake" class="tier-cta">Start a Brief</a>
+      </div>
+      <div class="pricing-card architect">
+        <span class="tier-label">Tier 03</span><div class="tier-name">Architect</div>
+        <span class="tier-from">From</span>
+        <div class="tier-price-custom">$499</div>
+        <p class="tier-custom-note">For operators who need a dedicated production system — volume commitments, custom output categories, and direct scoped engagement. Priced to requirement.</p>
+        <hr class="tier-rule" />
+        <ul class="tier-features">
+          <li>Everything in Professional</li>
+          <li>Custom output category specification</li>
+          <li>Dedicated production architecture</li>
+          <li>Custom credit volume · Direct access</li>
+          <li>Scoped engagement — no standard window</li>
+        </ul>
+        <a href="#brief-intake" class="tier-cta">Request a Scope</a>
+      </div>
+    </div>
+
+    <div class="credit-table-block">
+      <div class="ctb-header"><span class="ctb-tag">Credit Reference</span><span class="ctb-title">What each credit buys — all six output types</span></div>
+      <div class="ctb-row header-row"><div class="ctb-cell">Output</div><div class="ctb-cell">Credits</div><div class="ctb-cell">Window</div><div class="ctb-cell">System</div></div>
+      <div class="ctb-row"><div class="ctb-cell"><span class="ctb-name">B2B White Paper</span></div><div class="ctb-cell"><span class="ctb-credit">60</span></div><div class="ctb-cell ctb-window">8 hrs</div><div class="ctb-cell ctb-note">6 quality tests · Belief Gap methodology</div></div>
+      <div class="ctb-row"><div class="ctb-cell"><span class="ctb-name">Legal Content</span></div><div class="ctb-cell"><span class="ctb-credit">40</span></div><div class="ctb-cell ctb-window">8 hrs</div><div class="ctb-cell ctb-note">17 quality gates · Jurisdiction-accurate</div></div>
+      <div class="ctb-row"><div class="ctb-cell"><span class="ctb-name">Email Sequence</span></div><div class="ctb-cell"><span class="ctb-credit">25</span></div><div class="ctb-cell ctb-window">8 hrs</div><div class="ctb-cell ctb-note">SERAPH · One objective per email</div></div>
+      <div class="ctb-row"><div class="ctb-cell"><span class="ctb-name">Personal Finance Content</span></div><div class="ctb-cell"><span class="ctb-credit">30</span></div><div class="ctb-cell ctb-window">8 hrs</div><div class="ctb-cell ctb-note">8 quality gates · YMYL-compliant</div></div>
+      <div class="ctb-row"><div class="ctb-cell"><span class="ctb-name">Ecommerce SEO + AI Visibility</span></div><div class="ctb-cell"><span class="ctb-credit">35</span></div><div class="ctb-cell ctb-window">8 hrs</div><div class="ctb-cell ctb-note">SEO + GEO + Research Writing</div></div>
+      <div class="ctb-row"><div class="ctb-cell"><span class="ctb-name">LinkedIn Calendar · 30-day</span></div><div class="ctb-cell"><span class="ctb-credit">25</span></div><div class="ctb-cell ctb-window">8 hrs</div><div class="ctb-cell ctb-note">LinkedIn Growth Bible · 12 posts</div></div>
+      <div class="ctb-row"><div class="ctb-cell"><span class="ctb-name">LinkedIn Calendar · 60-day</span></div><div class="ctb-cell"><span class="ctb-credit">50</span></div><div class="ctb-cell ctb-window">8 hrs</div><div class="ctb-cell ctb-note">LinkedIn Growth Bible · 24 posts</div></div>
+      <div class="ctb-row"><div class="ctb-cell"><span class="ctb-name">LinkedIn Calendar · 90-day</span></div><div class="ctb-cell"><span class="ctb-credit amber">75</span></div><div class="ctb-cell ctb-window">8 hrs</div><div class="ctb-cell ctb-note">LinkedIn Growth Bible · 36 posts</div></div>
+    </div>
+
+    <div class="governance-bar">
+      <span class="gov-tag">// Governance</span>
+      <p class="gov-text">Every output produced by MIDILLA passes through the quality gates of its production system before delivery. Gate count varies by system — legal content carries 17, personal finance 8, white papers 6. The standard is the same across every system: no output ships before all gates are cleared. There are no exceptions.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section id="faq" class="faq-section">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-heading">Questions the system answers.</h2>
+    <p class="section-body">These are the questions that arise before submitting a first brief. Each answer is a direct statement of how the system works.</p>
+    <div class="faq-grid">
+      <div class="faq-item"><div class="faq-q">What does a brief need to contain?</div><p class="faq-a">The output type, your target audience, the core argument or topic, any evidence or data you want included, and any specific format requirements. The intake form guides you through each field. <strong>The more specific the brief, the more precisely the production system is applied.</strong></p></div>
+      <div class="faq-item"><div class="faq-q">What does "publication-ready" actually mean?</div><p class="faq-a">It means the delivered document does not require editorial revision before it reaches its audience. Not "could be improved by an editor." Ready to publish without one. Every output passes through the quality gates of its production system verifying this before delivery.</p></div>
+      <div class="faq-item"><div class="faq-q">What format does the delivered document arrive in?</div><p class="faq-a">Delivered documents arrive via email in the format most appropriate for the output type — typically a structured document file. Every delivered output carries an order number, production date, and word count as the production receipt.</p></div>
+      <div class="faq-item"><div class="faq-q">How do revisions work?</div><p class="faq-a">The quality standard is designed to produce publication-ready output without revision. <strong>If the delivered output does not satisfy requirements stated in the original brief, it is revised.</strong> Revision requests must reference specific elements of the brief, submitted within 7 days of delivery.</p></div>
+      <div class="faq-item"><div class="faq-q">When does the production clock start?</div><p class="faq-a">The production clock starts when you receive a confirmation from MIDILLA — not at the moment of submission. The brief is reviewed first. Once confirmed, the 8-hour window begins. Delivery consistently arrives before the window closes.</p></div>
+      <div class="faq-item"><div class="faq-q">What is a credit and how does it work?</div><p class="faq-a">A credit is the unit of production. Each output type has a documented credit cost based on production complexity. Your subscription tier determines your credit allocation per cycle. The credit reference table in the pricing section shows exact costs per output.</p></div>
+      <div class="faq-item"><div class="faq-q">Who produces the content?</div><p class="faq-a">Samuel Ibrahim — the founder and systems architect behind MIDILLA. Every output is produced through a documented Bible by the person who built that Bible. <strong>There is no subcontracting. There is no variance between briefs.</strong> The system governs. The standard does not move.</p></div>
+      <div class="faq-item"><div class="faq-q">What is the Architect tier for?</div><p class="faq-a">Operators who need volume commitments, custom output categories, or a dedicated production architecture scoped to their specific requirements. Starting at $499, priced to the scope of the engagement. Submit a brief and select Architect to start the conversation.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BRIEF INTAKE -->
+<section id="brief-intake" class="intake-section">
+  <div class="container">
+    <div class="intake-header">
+      <div class="section-label">Brief Intake</div>
+      <h2 class="section-heading">Start your brief.</h2>
+      <p class="section-body">Complete the form below. You can type your brief directly or attach a file — or both. A confirmation will be sent to your email address. The production clock starts when your brief is received and reviewed.</p>
+    </div>
+    <div class="intake-form" id="intake-form-wrapper">
+      <div class="intake-receipt">
+        <div class="receipt-field"><span class="receipt-label">System</span><span class="receipt-value">MIDILLA Production</span></div>
+        <div class="receipt-field"><span class="receipt-label">Status</span><span class="receipt-value">Accepting Briefs</span></div>
+        <div class="receipt-field"><span class="receipt-label">Quality Gates</span><span class="receipt-value">4 Active</span></div>
+        <div class="receipt-field"><span class="receipt-label">Systems</span><span class="receipt-value neutral">6 Active · v1.0</span></div>
+      </div>
+      <form action="https://formspree.io/f/mnjonjkg" method="POST" enctype="multipart/form-data" id="midilla-brief-form">
+        <div class="intake-form-body">
+          <div class="form-row">
+            <div class="form-field"><label class="field-label" for="name">Full Name</label><input class="field-input" type="text" id="name" name="name" placeholder="Your full name" required /></div>
+            <div class="form-field"><label class="field-label" for="email">Email Address</label><input class="field-input" type="email" id="email" name="email" placeholder="your@email.com" required /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label class="field-label" for="organisation">Organisation / Practice</label><input class="field-input" type="text" id="organisation" name="organisation" placeholder="Your firm, practice, or company" /></div>
+            <div class="form-field">
+              <label class="field-label" for="output_type">Output Type</label>
+              <select class="field-select placeholder-active" id="output_type" name="output_type" required onchange="this.classList.remove('placeholder-active')">
+                <option value="" disabled selected>Select an output type</option>
+                <option value="B2B White Paper — WP-01 (60 credits)">B2B White Paper — WP-01 (60 credits)</option>
+                <option value="Legal Content — LC-01 (40 credits)">Legal Content — LC-01 (40 credits)</option>
+                <option value="Email Sequence — ES-01 (25 credits)">Email Sequence — ES-01 (25 credits)</option>
+                <option value="Personal Finance Content — PF-01 (30 credits)">Personal Finance Content — PF-01 (30 credits)</option>
+                <option value="Ecommerce SEO + AI Visibility — EC-01 (35 credits)">Ecommerce SEO + AI Visibility — EC-01 (35 credits)</option>
+                <option value="LinkedIn Calendar 30-day — LS-01 (25 credits)">LinkedIn Calendar 30-day — LS-01 (25 credits)</option>
+                <option value="LinkedIn Calendar 60-day — LS-02 (50 credits)">LinkedIn Calendar 60-day — LS-02 (50 credits)</option>
+                <option value="LinkedIn Calendar 90-day — LS-03 (75 credits)">LinkedIn Calendar 90-day — LS-03 (75 credits)</option>
+                <option value="Architect — Custom Scope (from $499)">Architect — Custom Scope (from $499)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label class="field-label" for="tier">Production Tier</label>
+              <select class="field-select placeholder-active" id="tier" name="tier" required onchange="this.classList.remove('placeholder-active')">
+                <option value="" disabled selected>Select a tier</option>
+                <option value="Starter — $49 / 60 credits">Starter — $49 / 60 credits</option>
+                <option value="Professional — $149 / 250 credits">Professional — $149 / 250 credits</option>
+                <option value="Architect — from $499">Architect — from $499</option>
+              </select>
+            </div>
+            <div class="form-field"><label class="field-label" for="target_audience">Target Audience</label><input class="field-input" type="text" id="target_audience" name="target_audience" placeholder="Who is this document for?" /></div>
+          </div>
+          <div class="form-row full">
+            <div class="form-field"><label class="field-label" for="brief">Brief — Describe Your Output</label><textarea class="field-textarea" id="brief" name="brief" placeholder="Type your brief here — or attach a file below. Include: the core argument or topic, key points to cover, evidence or data you can supply, tone requirements, and any format specifications."></textarea></div>
+          </div>
+          <div class="form-row full">
+            <div class="form-field">
+              <label class="field-label" for="attachments">Brief Attachment — Optional</label>
+              <div class="field-file-wrapper">
+                <p class="field-file-note">Attach your brief as a file — PDF, Word (.doc/.docx), plain text, or any document format. Multiple files accepted. Max 20MB total.</p>
+                <input class="field-file-input" type="file" id="attachments" name="attachments" multiple accept=".pdf,.doc,.docx,.txt,.rtf,.odt,.pages,.md" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" name="_subject" value="New MIDILLA Brief Submission" />
+        <input type="hidden" name="_next" value="?success=true#brief-intake" />
+        <div class="form-footer-row">
+          <p class="form-note">Your brief is received on submission. The 8-hour production window begins on confirmation from MIDILLA.</p>
+          <button type="submit" class="form-submit">Submit Brief →</button>
+        </div>
+      </form>
+      <div class="form-success" id="form-success">
+        <span class="success-label">// Brief Received</span>
+        <div class="success-headline">Delivered.</div>
+        <p class="success-body">Your brief has entered the MIDILLA production queue. A confirmation has been sent to your email. The production clock starts on review.</p>
+        <span class="success-order">MIDILLA Production System · 6 Systems Active · v1.0</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <span class="footer-wordmark">MIDILLA</span>
+        <p class="footer-positioning">The content production system for professional service operators who need expert-grade written outputs without managing the production infrastructure.</p>
+      </div>
+      <div class="footer-nav">
+        <a href="#how-it-works"          class="footer-nav-link">How it works</a>
+        <a href="#outputs"               class="footer-nav-link">Outputs</a>
+        <a href="#pricing"               class="footer-nav-link">Pricing</a>
+        <a href="#faq"                   class="footer-nav-link">FAQ</a>
+        <a href="about.html"            class="footer-nav-link">About</a>
+        <a href="white-papers.html"     class="footer-nav-link">B2B White Papers</a>
+        <a href="legal-content.html"    class="footer-nav-link">Legal Content</a>
+        <a href="email-sequences.html"  class="footer-nav-link">Email Sequences</a>
+        <a href="epf-content.html"      class="footer-nav-link">Personal Finance Content</a>
+        <a href="ecommerce-seo.html"    class="footer-nav-link">Ecommerce SEO Content</a>
+        <a href="linkedin-calendar.html" class="footer-nav-link">LinkedIn Calendar</a>
+      </div>
+      <div class="footer-meta">
+        <span class="footer-meta-item accent">System Active · v1.0 · March 2026</span>
+        <span class="footer-meta-item">6 Production Systems · Active</span>
+        <span class="footer-meta-item">Governed by Brand Identity v1.0</span>
+        <span class="footer-meta-item">Samuel Ibrahim · Founder</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">© 2026 MIDILLA · All rights reserved · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></div>
+      <div class="footer-build">MIDILLA_Site · v1.8 · Produced by MIDILLA Production System · 6 Systems Active</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+/* MOBILE NAV */
+(function(){
+  var h=document.getElementById('nav-hamburger'),p=document.getElementById('nav-mobile-panel');
+  if(!h||!p)return;var o=false;
+  function on(){o=true;h.classList.add('is-open');h.setAttribute('aria-expanded','true');p.classList.add('is-open');p.setAttribute('aria-hidden','false');document.body.classList.add('nav-open');}
+  function off(){o=false;h.classList.remove('is-open');h.setAttribute('aria-expanded','false');p.classList.remove('is-open');p.setAttribute('aria-hidden','true');document.body.classList.remove('nav-open');}
+  function tog(e){e.preventDefault();e.stopPropagation();o?off():on();}
+  h.addEventListener('click',tog);h.addEventListener('touchend',tog,{passive:false});
+  p.querySelectorAll('a').forEach(function(l){
+    l.addEventListener('click',function(){setTimeout(off,80);});
+    l.addEventListener('touchend',function(){setTimeout(off,80);});
+  });
+  document.addEventListener('click',function(e){if(o&&!p.contains(e.target)&&!h.contains(e.target))off();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&o)off();});
+})();
+
+/* LIVE COUNTDOWN TIMER */
+(function(){
+  var WINDOW_SECONDS=8*60*60,DELIVERED_HOLD=5000;
+  var timerEl=document.getElementById('live-timer');
+  var badgeEl=document.getElementById('timer-badge');
+  var statusEl=document.getElementById('timer-status');
+  var noteEl=document.getElementById('timer-note');
+  if(!timerEl)return;
+  var startTime=Date.now(),delivered=false,deliveredAt=null;
+  function pad(n){return String(Math.floor(n)).padStart(2,'0');}
+  function fmt(s){return pad(s/3600)+':'+pad((s%3600)/60)+':'+pad(s%60);}
+  function setAmber(){delivered=false;timerEl.className='state-timer amber pulsing';badgeEl.className='state-badge amber';badgeEl.textContent='In Production';statusEl.className='state-status amber';statusEl.textContent='B2B White Paper · Financial Services · In system';noteEl.textContent='// Live production window · Counting down';}
+  function setDelivered(){delivered=true;deliveredAt=Date.now();timerEl.className='state-timer accent delivered-anim';timerEl.textContent='00:00:00';badgeEl.className='state-badge accent';badgeEl.textContent='Delivered.';statusEl.className='state-status accent';statusEl.textContent='B2B White Paper · Financial Services · Ready to publish';noteEl.textContent='// Delivered ahead of schedule';}
+  function tick(){
+    var now=Date.now(),elapsed=Math.floor((now-startTime)/1000);
+    if(delivered){if(now-deliveredAt>=DELIVERED_HOLD){startTime=Date.now();setAmber();}return;}
+    var rem=WINDOW_SECONDS-elapsed;
+    if(rem<=0){setDelivered();return;}
+    timerEl.textContent=fmt(rem);
+  }
+  tick();setInterval(tick,1000);
+})();
+
+/* FORM SUCCESS */
+if(window.location.search.includes('success')){
+  var f=document.getElementById('midilla-brief-form');
+  var s=document.getElementById('form-success');
+  if(f)f.style.display='none';if(s)s.style.display='block';
+}
+</script>
+
+</body>
+</html>
